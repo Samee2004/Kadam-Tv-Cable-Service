@@ -51,7 +51,7 @@
                       <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                       <span id="confirmPasswordError" class="text-red-500"></span>
                   </div>
-          <!-- Password input -->
+          
 
 
           <!-- flat and building -->
@@ -73,7 +73,7 @@
                 </div>
                
           <!-- Submit button -->
-          <button type="submit" class="w-full border text-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Submit</button>
+          <button type="submit" id="registerForm" class="w-full border text-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Submit</button>
           <div class="login_signup">Already have an account? <a href="Login.php" id="login" style="color: blue;">Login</a></div>
 
           
@@ -85,7 +85,7 @@
 
 <script>
   $(document).ready(function(){
-    $("#registerForm").submit(function(e){
+    $("#registerForm").click(function(e){
       var fullName = $("#full-name").val();
       var email = $("#email").val();
       var contact = $("#contact").val();
@@ -107,8 +107,9 @@
 
       // Validate Full Name
       if (!fullName.trim()) {
+        console.log(fullName);
         $("#fullNameError").text("Full Name is required");
-        e.preventDefault(); // Prevent form submission
+        // Prevent form submission
       }
 
       // Validate Email
