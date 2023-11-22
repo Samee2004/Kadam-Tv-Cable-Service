@@ -136,7 +136,7 @@
           <!-- Email input -->
           <div class="w-full">
                       <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Full Name</label>
-                      <input type="text" name="full-name" id="full-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abc mnq xyz" required="">
+                      <input type="text" name="full-name" id="full-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Abc Mnq Xyz" required="">
                 </div>
                 <div class="w-full">
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
@@ -166,7 +166,7 @@
                 </div>
                 <div class="w-full ml-1">
                       <label for="building" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bluiding</label>
-                      <input type="text" name="building" id="building" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abc society" required="">
+                      <input type="text" name="building" id="building" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Abc society" required="">
                 </div>
             </div>
                 <div>
