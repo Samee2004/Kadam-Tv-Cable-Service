@@ -22,12 +22,11 @@
       <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center mb-3">
                   Create an account
               </h1>
-        <form id="registerForm" class="space-y-4 md:space-y-6 mb-10">
-          
+        <form class="space-y-4 md:space-y-6 mb-10">
+          <!-- Email input -->
           <div class="w-full">
                       <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Full Name</label>
-                      <input type="text" name="full-name" id="full-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Abc Mnq Xyz" required="">
-                      <span id="fullNameError" class="text-red-500"></span>
+                      <input type="text" name="full-name" id="full-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abc mnq xyz" required="">
                 </div>
                 <!-- Email input -->
                 <div class="w-full">
@@ -52,6 +51,8 @@
                       <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                       <span id="confirmPasswordError" class="text-red-500"></span>
                   </div>
+          <!-- Password input -->
+
 
           <!-- flat and building -->
             <div class="flex">
@@ -61,9 +62,8 @@
                       <span id="flatError" class="text-red-500"></span>
                 </div>
                 <div class="w-full ml-1">
-                      <label for="building" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Building</label>
-                      <input type="text" name="building" id="building" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Abc society" required="">
-                      <span id="buildingError" class="text-red-500"></span>
+                      <label for="building" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bluiding</label>
+                      <input type="text" name="building" id="building" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abc society" required="">
                 </div>
             </div>
                 <div>
@@ -73,8 +73,9 @@
                 </div>
                
           <!-- Submit button -->
-          <button type="submit" class="w-full border text-white hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" style="background-color: black;">Signup Now</button>
-          <div class="login_signup">Already have an account? <a href="Login.php" id="login" style="color: blue;">Login</a></div>
+          <button type="submit" class="w-full border text-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Submit</button>
+
+
           
         </form>
       </div>
