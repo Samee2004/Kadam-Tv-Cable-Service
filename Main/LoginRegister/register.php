@@ -6,6 +6,8 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Register</title>    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 <body>
 <section class="h-screen">
@@ -25,8 +27,19 @@
         <form class="space-y-4 md:space-y-6 mb-10">
           <!-- Email input -->
           <div class="w-full">
-                      <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Full Name</label>
-                      <input type="text" name="full-name" id="full-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abc mnq xyz" required="">
+                      <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your First Name</label>
+                      <input type="text" name="first-name" id="first-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Abc" required="">
+                      <span id="FirstError" class="text-red-500"></span>
+                    </div>
+                <div class="w-full">
+                      <label for="middle-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Middle Name</label>
+                      <input type="text" name="middle-name" id="middle-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pqr" required="">
+                      <span id="MiddleError" class="text-red-500"></span>
+                    </div>
+                <div class="w-full">
+                      <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Full Name</label>
+                      <input type="text" name="last-name" id="last-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Xyz" required="">
+                      <span id="LastError" class="text-red-500"></span>    
                 </div>
                 <!-- Email input -->
                 <div class="w-full">
@@ -68,8 +81,14 @@
             </div>
                 <div>
                       <label for="street-address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Street Address</label>
-                      <input type="text" name="street-address" id="street-address" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ndfsf Road, Mulund-E" required="">
+                      <input type="text" name="street-address" id="street-address" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ndfsf Road,abc" required="">
                       <span id="streetAddressError" class="text-red-500"></span>
+                </div>
+
+                <div>
+                      <label for="pincode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pincode</label>
+                      <input type="number" name="pincode" id="pincode" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="400042" required="">
+                      <span id="PincodeError" class="text-red-500"></span>
                 </div>
                
           <!-- Submit button -->
@@ -86,7 +105,9 @@
 <script>
   $(document).ready(function(){
     $("#registerForm").click(function(e){
-      var fullName = $("#full-name").val();
+      var FisrtName = $("#first-name").val();
+      var MiddeName = $("#middle-name").val();
+      var LastName = $("#last-name").val();
       var email = $("#email").val();
       var contact = $("#contact").val();
       var password = $("#password").val();
@@ -94,9 +115,13 @@
       var flat = $("#flat").val();
       var building = $("#building").val();
       var streetAddress = $("#street-address").val();
+      var pincode = $("#pincode").val();
+
 
       // Reset errors
-      $("#fullNameError").text("");
+      $("#FirstError").text("");
+      $("#MiddleError").text("");
+      $("#LastError").text("");
       $("#emailError").text("");
       $("#contactError").text("");
       $("#passwordError").text("");
@@ -104,19 +129,32 @@
       $("#flatError").text("");
       $("#buildingError").text("");
       $("#streetAddressError").text("");
+      $("#pincodeError").text("");
 
-      // Validate Full Name
-      if (!fullName.trim()) {
-        console.log(fullName);
-        $("#fullNameError").text("Full Name is required");
-        // Prevent form submission
+      // Validate First Name
+      if (!FisrtName.trim()) {
+        $("#FirstError").text("First Name is required");
+        e.preventDefault(); // Prevent form submission
+        return;
       }
-
+// Validate Middle Name
+if (!MiddeName.trim()) {
+        $("#MiddleError").text("Middle Name is required");
+        e.preventDefault(); // Prevent form submission
+        return;
+      }
+      // Validate Last Name
+      if (!LastName.trim()) {
+        $("#LastError").text("Last Name is required");
+        e.preventDefault(); // Prevent form submission
+        return;
+      }
       // Validate Email
       var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
       if (!emailRegex.test(email)) {
         $("#emailError").text("Invalid email address");
         e.preventDefault(); // Prevent form submission
+        return;
       }
 
       // Validate Contact
@@ -124,39 +162,128 @@
       if (!contactRegex.test(contact)) {
         $("#contactError").text("Invalid contact number");
         e.preventDefault(); // Prevent form submission
+        return;
       }
 
       // Validate Password (you can add more conditions)
       if (password.length < 8) {
         $("#passwordError").text("Password must be at least 8 characters");
         e.preventDefault(); // Prevent form submission
+        return;
       }
 
       // Validate Confirm Password
       if (password !== confirmPassword) {
         $("#confirmPasswordError").text("Passwords do not match");
         e.preventDefault(); // Prevent form submission
+        return;
       }
 
       // Validate Flat
       if (!flat.trim()) {
         $("#flatError").text("Flat is required");
         e.preventDefault(); // Prevent form submission
+        return;
       }
 
       // Validate Building
       if (!building.trim()) {
         $("#buildingError").text("Building is required");
         e.preventDefault(); // Prevent form submission
+        return;
       }
 
       // Validate Street Address
       if (!streetAddress.trim()) {
         $("#streetAddressError").text("Street Address is required");
         e.preventDefault(); // Prevent form submission
+        return;
       }
+      
+      // Validate Pincode
+      if (!pincode.trim()) {
+        $("#pincodeError").text("Pincode is required");
+        e.preventDefault(); // Prevent form submission
+        return;
+      }
+
+      e.preventDefault();
+      // If all validations pass, make the AJAX call
+      $.ajax({
+        url: '../Ajax/registerajax.php', // Replace with the actual URL of your server-side script
+        type: 'POST',
+        data: {
+          FisrtName: FisrtName,
+          MiddeName:MiddeName,
+          LastName:LastName,
+          email: email,
+          contact: contact,
+          password: password,
+          flat: flat,
+          building: building,
+          streetAddress: streetAddress,
+          pincode: pincode
+          // Add more data as needed
+        },
+        success: function(response) {
+          // Handle the response from the server
+          console.log(response);
+          if(response==1)
+          {
+            Toastify({
+  text: "Successfully registered",
+  duration: 3000,
+  destination: "https://github.com/apvarun/toastify-js",
+  newWindow: true,
+  close: true,
+  gravity: "top", // `top` or `bottom`
+  position: "center", // `left`, `center` or `right`
+  stopOnFocus: true, // Prevents dismissing of toast on hover
+  style: {
+    background: "linear-gradient(to right, #00b09b, #96c93d)",
+  }, // Callback after click
+}).showToast();
+
+
+ $("#first-name").val("");
+       $("#middle-name").val("");
+  $("#last-name").val("");
+  $("#email").val("");
+$("#contact").val("");
+$("#password").val("");
+$("#confirm-password").val("");
+ $("#flat").val("");
+  $("#building").val("");
+$("#street-address").val("");
+ $("#pincode").val("");
+
+          }
+          else
+          {
+            Toastify({
+  text: "Failed to registered",
+  duration: 3000,
+  destination: "https://github.com/apvarun/toastify-js",
+  newWindow: true,
+  close: true,
+  gravity: "top", // `top` or `bottom`
+  position: "center", // `left`, `center` or `right`
+  stopOnFocus: true, // Prevents dismissing of toast on hover
+  style: {
+    background: "linear-gradient(to right, #00b09b, #96c93d)",
+  }, // Callback after click
+}).showToast();
+          }
+          
+        },
+        error: function(error) {
+          // Handle errors
+          console.error(error);
+        }
+      });
     });
   });
 </script>
+
 </body>
 </html>
