@@ -19,6 +19,57 @@ $(document).ready(function(){
         $("#passwordError").text("Password must be at least 8 characters");
         e.preventDefault(); // Prevent form submission
       }
+      e.preventDefault();
+      $.ajax({
+        url: "../Ajax/loginajax.php", // Replace with the actual URL of your server-side script
+        type: "POST",
+        data: {
+          email: email,
+          password: password,
+          // Add more data as needed
+        },
+        success: function (response) {
+          // Handle the response from the server
+          console.log(response);
+          if (response == 1) {
+            Toastify({
+              text: "Login Successfully",
+              duration: 3000,
+              destination: "https://github.com/apvarun/toastify-js",
+              newWindow: true,
+              close: true,
+              gravity: "top", // `top` or `bottom`
+              position: "center", // `left`, `center` or `right`
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+              }, // Callback after click
+            }).showToast();
+
+            $("#email").val("");
+            $("#password").val("");
+            window.location.href="re.php"
+          } else {
+            Toastify({
+              text: "Login Failed",
+              duration: 3000,
+              destination: "https://github.com/apvarun/toastify-js",
+              newWindow: true,
+              close: true,
+              gravity: "top", // `top` or `bottom`
+              position: "center", // `left`, `center` or `right`
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+              }, // Callback after click
+            }).showToast();
+          }
+        },
+        error: function (error) {
+          // Handle errors
+          console.error(error);
+        },
+      });
     });
   });
   

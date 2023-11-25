@@ -6,6 +6,8 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     
 </head>
 <body>
@@ -54,7 +56,7 @@
   </div>
 </section>
 
-<script>
+<script src="../../js/Login.js">
   
 </script>
 
