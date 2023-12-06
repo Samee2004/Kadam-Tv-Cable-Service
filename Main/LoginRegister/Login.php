@@ -47,9 +47,9 @@
 
      
           <!-- Submit button -->
-          <button type="submit" class="w-full border text-white hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" style="background-color: black;">Login Now</button>
+          <button type="submit" class="w-full border text-white bg-black focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" style="background-color: black;">Login Now</button>
           <div class="login_signup">Don't have an account? <a href="register.php" id="signup" style="color: blue;">Signup</a></div>
-          
+          <div class="login_forgotpass">Forgot password? <a href="forgetpass.php" id="forgotpass" style="color: blue;">Reset password</a></div>
         </form>
       </div>
     </div>
