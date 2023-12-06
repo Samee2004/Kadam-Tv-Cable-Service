@@ -96,7 +96,7 @@ $("#reset").click(function(){
               }, // Callback after click
             }).showToast();
             generateOtp();
-    // sendemail(email,val);
+    sendemail(email,val);
     $("#page1").hide();
     $("#page2").show();
         $("#displayemail").text(email);
