@@ -93,7 +93,7 @@
                         <option value="US">400042</option>
                         <option value="CA">400041</option>
                   </select>
-                  <span id="PincodeError" class="text-red-500"></span>
+                  <span id="pincodeError" class="text-red-500"></span>
                 </div>
                
           <!-- Submit button -->
