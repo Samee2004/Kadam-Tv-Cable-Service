@@ -10,6 +10,8 @@ if(
     $email=$_POST["email"];
     $contact=$_POST["contact"];
     $password=$_POST["password"];
+
+    
     $flat=$_POST["flat"];
     $building=$_POST["building"];
     $streetAddress=$_POST["streetAddress"];

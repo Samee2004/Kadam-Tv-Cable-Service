@@ -27,40 +27,40 @@
         <form class="space-y-4 md:space-y-6 mb-10">
           <!-- Email input -->
           <div class="w-full">
-                      <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your First Name</label>
+                      <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Your First Name</label>
                       <input type="text" name="first-name" id="first-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your First Name" required="">
                       <span id="FirstError" class="text-red-500"></span>
                     </div>
                 <div class="w-full">
-                      <label for="middle-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Middle Name</label>
+                      <label for="middle-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Your Middle Name</label>
                       <input type="text" name="middle-name" id="middle-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your Middle Name" required="">
                       <span id="MiddleError" class="text-red-500"></span>
                     </div>
                 <div class="w-full">
-                      <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Full Name</label>
+                      <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Your Full Name</label>
                       <input type="text" name="last-name" id="last-name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your Last Name" required="">
                       <span id="LastError" class="text-red-500"></span>    
                 </div>
                 <!-- Email input -->
                 <div class="w-full">
-                      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
+                      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Your Email</label>
                       <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
                       <span id="emailError" class="text-red-500"></span>
                 </div>          
                 <div class="w-full">
-                      <label for="contact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Contact</label>
+                      <label for="contact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Your Contact</label>
                       <input type="tel" name="contact" id="contact" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="985****6" required="">
                       <span id="contactError" class="text-red-500"></span>
                 </div>
                 <!-- Password input -->
                 <div>
-                      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label> 
+                      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password</label> 
                       <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"style="color: green;">"Password must be at least 8 characters"</a></div>
                       <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                       <span id="passwordError" class="text-red-500"></span>
                   </div>
                   <div>
-                      <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
+                      <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Confirm password</label>
                       <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                       <span id="confirmPasswordError" class="text-red-500"></span>
                   </div>
@@ -70,24 +70,24 @@
           <!-- flat and building -->
             <div class="flex">
             <div class="w-full mr-1">
-                      <label for="flat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Flat</label>
+                      <label for="flat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Flat</label>
                       <input type="text" name="flat" id="flat" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="wing-Flat" required="">
                       <span id="flatError" class="text-red-500"></span>
                 </div>
                 <div class="w-full ml-1">
-                      <label for="building" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bluiding/Chawl/other</label>
+                      <label for="building" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Bluiding/Chawl/other</label>
                       <input type="text" name="building" id="building" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bluiding/chawl/other" required="">
                       <span id="buildingError" class="text-red-500"></span>
                 </div>
             </div>
                 <div>
-                      <label for="street-address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Street Address</label>
+                      <label for="street-address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Street Address</label>
                       <input type="text" name="street-address" id="street-address" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Street Address" required="">
                       <span id="streetAddressError" class="text-red-500"></span>
                 </div>
 
                 <div>
-                  <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pincode</label>
+                  <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Pincode</label>
                   <select id="pincode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose your pincode</option>
                         <option value="US">400042</option>
