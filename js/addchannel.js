@@ -32,7 +32,11 @@
         $("#categoryError").text("Please select a genre");
         e.preventDefault(); // Prevent form submission
       }
-
+      var imageURL = $("#dataURL").val();
+      if(imageURL){
+        $("#categoryError").text("Please select a genre");
+        e.preventDefault(); // Prevent form submission
+      }
       e.preventDefault();
       $.ajax({
         url: "../Ajax/addchannel.php", // Replace with the actual URL of your server-side script
@@ -42,6 +46,7 @@
             chan_number: chan_number,
             price: price,
             category: category,
+            img:imageURL,
           // Add more data as needed
         },
         success: function (response) {
