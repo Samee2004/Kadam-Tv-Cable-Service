@@ -1,16 +1,16 @@
 <?php
 include("../../config/connect.php");
 if(
-    !empty($_POST["name"]) && !empty($_POST["chan_number"]) && !empty($_POST["price"]) && !empty($_POST["category"]) && !empty($_POST["img"]) 
+    !empty($_POST["name"]) && !empty($_POST["chan_language"]) && !empty($_POST["category"]) && !empty($_POST["chan_quality"]) && !empty($_POST["price"]) && !empty($_POST["img"]) 
 )
 {
     $name=$_POST["name"];
-    $chan_number=$_POST["chan_number"];
+    $chan_language=$_POST["chan_language"];
     $price=$_POST["price"];
     $category=$_POST["category"];
     $img = $_POST["img"];
+    $chan_quality = $_POST["chan_quality"];
     
-     
 /*@ Base64 image code */
  
 function tf_convert_base64_to_image( $base64_code, $path, $image_name = null ) {
@@ -47,9 +47,25 @@ function tf_convert_base64_to_image( $base64_code, $path, $image_name = null ) {
 // Calling function auto generate unique name
 $imagename = tf_convert_base64_to_image( $img, '../assests/' );
 
-   $addchannelquery="INSERT INTO `channels` ( `Chan_name`, `chan_number`, `chan_price`, `chan_genre`, `chan_img`) VALUES ('$name', '$chan_number', '$price', '$category', '$imagename')";
+   $addchannelquery="INSERT INTO `channels` (`Chan_name`, `chan_price`, `chan_genre`, `chan_img`, `chan_language`, `chan_quality`) VALUES ( '$name', '$price', '$category', '$imagename', '$chan_language', '$chan_quality')";
 
    $exutequery=mysqli_query($con,$addchannelquery);
+   if($exutequery)
+   {
+    echo("1");
+   }
+   else{
+    echo("2");
+   }
+}
+if(
+    !empty($_POST["id"]) 
+)
+{
+    $id=$_POST["id"];
+    $deletechannelquery="DELETE FROM channels WHERE `channels`.`chan_id` = '$id' ";
+
+    $exutequery=mysqli_query($con,$deletechannelquery);
    if($exutequery)
    {
     echo("1");

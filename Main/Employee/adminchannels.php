@@ -43,17 +43,34 @@
                         <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type channel name" required="">
                         <span id="nameError" class="text-red-500"></span>
                     </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="chan_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Channel Number</label>
-                        <input type="number" name="chan_number" id="chan_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="123" required="">
-                        <span id="chan_numberError" class="text-red-500"></span>
+
+                    <div class="col-span-2 sm:col-span-1 ">
+                        <label for="chan_language" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Language</label>
+                        <select id="chan_language" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected="">Select language</option>
+                            <?php
+                                $getlanguagequery="SELECT * FROM `language`";
+                                $result=mysqli_query($con,$getlanguagequery);
+                                if(mysqli_num_rows($result)>0)
+                                {
+                                    while($row=mysqli_fetch_assoc($result)){
+                                        ?>
+                                        <option value="<?php
+                                        echo($row["lang_id"]);
+                                        ?>"><?php
+                                        echo($row["lang_name"]);
+                                        ?>
+                                        </option>
+                                        <?php
+            
+                                    }
+                                }
+                            ?>
+                        </select>
+                        <span id="languageyError" class="text-red-500"></span>
                     </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Channel Price</label>
-                        <input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="₹10" required="">
-                        <span id="priceError" class="text-red-500"></span>
-                    </div>
-                    <div class="col-span-2 ">
+
+                    <div class="col-span-2 sm:col-span-1 ">
                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Genre</label>
                         <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Select genre</option>
@@ -78,6 +95,23 @@
                         </select>
                         <span id="categoryError" class="text-red-500"></span>
                     </div>
+                    
+                    <div class="col-span-2 sm:col-span-1 ">
+                        <label for="chan_quality" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quality</label>
+                        <select id="chan_quality" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected="">Select Quality</option>
+                            <option value="SD">SD</option>
+                            <option value="HD">HD</option>
+                        </select>
+                        <span id="chan_qualityError" class="text-red-500"></span>
+                    </div>
+
+                    <div class="col-span-2 sm:col-span-1 ">
+                        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Channel Price</label>
+                        <input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="₹" required="">
+                        <span id="priceError" class="text-red-500"></span>
+                    </div>
+                    
                     <div class="col-span-2">
                         
                         <div class="flex items-center justify-center w-full">
@@ -96,7 +130,7 @@
                         <input type="text" id="dataURL"class="hidden">
                     </div>
                 </div>
-                <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <button id="submit_chann" type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
                     Add new product
                 </button>
@@ -111,7 +145,7 @@
 <section class="h-screen bg-gray-100 px-4 text-gray-600 antialiased" x-data="app">
     <div class="flex h-full flex-col justify-center">
         <!-- Table -->
-        <div class="mx-auto w-full max-w-5xl rounded-sm border border-gray-200 bg-white shadow-lg">
+        <div class="mx-auto w-full max-w-4xl rounded-sm border border-gray-200 bg-white shadow-lg">
             <header class="border-b border-gray-100 px-5 py-4 flex justify-between items-center">
                 <div class="font-semibold text-gray-800">Manage Channels</div>
                 <div class="flex">
@@ -137,15 +171,17 @@
                                 <div class="text-center font-semibold">Channel Name</div>
                             </th>
                             <th class="p-2">
-                                <div class="text-center font-semibold">Channel Number</div>
+                                <div class="text-center font-semibold">Language</div>
                             </th>
                             <th class="p-2">
                                 <div class="text-center font-semibold">Genre</div>
                             </th>
                             <th class="p-2">
+                                <div class="text-center font-semibold">Quality</div>
+                            </th>
+                            <th class="p-2">
                                 <div class="text-center font-semibold">Price</div>
                             </th>
-                        
                             <th class="p-2">
                                 <div class="text-center font-semibold">Action</div>
                             </th>
@@ -171,7 +207,7 @@
                                 <div class="text-center font-medium text-gray-800"><?php echo($row_of_channels["Chan_name"]); ?></div>
                             </td>
                             <td class="p-2">
-                                <div class="text-center font-medium text-gray-800"><?php echo($row_of_channels["chan_number"]); ?></div>
+                                <div class="text-center font-medium text-gray-800"><?php echo($row_of_channels["chan_language"]); ?></div>
                             </td>
                             <td class="p-2">
                                 <div class="text-center font-medium text-gray-800">
@@ -191,11 +227,14 @@
                                 </div>
                             </td>
                             <td class="p-2">
+                                <div class="text-center font-medium text-purple-500"><?php echo($row_of_channels["chan_quality"]); ?></div>
+                            </td>
+                            <td class="p-2">
                                 <div class="text-center font-medium text-purple-500">₹<?php echo($row_of_channels["chan_price"]); ?></div>
                             </td>
                             <td class="p-2">
                                 <div class="flex justify-center">
-                                    <button>
+                                    <button type="button"  onclick="delete_chan(<?php echo $row_of_channels['chan_id']; ?>)">
                                         <svg class="h-8 w-8 rounded-full p-1 text-gray-800 hover:bg-gray-100 hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                         </svg>
@@ -215,7 +254,7 @@
                             }                            
                         ?>
                         <!-- record 1 -->
-                        <tr>
+                        <!-- <tr>
                             <td class="p-2">
                                 <img src="https://www.indigital.co.in/images/logo/and%20pictures.png" alt="" class="h-8 mx-auto">
                             </td>
@@ -247,9 +286,9 @@
                                     </button>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> -->
 
-                        <!-- record 2 -->
+                        <!-- record 2
                         <tr>
                             <td class="p-2">
                                 <img src="https://www.indigital.co.in/images/logo/Colors-Cineplex-Print.png" alt="" class="h-11 mx-auto">
@@ -283,7 +322,7 @@
                                     </button>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
