@@ -18,7 +18,7 @@
  ?>
 
 
-<!-- Main modal -->
+<!-- add channel modal -->
 <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
@@ -139,6 +139,128 @@
     </div>
 </div> 
 
+<!-- update channel modal-->
+<div id="update-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                   Update Channel
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="update-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <form class="p-4 md:p-5">
+                <div class="grid gap-4 mb-4 grid-cols-2">
+                    <div class="col-span-2">
+                        <label for="update_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Channel Name</label>
+                        <input type="text" name="name" id="update_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type channel name" required="">
+                        <span id="update_nameError" class="text-red-500"></span>
+                    </div>
+
+                    <div class="col-span-2 sm:col-span-1 ">
+                        <label for="update_chan_language" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Language</label>
+                        <select id="update_chan_language" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected="">Select language</option>
+                            <?php
+                                $getlanguagequery="SELECT * FROM `language`";
+                                $result=mysqli_query($con,$getlanguagequery);
+                                if(mysqli_num_rows($result)>0)
+                                {
+                                    while($row=mysqli_fetch_assoc($result)){
+                                        ?>
+                                        <option value="<?php
+                                        echo($row["lang_id"]);
+                                        ?>"><?php
+                                        echo($row["lang_name"]);
+                                        ?>
+                                        </option>
+                                        <?php
+            
+                                    }
+                                }
+                            ?>
+                        </select>
+                        <span id="update_languageyError" class="text-red-500"></span>
+                    </div>
+
+                    <div class="col-span-2 sm:col-span-1 ">
+                        <label for="update_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Genre</label>
+                        <select id="update_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected="">Select genre</option>
+                            <?php
+                                $getgenrequery="SELECT * FROM `genre`";
+                                $result=mysqli_query($con,$getgenrequery);
+                                if(mysqli_num_rows($result)>0)
+                                {
+                                    while($row=mysqli_fetch_assoc($result)){
+                                        ?>
+                                        <option value="<?php
+                                        echo($row["gen_id"]);
+                                        ?>"><?php
+                                        echo($row["gen_name"]);
+                                        ?>
+                                        </option>
+                                        <?php
+            
+                                    }
+                                }
+                            ?>
+                        </select>
+                        <span id="update_categoryError" class="text-red-500"></span>
+                    </div>
+                    
+                    <div class="col-span-2 sm:col-span-1 ">
+                        <label for="update_chan_quality" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quality</label>
+                        <select id="update_chan_quality" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected="">Select Quality</option>
+                            <option value="SD">SD</option>
+                            <option value="HD">HD</option>
+                        </select>
+                        <span id="update_chan_qualityError" class="text-red-500"></span>
+                    </div>
+
+                    <div class="col-span-2 sm:col-span-1 ">
+                        <label for="update_price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Channel Price</label>
+                        <input type="number" name="price" id="update_price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="₹" required="">
+                        <span id="update_priceError" class="text-red-500"></span>
+                    </div>
+                    
+                    <div class="col-span-2">
+                        
+                        <div class="flex items-center justify-center w-full">
+                            <label for="update_dropzone-file" class="flex flex-col items-center justify-center w-full h-28 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                    </svg>
+                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                </div>
+                                <input id="update_dropzone-file" type="file" class="hidden" />
+                            </label>
+                        </div> 
+                        <input type="text" name="" id="channelid" class="hidden">
+                        <img src="" alt="" id="update_preview1Image1">
+                        <input type="text" id="update_dataURL"class="hidden">
+                    </div>
+                </div>
+                <button id="update_submit_chann" type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                    Update channel
+                </button>
+            </form>
+        </div>
+    </div>
+</div> 
+
  <!-- component -->
  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -156,6 +278,10 @@
                      <div>
                      <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class=" ml-3  text-white bg-gray-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                         Add Channels
+                    </button>
+
+                    <button id="update-button" data-modal-target="update-modal" data-modal-toggle="update-modal" class="hidden ml-3  text-white bg-gray-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                        Update Channels
                     </button>
                      </div>
                 </div>
@@ -207,7 +333,23 @@
                                 <div class="text-center font-medium text-gray-800"><?php echo($row_of_channels["Chan_name"]); ?></div>
                             </td>
                             <td class="p-2">
-                                <div class="text-center font-medium text-gray-800"><?php echo($row_of_channels["chan_language"]); ?></div>
+                                <div class="text-center font-medium text-gray-800">
+                                    <?php 
+                                    $chan_language=$row_of_channels["chan_language"];
+                                    $getlanguage="SELECT * FROM `language` WHERE `lang_id` =$chan_language";
+                                    $exutelanguage=mysqli_query($con,$getlanguage);
+                                    if(mysqli_num_rows($exutelanguage)>0)
+                                    {
+
+                                while($row_of_language=mysqli_fetch_assoc($exutelanguage))
+                                {
+                                    $languagename= $row_of_language["lang_name"];
+                                    echo($row_of_language["lang_name"]);
+                                }
+                            }
+                                    ?>
+                                </div>
+
                             </td>
                             <td class="p-2">
                                 <div class="text-center font-medium text-gray-800">
@@ -220,6 +362,7 @@
 
                                 while($row_of_genre=mysqli_fetch_assoc($exutegenre))
                                 {
+                                    $genrename= $row_of_genre["gen_name"];
                                     echo($row_of_genre["gen_name"]);
                                 }
                             }
@@ -240,7 +383,7 @@
                                         </svg>
                                         
                                     </button>
-                                    <button type="button">
+                                    <button type="button" onclick="update_chan(<?php echo $row_of_channels['chan_id']; ?>,'<?php  echo($row_of_channels['chan_img']); ?>', '<?php echo($row_of_channels['Chan_name']); ?>', '<?php echo($row_of_channels['chan_language']); ?>', <?php echo($genre); ?>, '<?php echo($row_of_channels['chan_quality']); ?>', <?php echo($row_of_channels['chan_price']); ?> )">
                                     <svg class="h-8 w-8 rounded-full p-1 hover:bg-gray-100 hover:text-blue-600" fill="#000000" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
                                                         <title>edit</title>
                                                         <path d="M17.438 22.469v-4.031l2.5-2.5v7.344c0 1.469-1.219 2.688-2.656 2.688h-14.625c-1.469 0-2.656-1.219-2.656-2.688v-14.594c0-1.469 1.188-2.688 2.656-2.688h14.844v0.031l-2.5 2.469h-11.5c-0.531 0-1 0.469-1 1.031v12.938c0 0.563 0.469 1 1 1h12.938c0.531 0 1-0.438 1-1zM19.813 7.219l2.656 2.656 1.219-1.219-2.656-2.656zM10.469 16.594l2.625 2.656 8.469-8.469-2.625-2.656zM8.594 21.094l3.625-0.969-2.656-2.656z"></path>
@@ -378,6 +521,61 @@
                   console.log(base64String );
                   $("#dataURL").val(base64String);
                    $('#preview1Image1').attr('src', base64String);
+                };
+                reader.readAsDataURL(blob);
+
+                // Return the processed file blob here
+                // For demonstration, let's log the blob to the console
+                console.log(blob);
+              }, 'image/webp', 0.9);
+            };
+            img.src = event.target.result; //event.target.result is a property that is commonly used in conjunction with the FileReader API in JavaScript. When you use a FileReader to read the content of a file, such as an image, the result of the read operation is accessible through the result property.
+          };
+
+          reader.readAsDataURL(file);
+        }
+      });
+
+
+      $('#update_dropzone-file').change(function(){
+        const file = this.files[0];
+        
+        if (file){
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            const img = new Image();
+            img.onload = function() {
+              const canvas = document.createElement('canvas');
+              const maxWidth = 800; // Maximum width for the compressed image
+              const maxHeight = 600; // Maximum height for the compressed image
+
+              let width = img.width;
+              let height = img.height;
+
+              if (width > height) {
+                if (width > maxWidth) {
+                  height *= maxWidth / width;
+                  width = maxWidth;
+                }
+              } else {
+                if (height > maxHeight) {
+                  width *= maxHeight / height;
+                  height = maxHeight;
+                }
+              }
+
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, width, height);
+
+              canvas.toBlob(function(blob) {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                  const base64String = reader.result;
+                  console.log(base64String );
+                  $("#update_dataURL").val(base64String);
+                   $('#update_preview1Image1').attr('src', base64String);
                 };
                 reader.readAsDataURL(blob);
 
