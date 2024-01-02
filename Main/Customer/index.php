@@ -61,7 +61,7 @@
         </div>
         <!-- Right Col -->
         <div class="w-full md:w-3/5 py-8 text-center">
-            <img class="w-full h-50 md:w-4/5 z-50 ml-auto" src="watchingtv.webp" />
+            <img class="w-full h-50 md:w-4/5 z-50 ml-auto" src="../assets/watchingtv.webp" />
         </div>
     </div>
     

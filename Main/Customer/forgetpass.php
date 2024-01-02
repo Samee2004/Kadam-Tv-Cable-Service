@@ -33,7 +33,7 @@
 					<!-- Col -->
 					<div
 						class="w-full h-auto bg-white hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-						style="background-image: url('forgotpassword.png')"
+						style="background-image: url('../assets/forgotpassword.png')"
 					></div>
 					<!-- Col -->
 					<div id="page1" class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
