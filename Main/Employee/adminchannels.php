@@ -125,6 +125,7 @@
                                 </div>
                                 <input id="dropzone-file" type="file" class="hidden" />
                             </label>
+                            <span id="imgError" class="text-red-500"></span>
                         </div> 
                         <img src="" alt="" id="preview1Image1">
                         <input type="text" id="dataURL"class="hidden">
@@ -396,76 +397,7 @@
                                 }
                             }                            
                         ?>
-                        <!-- record 1 -->
-                        <!-- <tr>
-                            <td class="p-2">
-                                <img src="https://www.indigital.co.in/images/logo/and%20pictures.png" alt="" class="h-8 mx-auto">
-                            </td>
-                            <td class="p-2">
-                                <div class="text-center font-medium text-gray-800">& PICTURES</div>
-                            </td>
-                            <td class="p-2">
-                                <div class="text-center font-medium text-gray-800">101</div>
-                            </td>
-                            <td class="p-2">
-                                <div class="text-center font-medium text-gray-800">SD-MOVIES</div>
-                            </td>
-                            <td class="p-2">
-                                <div class="text-center font-medium text-purple-500">₹10.00</div>
-                            </td>
-                            <td class="p-2">
-                                <div class="flex justify-center">
-                                    <button>
-                                        <svg class="h-8 w-8 rounded-full p-1 text-gray-800 hover:bg-gray-100 hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                        </svg>
-                                        
-                                    </button>
-                                    <button type="button">
-                                    <svg class="h-8 w-8 rounded-full p-1 hover:bg-gray-100 hover:text-blue-600" fill="#000000" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                        <title>edit</title>
-                                                        <path d="M17.438 22.469v-4.031l2.5-2.5v7.344c0 1.469-1.219 2.688-2.656 2.688h-14.625c-1.469 0-2.656-1.219-2.656-2.688v-14.594c0-1.469 1.188-2.688 2.656-2.688h14.844v0.031l-2.5 2.469h-11.5c-0.531 0-1 0.469-1 1.031v12.938c0 0.563 0.469 1 1 1h12.938c0.531 0 1-0.438 1-1zM19.813 7.219l2.656 2.656 1.219-1.219-2.656-2.656zM10.469 16.594l2.625 2.656 8.469-8.469-2.625-2.656zM8.594 21.094l3.625-0.969-2.656-2.656z"></path>
-                                                        </svg>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr> -->
-
-                        <!-- record 2
-                        <tr>
-                            <td class="p-2">
-                                <img src="https://www.indigital.co.in/images/logo/Colors-Cineplex-Print.png" alt="" class="h-11 mx-auto">
-                            </td>
-                            <td class="p-2">
-                                <div>
-                                    <div class="text-center font-medium text-gray-900">COLORS CINEPLEX</div>
-                                </div>
-                            </td>
-                            <td class="p-2">
-                                <div class="text-center font-medium text-gray-800">102</div>
-                            </td>
-                            <td class="p-2">
-                                <div class="text-center font-medium text-gray-800">SD-MOVIES</div>
-                            </td>
-                            <td class="p-2">
-                                <div class="text-center font-medium text-purple-500">₹3.00</div>
-                            </td>
-                            <td class="p-2">
-                                <div class="flex justify-center">
-                                    <button>
-                                        <svg class="h-8 w-8 rounded-full p-1 text-gray-900 hover:bg-gray-100 hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                        </svg>
-                                    </button>
-                                    <button type="button">
-                                    <svg class="h-8 w-8 rounded-full p-1 hover:text-blue-600" fill="#000000" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                        <title>edit</title>
-                                                        <path d="M17.438 22.469v-4.031l2.5-2.5v7.344c0 1.469-1.219 2.688-2.656 2.688h-14.625c-1.469 0-2.656-1.219-2.656-2.688v-14.594c0-1.469 1.188-2.688 2.656-2.688h14.844v0.031l-2.5 2.469h-11.5c-0.531 0-1 0.469-1 1.031v12.938c0 0.563 0.469 1 1 1h12.938c0.531 0 1-0.438 1-1zM19.813 7.219l2.656 2.656 1.219-1.219-2.656-2.656zM10.469 16.594l2.625 2.656 8.469-8.469-2.625-2.656zM8.594 21.094l3.625-0.969-2.656-2.656z"></path>
-                                                        </svg>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr> -->
+                        2
                     </tbody>
                 </table>
             </div>

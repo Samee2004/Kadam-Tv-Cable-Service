@@ -3,7 +3,7 @@
     // When the form is submitted
     $("#submit_chann").click(function(e){
       // Reset errors
-      $("#nameError, #priceError, #categoryError, #chan_languageError, #qualityError").text("");
+      $("#nameError, #priceError, #categoryError, #chan_languageError, #qualityError, #imgError").text("");
 
       // Validate Channel Name
       var name = $("#name").val();
@@ -45,7 +45,7 @@
       
       var imageURL = $("#dataURL").val();
       if(imageURL){
-        $("#categoryError").text("Please select a genre");
+        $("#imgError").text("Please select a genre");
         e.preventDefault(); // Prevent form submission
       }
       e.preventDefault();
