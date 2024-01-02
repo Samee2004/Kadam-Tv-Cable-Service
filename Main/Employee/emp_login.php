@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>EmpLogin</title>
+    <title>Emp Login</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     
@@ -21,7 +21,7 @@
       class="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
       <!-- Left column container with background-->
       <div class="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
-        <img src="../" alt="Phone image" />
+        <img src="../assets/remote1.jpg" alt="Phone image" />
       </div>
 
       <!-- Right column container with form -->
@@ -49,15 +49,15 @@
      
           <!-- Submit button -->
           <button type="submit" class="w-full border text-white bg-black focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" style="background-color: black;">Login Now</button>
-          <div class="login_signup">Don't have an account? <a href="register.php" id="signup" style="color: blue;">Signup</a></div>
-          <div class="login_forgotpass">Forgot password? <a href="forgetpass.php" id="forgotpass" style="color: blue;">Reset password</a></div>
+          
+          <div class="login_forgotpass">Forgot password? <a href="../Customer/forgetpass.php" id="forgotpass" style="color: blue;">Reset password</a></div>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<script src="../../js/Login.js">
+<script src="../../js/emplogin.js">
   
 </script>
 

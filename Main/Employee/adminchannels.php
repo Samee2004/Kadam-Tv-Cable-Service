@@ -1,3 +1,18 @@
+<?php
+session_start();
+if(isset( $_SESSION["email"])){
+    if(isset( $_SESSION["type"]) && $_SESSION["type"] === "A"){
+        echo("admin here");
+    }else{
+        echo("<script>window.location='emp_login.php';</script>");
+    }
+}else{
+    echo("<script>window.location='emp_login.php';</script>");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -397,7 +412,7 @@
                                 }
                             }                            
                         ?>
-                        2
+                        
                     </tbody>
                 </table>
             </div>
