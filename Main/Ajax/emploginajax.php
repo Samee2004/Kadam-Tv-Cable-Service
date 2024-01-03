@@ -1,4 +1,8 @@
 <?php
+
+ob_start();
+
+
 include("../../config/connect.php");
 if(
     !empty($_POST["email"]) && !empty($_POST["password"])
@@ -27,4 +31,7 @@ if(
     echo("2");
    }
 }
+
+ob_flush();
+
 ?>
