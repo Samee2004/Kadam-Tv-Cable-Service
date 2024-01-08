@@ -22,6 +22,8 @@ if(
         session_start();
         $_SESSION["email"]=$row["emp_email"];
         $_SESSION["type"] = $row["emp_role"];
+        $_SESSION["firstname"] = $row["emp_fname"];
+        $_SESSION["lastname"] = $row["emp_lname"];
         echo("1");
 
     }

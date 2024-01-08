@@ -636,7 +636,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
             </div>
             <ul class="flex items-center flex-shrink-0 space-x-6">
               <!-- Theme toggler -->
-              <li class="flex">
+              <!-- <li class="flex">
                 <button
                   class="rounded-md focus:outline-none focus:shadow-outline-purple"
                   @click="toggleTheme"
@@ -669,9 +669,10 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
                     </svg>
                   </template>
                 </button>
-              </li>
+              </li> -->
+              
               <!-- Notifications menu -->
-              <li class="relative">
+              <!-- <li class="relative">
                 <button
                   class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple"
                   @click="toggleNotificationsMenu"
@@ -688,9 +689,9 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
                     <path
                       d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"
                     ></path>
-                  </svg>
+                  </svg> -->
                   <!-- Notification badge -->
-                  <span
+                  <!-- <span
                     aria-hidden="true"
                     class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"
                   ></span>
@@ -741,7 +742,8 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
                     </li>
                   </ul>
                 </template>
-              </li>
+              </li> -->
+
               <!-- Profile menu -->
               <li class="relative">
                 <button
@@ -753,7 +755,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
                 >
                   <img
                     class="object-cover w-8 h-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
+                    src="https://c0.klipartz.com/pngpicture/492/286/gratis-png-iconos-de-computadora-perfil-de-usuario-avatar-avatar-thumbnail.png"
                     alt=""
                     aria-hidden="true"
                   />

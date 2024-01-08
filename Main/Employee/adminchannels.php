@@ -11,39 +11,65 @@
 // }
 ?> -->
 
-<?php
-session_start();
-if(isset($_SESSION["email"])){
-    if(isset($_SESSION["type"]) && $_SESSION["type"] === "A"){
-        echo '<div style="color: white;">' . $_SESSION["email"] . '</div>';
-    }else{
-        echo '<script>window.location="emp_login.php";</script>';
-    }
+
+
+ <?php 
+session_start(); 
+include("../../config/connect.php");
+if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION["lastname"]) && isset($_SESSION["type"])  )
+{
+    $email = $_SESSION["email"];
+    $firstname=$_SESSION["firstname"];
+    $lastname=$_SESSION["lastname"];
 }else{
-    echo '<script>window.location="emp_login.php";</script>';
+    echo ("<script>location.href='emp_login.php'</script>");
+
 }
 ?>
-
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blank - Windmill Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <script src="../../js/init-alpine.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <title>Channels</title>
+  </head>
+  <body>
+    <div
+      class="flex h-screen bg-gray-50 dark:bg-gray-900"
+      :class="{ 'overflow-hidden': isSideMenuOpen}"
+    >
+   <!-- navigation -->
+   <?php include("./layout/emp_nav.php"); ?>
+      <div class="flex flex-col flex-1">
+      <!-- header -->
+      <?php include("./layout/emp_header.php"); ?>
 
-</head>
-<body>
- <?php
- include("../../config/connect.php");
- ?>
 
+
+        <main class="h-full pb-16 overflow-y-auto">
+          <!-- Remove everything INSIDE this div to a really blank page -->
+          <div class="container px-0 mx-auto grid">
+          <!-- add channel modal -->
+ 
+          <!-- component -->
+ <!-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
 
 <!-- add channel modal -->
 <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -289,13 +315,10 @@ if(isset($_SESSION["email"])){
     </div>
 </div> 
 
- <!-- component -->
- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-<section class="h-screen bg-gray-100 px-4 text-gray-600 antialiased" x-data="app">
+<section class="h-screen bg-gray-100 px-2 text-gray-600 antialiased" x-data="app">
     <div class="flex h-full flex-col justify-center">
         <!-- Table -->
-        <div class="mx-auto w-full max-w-4xl rounded-sm border border-gray-200 bg-white shadow-lg">
+        <div class="mx-auto w-full max-w-full rounded-sm border border-gray-200 bg-white shadow-lg">
             <header class="border-b border-gray-100 px-5 py-4 flex justify-between items-center">
                 <div class="font-semibold text-gray-800">Manage Channels</div>
                 <div class="flex">
@@ -439,6 +462,8 @@ if(isset($_SESSION["email"])){
         </div>
     </div>
 </section>
+
+
 <script>
     $(document).ready(function() {
       $('#dropzone-file').change(function(){
@@ -552,5 +577,10 @@ if(isset($_SESSION["email"])){
     });
   </script>
 <script src="../../js/addchannel.js"></script>
-</body>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
 </html>
+
