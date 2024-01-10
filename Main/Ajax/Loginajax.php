@@ -16,6 +16,7 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
         $_SESSION["email"] = $row["cust_email"];
         $_SESSION["firstname"] = $row["cust_fname"];
         $_SESSION["lastname"] = $row["cust_lname"];
+        $_SESSION["type"] = "c";
         echo "1";
     } else {
         echo "2";
