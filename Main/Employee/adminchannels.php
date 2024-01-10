@@ -1,16 +1,3 @@
-<!-- <?php
-// session_start();
-// if(isset( $_SESSION["email"])){
-//     if(isset( $_SESSION["type"]) && $_SESSION["type"] === "A"){
-//         echo($_SESSION["email"]);
-//     }else{
-//         echo("<script>window.location='emp_login.php';</script>");
-//     }
-// }else{
-//     echo("<script>window.location='emp_login.php';</script>");
-// }
-?> -->
-
 
 
  <?php 
