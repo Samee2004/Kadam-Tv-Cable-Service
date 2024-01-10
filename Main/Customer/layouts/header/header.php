@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Header</title>
 </head>
 <body>
     <!--Nav-->
@@ -39,10 +39,10 @@
               <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Home</a>
             </li>
             <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Plans</a>
+              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Packages</a>
             </li>
             <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Contact</a>
+              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="../../channels.php">Channels</a>
             </li>
           </ul>
           <a href="../Employee/emp_login.php" id="signup" style="color: blue;"><button

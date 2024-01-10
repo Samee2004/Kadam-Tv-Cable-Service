@@ -585,6 +585,10 @@
                     class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700"
                     aria-label="submenu"
                   >
+                  <div class="px-4 py-3">
+          <span class="block text-sm text-gray-900 dark:text-white"><?php echo($firstname); ?> <?php echo($lastname); ?></span>
+          <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><?php echo($email); ?></span>
+        </div>
                     <li class="flex">
                       <a
                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"

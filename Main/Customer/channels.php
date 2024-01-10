@@ -1,6 +1,5 @@
 <?php 
 session_start(); 
-include("../../config/connect.php");
 if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION["lastname"]) && isset($_SESSION["type"])  )
 {
     $email = $_SESSION["email"];
@@ -10,6 +9,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
     echo ("<script>location.href='Login.php'</script>");
 
 }
+include("../../config/connect.php");
 ?>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
