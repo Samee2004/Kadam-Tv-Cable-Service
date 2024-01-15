@@ -54,7 +54,7 @@
                     d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                   ></path>
                 </svg>
-                <span class="ml-4">Dashboard</span>
+                <span class="ml-4">Home</span>
               </a>
             </li>
           </ul>
@@ -78,7 +78,7 @@
                     d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
                   ></path>
                 </svg>
-                <span class="ml-4">Forms</span>
+                <span class="ml-4">Channels</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
@@ -100,7 +100,7 @@
                     d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
                   ></path>
                 </svg>
-                <span class="ml-4">Cards</span>
+                <span class="ml-4">Packages</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
@@ -123,7 +123,7 @@
                   ></path>
                   <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
                 </svg>
-                <span class="ml-4">Charts</span>
+                <span class="ml-4">Offers</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
@@ -145,7 +145,7 @@
                     d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
                   ></path>
                 </svg>
-                <span class="ml-4">Buttons</span>
+                <span class="ml-4">Installation</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
@@ -167,7 +167,7 @@
                     d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                   ></path>
                 </svg>
-                <span class="ml-4">Modals</span>
+                <span class="ml-4">Complaint</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
@@ -187,7 +187,7 @@
                 >
                   <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                 </svg>
-                <span class="ml-4">Tables</span>
+                <span class="ml-4">Services</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
@@ -211,7 +211,7 @@
                       d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
                     ></path>
                   </svg>
-                  <span class="ml-4">Pages</span>
+                  <span class="ml-4">About Us</span>
                 </span>
                 <svg
                   class="w-4 h-4"
@@ -334,7 +334,7 @@
                         d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
                       ></path>
                     </svg>
-                    <span class="ml-4">Forms</span>
+                    <span class="ml-4">Channels</span>
                   </a>
                 </li>
                 <li class="relative px-6 py-3">
@@ -356,7 +356,7 @@
                         d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
                       ></path>
                     </svg>
-                    <span class="ml-4">Cards</span>
+                    <span class="ml-4">Packages</span>
                   </a>
                 </li>
                 <li class="relative px-6 py-3">
@@ -381,7 +381,7 @@
                         d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"
                       ></path>
                     </svg>
-                    <span class="ml-4">Charts</span>
+                    <span class="ml-4">Offers</span>
                   </a>
                 </li>
                 <li class="relative px-6 py-3">
@@ -403,7 +403,7 @@
                         d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
                       ></path>
                     </svg>
-                    <span class="ml-4">Buttons</span>
+                    <span class="ml-4">Installation</span>
                   </a>
                 </li>
                 <li class="relative px-6 py-3">
@@ -425,7 +425,7 @@
                         d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                       ></path>
                     </svg>
-                    <span class="ml-4">Modals</span>
+                    <span class="ml-4">Complaint</span>
                   </a>
                 </li>
                 <li class="relative px-6 py-3">
@@ -445,73 +445,40 @@
                     >
                       <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                     </svg>
-                    <span class="ml-4">Tables</span>
+                    <span class="ml-4">Service</span>
                   </a>
                 </li>
               </ul>
             </div>
             <ul class="flex items-center flex-shrink-0 space-x-6">
-              <!-- Theme toggler -->
-              <li class="flex">
-                <button
-                  class="rounded-md focus:outline-none focus:shadow-outline-purple"
-                  @click="toggleTheme"
-                  aria-label="Toggle color mode"
-                >
-                  <template x-if="!dark">
-                    <svg
-                      class="w-5 h-5"
-                      aria-hidden="true"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
-                      ></path>
-                    </svg>
-                  </template>
-                  <template x-if="dark">
-                    <svg
-                      class="w-5 h-5"
-                      aria-hidden="true"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </template>
-                </button>
-              </li>
-              <!-- Notifications menu -->
+              
+              <!-- cart menu -->
               <li class="relative">
-                <button
-                  class="relative align-middle rounded-md focus:outline-none focus:shadow-outline-purple"
-                  @click="toggleNotificationsMenu"
-                  @keydown.escape="closeNotificationsMenu"
-                  aria-label="Notifications"
-                  aria-haspopup="true"
-                >
-                  <svg
-                    class="w-5 h-5"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"
-                    ></path>
-                  </svg>
-                  <!-- Notification badge -->
-                  <span
-                    aria-hidden="true"
-                    class="absolute top-0 right-0 inline-block w-3 h-3 transform translate-x-1 -translate-y-1 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"
-                  ></span>
-                </button>
-                <template x-if="isNotificationsMenuOpen">
+                
+                
+                    <a href="cart.php" class="relative inline-flex items-center p-3 text-sm font-medium text-center text-black  rounded-lg hover:bg-gray">
+                    <svg class="h-8 w-5" fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                        width="800px" height="800px" viewBox="0 0 902.86 902.86"
+                        xml:space="preserve">
+                      <g>
+                        <g>
+                          <path d="M671.504,577.829l110.485-432.609H902.86v-68H729.174L703.128,179.2L0,178.697l74.753,399.129h596.751V577.829z
+                            M685.766,247.188l-67.077,262.64H131.199L81.928,246.756L685.766,247.188z"/>
+                          <path d="M578.418,825.641c59.961,0,108.743-48.783,108.743-108.744s-48.782-108.742-108.743-108.742H168.717
+                            c-59.961,0-108.744,48.781-108.744,108.742s48.782,108.744,108.744,108.744c59.962,0,108.743-48.783,108.743-108.744
+                            c0-14.4-2.821-28.152-7.927-40.742h208.069c-5.107,12.59-7.928,26.342-7.928,40.742
+                            C469.675,776.858,518.457,825.641,578.418,825.641z M209.46,716.897c0,22.467-18.277,40.744-40.743,40.744
+                            c-22.466,0-40.744-18.277-40.744-40.744c0-22.465,18.277-40.742,40.744-40.742C191.183,676.155,209.46,694.432,209.46,716.897z
+                            M619.162,716.897c0,22.467-18.277,40.744-40.743,40.744s-40.743-18.277-40.743-40.744c0-22.465,18.277-40.742,40.743-40.742
+                            S619.162,694.432,619.162,716.897z"/>
+                        </g>
+                      </g>
+                    </svg>
+                    <span class="sr-only">Cart</span>
+                      <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-0 -end-1 dark:border-red-900">20</div>
+                  </a>
+
+                <!-- <template x-if="isNotificationsMenuOpen">
                   <ul
                     x-transition:leave="transition ease-in duration-150"
                     x-transition:leave-start="opacity-100"
@@ -556,7 +523,7 @@
                       </a>
                     </li>
                   </ul>
-                </template>
+                </template> -->
               </li>
               <!-- Profile menu -->
               <li class="relative">
@@ -610,7 +577,7 @@
                         <span>Profile</span>
                       </a>
                     </li>
-                    <li class="flex">
+                    <!-- <li class="flex">
                       <a
                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                         href="#"
@@ -632,11 +599,11 @@
                         </svg>
                         <span>Settings</span>
                       </a>
-                    </li>
+                    </li> -->
                     <li class="flex">
                       <a
                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                        href="#"
+                        href="../../config/custlogout.php"
                       >
                         <svg
                           class="w-4 h-4 mr-3"

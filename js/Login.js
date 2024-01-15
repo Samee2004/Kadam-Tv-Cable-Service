@@ -48,7 +48,7 @@ $(document).ready(function(){
 
             $("#email").val("");
             $("#password").val("");
-            window.location.href="cust_template.php"
+            window.location.href="channels.php"
           } else {
             Toastify({
               text: "Login Failed",
