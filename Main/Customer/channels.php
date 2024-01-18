@@ -110,7 +110,7 @@ include("../../config/connect.php");
                                                 <?php echo($row_of_channels["chan_quality"]); 
                                                 ?>
                                             </p>
-                                            <button class="text-sm mt-6 px-4 py-2 bg-black text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">Add to cart</button>
+                                            <button type="button" onclick="addtocart(<?php echo $row_of_channels['chan_id']; ?>)" class="text-sm mt-6 px-4 py-2 bg-black text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">Add to cart</button>
                                         </div>
                                         <div
                                             class="bg-gradient-to-tr from-yellow-500 to-yellow-400 w-32 h-32  rounded-full  border-white  border-dashed border-2  flex justify-center items-center "
@@ -136,6 +136,7 @@ include("../../config/connect.php");
         </main>
       </div>
     </div>
+    <!-- <script src="../../js/channels.js"></script> -->
   </body>
 </html>
 

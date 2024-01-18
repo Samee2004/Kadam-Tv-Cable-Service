@@ -475,7 +475,9 @@
                       </g>
                     </svg>
                     <span class="sr-only">Cart</span>
-                      <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-0 -end-1 dark:border-red-900">20</div>
+                      <div id="cartnum" class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-0 -end-1 dark:border-red-900">
+                        111
+                      </div>
                   </a>
 
                 <!-- <template x-if="isNotificationsMenuOpen">
@@ -628,3 +630,4 @@
             </ul>
           </div>
         </header>
+        <script src="../../js/channels.js"></script>
