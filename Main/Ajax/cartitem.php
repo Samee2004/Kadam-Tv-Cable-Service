@@ -9,7 +9,10 @@ $decodedData = json_decode($data, true);
     if ($decodedData !== null) {
         // Access individual elements
         $cart = $decodedData['cart'];
-
+        if (empty($cart)) {
+            // If the cart is empty, display a message
+            echo "Your cart is empty!!";
+        } else {
         // Loop through the cart items
         foreach ($cart as $item) {
 
@@ -24,7 +27,7 @@ $decodedData = json_decode($data, true);
                     ?>
                 <div class="flex p-6 my-6 rounded-lg bg-white  shadow-md">
                     <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                          <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." class="h-full w-full object-cover object-center">
+                          <img src="<?php echo($row["chan_img"]); ?>" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." class="h-full w-full object-fit object-center">
                         </div>
                         <div class="ml-4 flex flex-1 flex-col">
                           <div>
@@ -32,15 +35,47 @@ $decodedData = json_decode($data, true);
                               <h3>
                                 <a href="#"><?php echo($row["Chan_name"]); ?></a>
                               </h3>
-                              <p class="ml-4">$32.00</p>
+                              <p class="ml-4">₹<?php echo($row["chan_price"]); ?> </p>
                             </div>
-                            <p class="mt-1 text-sm text-gray-500">Blue</p>
+                            <p class="mt-1 text-sm text-gray-500">Language: 
+                                <?php 
+                                 $chan_language=$row["chan_language"];
+                                 $getlanguage="SELECT * FROM `language` WHERE `lang_id` =$chan_language";
+                                 $exutelanguage=mysqli_query($con,$getlanguage);
+                                 if(mysqli_num_rows($exutelanguage)>0)
+                                 {
+
+                             while($row_of_language=mysqli_fetch_assoc($exutelanguage))
+                             {
+                                 $languagename= $row_of_language["lang_name"];
+                                 echo($row_of_language["lang_name"]);
+                             }
+                         }
+                            ?>
+                            </p>
+                            <p class="mt-1 text-sm text-gray-500">Genre:  
+                            <?php 
+                                    $genre=$row["chan_genre"];
+                                    $getgenre="SELECT * FROM `genre` WHERE `gen_id` =$genre";
+                                    $exutegenre=mysqli_query($con,$getgenre);
+                                    if(mysqli_num_rows($exutegenre)>0)
+                                    {
+
+                                while($row_of_genre=mysqli_fetch_assoc($exutegenre))
+                                {
+                                    $genrename= $row_of_genre["gen_name"];
+                                    echo($row_of_genre["gen_name"]);
+                                }
+                            }
+                                    ?>
+                            </p>
                           </div>
+
                           <div class="flex flex-1 items-end justify-between text-sm">
-                            <p class="text-gray-500">Qty 1</p>
+                            <p class="text-gray-500">Quality: <?php echo($row["chan_quality"]); ?></p>
 
                             <div class="flex">
-                              <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                              <button type="button" onclick="deletefromcart(<?php echo $row['chan_id']; ?>,'c')" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
                             </div>
                           </div>
                         </div>
@@ -56,6 +91,7 @@ $decodedData = json_decode($data, true);
             // Use the values as needed
             // echo "Channel ID: $chan_id, User Email: $user_email, Type: $type<br>";
         }
+    }
     } else {
         // Handle JSON decoding error
         echo 'Error decoding JSON data.';

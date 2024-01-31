@@ -35,7 +35,7 @@ include("../../config/connect.php");
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </head>
-  <body>
+  <body onload="getcartdetails()">
   <input type="text" id="user_email" class="hidden" value="<?php echo($email); ?>">
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
@@ -106,7 +106,7 @@ include("../../config/connect.php");
                   
                   <!-- Sub total -->
                   <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-                    <div class="mb-2 flex justify-between">
+                    <!-- <div class="mb-2 flex justify-between">
                       <p class="text-gray-700">Subtotal</p>
                       <p class="text-gray-700">$129.99</p>
                     </div>
@@ -114,12 +114,12 @@ include("../../config/connect.php");
                       <p class="text-gray-700">Shipping</p>
                       <p class="text-gray-700">$4.99</p>
                     </div>
-                    <hr class="my-4" />
+                    <hr class="my-4" /> -->
                     <div class="flex justify-between">
                       <p class="text-lg font-bold">Total</p>
                       <div class="">
-                        <p class="mb-1 text-lg font-bold">$134.98 USD</p>
-                        <p class="text-sm text-gray-700">including VAT</p>
+                        <p class="mb-1 text-lg font-bold">₹ 134.98 </p>
+                        <p class="text-sm text-gray-700">including GST</p>
                       </div>
                     </div>
                     <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</button>
@@ -135,36 +135,6 @@ include("../../config/connect.php");
 
 <script>
   $email = $('#user_email').val();
-   var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    // Filter items based on user email
-    var userCartItems = cartItems.filter(item => item.user_email === $email);
-  console.log(userCartItems);
-  const dataOfcart = {
-    cart:userCartItems,
-  }
-  $.ajax({
-        url: "../Ajax/cartitem.php", // Replace with the actual URL of your server-side script
-        type: "POST",
-        data: {
-          data:JSON.stringify(dataOfcart),
-          // Add more data as needed
-        },
-        success: function (response) {
-          // Handle the response from the server
-          console.log(response);
-          $('#cart_container').html("");
-          $('#cart_container').html(response);
-
-          if (response == 1) {
-
-          } else {
-
-          }
-        },
-        error: function (error) {
-          // Handle errors
-          console.error(error);
-        },
-      });
+  
 </script>
 
