@@ -63,7 +63,6 @@ function getcartdetails() {
     var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     // Filter items based on user email
     var userCartItems = cartItems.filter(item => item.user_email === $email);
-  console.log(userCartItems);
   const dataOfcart = {
     cart:userCartItems,
   }
@@ -76,10 +75,9 @@ function getcartdetails() {
         },
         success: function (response) {
           // Handle the response from the server
-          console.log(response);
           $('#cart_container').html("");
           $('#cart_container').html(response);
-
+          cartprice() //calling cart proce function
           if (response == 1) {
 
           } else {
@@ -92,3 +90,19 @@ function getcartdetails() {
         },
       });
 }
+function cartprice() {
+
+    var values = $('.item_price').map(function() {
+        return parseFloat($(this).text()) || 0; // Get the numeric content of each span, handle non-numeric values
+    }).get();
+
+    // Calculate the sum of values
+    var sum = values.reduce(function(acc, val) {
+        console.log("acc,",acc);
+        return acc + val;
+    }, 0);
+
+    $('#cart_price').text(sum);
+    console.log('Sum:', sum);
+}
+

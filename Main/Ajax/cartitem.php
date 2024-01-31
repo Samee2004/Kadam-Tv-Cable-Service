@@ -35,7 +35,7 @@ $decodedData = json_decode($data, true);
                               <h3>
                                 <a href="#"><?php echo($row["Chan_name"]); ?></a>
                               </h3>
-                              <p class="ml-4">₹<?php echo($row["chan_price"]); ?> </p>
+                              <p class="ml-4">₹<span class="item_price"><?php echo($row["chan_price"]); ?> </span></p>
                             </div>
                             <p class="mt-1 text-sm text-gray-500">Language: 
                                 <?php 

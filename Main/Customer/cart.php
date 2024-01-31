@@ -118,7 +118,7 @@ include("../../config/connect.php");
                     <div class="flex justify-between">
                       <p class="text-lg font-bold">Total</p>
                       <div class="">
-                        <p class="mb-1 text-lg font-bold">₹ 134.98 </p>
+                        <p class="mb-1 text-lg font-bold">₹ <span id="cart_price">134.98</span> </p>
                         <p class="text-sm text-gray-700">including GST</p>
                       </div>
                     </div>
