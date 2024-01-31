@@ -36,6 +36,7 @@ include("../../config/connect.php");
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </head>
   <body>
+  <input type="text" id="user_email" class="hidden" value="<?php echo($email); ?>">
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen}"
@@ -54,7 +55,7 @@ include("../../config/connect.php");
                       <div class="h-screen bg-gray-100 pt-20">
                 <h1 class="mb-10 text-center text-2xl font-bold">Cart Items</h1>
                 <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-                  <div class="rounded-lg md:w-2/3">
+                  <div class="rounded-lg md:w-2/3" id="cart_container">
                     <div class="flex p-6 my-6 rounded-lg bg-white  shadow-md">
                       <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                           <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch." class="h-full w-full object-cover object-center">
@@ -133,21 +134,27 @@ include("../../config/connect.php");
 </html>
 
 <script>
-  var a=JSON.parse(localStorage.getItem('cart')) || [];
-  console.log(a);
+  $email = $('#user_email').val();
+   var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    // Filter items based on user email
+    var userCartItems = cartItems.filter(item => item.user_email === $email);
+  console.log(userCartItems);
   const dataOfcart = {
-    cart:a,
+    cart:userCartItems,
   }
   $.ajax({
         url: "../Ajax/cartitem.php", // Replace with the actual URL of your server-side script
         type: "POST",
         data: {
-          data:dataOfcart,
+          data:JSON.stringify(dataOfcart),
           // Add more data as needed
         },
         success: function (response) {
           // Handle the response from the server
           console.log(response);
+          $('#cart_container').html("");
+          $('#cart_container').html(response);
+
           if (response == 1) {
 
           } else {

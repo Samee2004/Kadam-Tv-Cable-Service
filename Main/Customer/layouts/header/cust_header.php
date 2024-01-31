@@ -556,6 +556,7 @@
                   <div class="px-4 py-3">
           <span class="block text-sm text-gray-900 dark:text-white"><?php echo($firstname); ?> <?php echo($lastname); ?></span>
           <span class="block text-sm  text-gray-500 truncate dark:text-gray-400"><?php echo($email); ?></span>
+          <input type="text" id="user_email" value="<?php echo($email); ?>">
         </div>
                     <li class="flex">
                       <a
