@@ -90,6 +90,7 @@ function getcartdetails() {
         },
       });
 }
+
 function cartprice() {
 
     var values = $('.item_price').map(function() {
@@ -101,8 +102,66 @@ function cartprice() {
         console.log("acc,",acc);
         return acc + val;
     }, 0);
-
     $('#cart_price').text(sum);
     console.log('Sum:', sum);
+    GetPayProcess();
+}
+
+function GetPayProcess() {
+    var priceText = $('#cart_price').text(); // Get the text content of the element
+    var priceInteger = parseInt(priceText); // Convert the text to an integer
+    console.log(priceText); 
+    var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    // Filter items based on user email
+    var userCartItems = cartItems.filter(item => item.user_email === $email);
+  const dataOfcart = {
+    cart:userCartItems,
+  }
+      var options = {
+        "key": "rzp_test_4yRKKdUKVbIOkX", // Enter the Key ID generated from the Dashboard
+        "amount": priceInteger*100,
+        "currency": "INR",
+        "description": "Acme Corp",
+        "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",
+        "prefill":
+        {
+          "email": "ruchi.k@yahoo.com",
+          "contact": +919900990090,
+        },
+        "handler": function (response) {
+          console.log(response);
+            $.ajax({
+            type:'POST',
+            url:'../Ajax/paymentajax.php',
+            data:{
+              pay_id: response.razorpay_payment_id,
+              pay_amount: priceInteger,
+              cust_id: $email,
+              data:JSON.stringify(dataOfcart),
+
+            },
+            success:function(result){
+                console.log(result);
+        
+                }
+        })
+        },
+        "modal": {
+          "ondismiss": function () {
+            if (confirm("Are you sure, you want to close the form?")) {
+              txt = "You pressed OK!";
+              console.log("Checkout form closed by the user");
+            } else {
+              txt = "You pressed Cancel!";
+              console.log("Complete the Payment")
+            }
+          }
+        }
+      };
+      var rzp1 = new Razorpay(options);
+      document.getElementById('rzp-button1').onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+      }
 }
 

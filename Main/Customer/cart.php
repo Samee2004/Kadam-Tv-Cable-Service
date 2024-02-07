@@ -22,9 +22,8 @@ include("../../config/connect.php");
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
     <script src="../../js/init-alpine.js"></script>
@@ -118,11 +117,11 @@ include("../../config/connect.php");
                     <div class="flex justify-between">
                       <p class="text-lg font-bold">Total</p>
                       <div class="">
-                        <p class="mb-1 text-lg font-bold">₹ <span id="cart_price">134.98</span> </p>
+                        <p class="mb-1 text-lg font-bold">₹ <span id="cart_price">200   </span> </p>
                         <p class="text-sm text-gray-700">including GST</p>
                       </div>
                     </div>
-                    <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</button>
+                    <button id="rzp-button1" class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</button>
                   </div>
                 </div>
               </div>
@@ -132,6 +131,9 @@ include("../../config/connect.php");
     </div>
   </body>
 </html>
+
+
+
 
 <script>
   $email = $('#user_email').val();
