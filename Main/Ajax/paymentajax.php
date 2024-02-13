@@ -37,11 +37,11 @@ $decodedData = json_decode($data, true);
             } else {
             // Loop through the cart items
             $count = 0;
+            $insertId = mysqli_insert_id($con);
             foreach ($cart as $item) {
-                $insertId = mysqli_insert_id($con);
                 $chan_id = $item['chan_id'];
-                echo($insertId);
-                echo($chan_id);
+                
+                
                 $dynamicVariableName = "put_subscribe_channel_" . $count;
                 $$dynamicVariableName = "INSERT INTO `subscribeforchannel` (`subchan_id`, `channel_id`) VALUES ('$insertId', '$chan_id')";
                 if(mysqli_query($con,$$dynamicVariableName)){
@@ -49,20 +49,22 @@ $decodedData = json_decode($data, true);
                 }
             }
             if($count==count($cart)){
-                echo("1");
+                $insertchanpay="INSERT INTO `paidforchannel` (`paid_subchan_id`, `paid_trans_id`) VALUES ('$insertId', '$pay_id')";
+                if(mysqli_query($con,$insertchanpay)){
+                echo(1);
+            }
             }else{
-                echo("2");
+                echo(2);
             }
         }
     }
-        echo("1");
     }
     else{
-        echo("2");
+        echo(2);
     }
   }
    else{
-    echo("2");
+    echo(2);
    }
 
 }

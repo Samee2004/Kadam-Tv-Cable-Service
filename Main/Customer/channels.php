@@ -10,6 +10,8 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
 
 }
 include("../../config/connect.php");
+date_default_timezone_set('Asia/Kolkata');
+$currentDate = date("Y-m-d");
 ?>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
@@ -52,6 +54,111 @@ include("../../config/connect.php");
           <!-- Remove everything INSIDE this div to a really blank page -->
           <div class="container px-0 mx-auto grid">
           <!-- add your code below -->
+          
+
+<!-- dropdown -->
+<div class="flex mt-4 space-y-4 md:space-y-0 md:space-x-4 md:flex-row flex-col items-center  justify-center	 ">
+
+<form class="w-full">   
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Channel name" required>
+        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+    </div>
+</form>
+<button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white max-w-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+  Filter 
+  <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+</svg>
+</button>
+</div>
+
+
+<!-- Dropdown menu -->
+<div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow max-w-4xl dark:bg-gray-700">
+    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 mr-6" aria-labelledby="dropdownDefaultButton">
+      <li>
+        <div id="accordion-nested-parent" data-accordion="collapse">
+          <div class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-3 md:px-6">
+            <ul aria-labelledby="mega-menu-full-dropdown-button">
+                <li>
+                  <div  class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                  <div class="font-semibold">
+                    Language
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Default checkbox
+                      </label>
+                  </div>
+                  <div class="flex items-center">
+                    <input id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    Checked state
+                  </label>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul aria-labelledby="mega-menu-full-dropdown-button">
+                <li>
+                  <div  class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                  <div class="font-semibold">
+                    Language
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Default checkbox
+                      </label>
+                  </div>
+                  <div class="flex items-center">
+                    <input  id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    Checked state
+                  </label>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          
+            <ul aria-labelledby="mega-menu-full-dropdown-button">
+                <li>
+                  <div  class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                  <div class="font-semibold">
+                    Language
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Default checkbox
+                      </label>
+                  </div>
+                  <div class="flex items-center">
+                    <input id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    Checked state
+                  </label>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            
+        </div>
+             
+        </div>
+      </li>
+    </ul>
+</div>
+
+
             <div class="flex flex-wrap m-4 text-center">
 
                     <?php
@@ -111,7 +218,33 @@ include("../../config/connect.php");
                                                 <?php echo($row_of_channels["chan_quality"]); 
                                                 ?>
                                             </p>
-                                            <button type="button" onclick="addtocart(<?php echo $row_of_channels['chan_id']; ?>,'c')" class="text-sm mt-6 px-4 py-2 bg-black text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">Add to cart</button>
+                                            <?php
+                                            $chan_id=$row_of_channels['chan_id'];
+                                            
+                                            $currentDate = date("Y-m-d", strtotime($currentDate));
+                                            $subscribed= "SELECT * FROM `subscribechannel`,`subscribeforchannel` WHERE sub_cust_id='$email' AND `subscribeforchannel`.`subchan_id`=`subscribechannel`.`sub_chan_id` AND `subscribeforchannel`.`channel_id`= '$chan_id' AND `subscribechannel`.`sub_end_date`> '$currentDate' ";
+                                            $exutequerysubcribed= mysqli_query($con,$subscribed);
+                                            
+                                            if(
+                                              mysqli_num_rows($exutequerysubcribed)>0
+                                              
+                                            ){
+                                               ?>
+
+                                               <p class="text-sm mt-6 px-4 py-2 bg-black text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">Already subscribed</p>
+
+                                               <?php
+                                             
+
+                                              
+                                              }else{
+                                              ?>
+                                              
+                                                  <button type="button" onclick="addtocart(<?php echo $row_of_channels['chan_id']; ?>,'c')" class="text-sm mt-6 px-4 py-2 bg-black text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">Add to cart</button>
+
+                                              <?php
+                                            }
+                                            ?>
                                         </div>
                                         <div
                                             class="bg-gradient-to-tr from-yellow-500 to-yellow-400 w-32 h-32  rounded-full  border-white  border-dashed border-2  flex justify-center items-center "

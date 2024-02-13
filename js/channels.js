@@ -141,6 +141,23 @@ function GetPayProcess() {
 
             },
             success:function(result){
+              if (result == 1) {
+                setTimeout(function(){
+                  window.location.reload();
+               }, 1000);
+                var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+// Delete user's cart items from the original array
+cartItems = cartItems.filter(item => item.user_email !== $email);
+// Update localStorage with the filtered array
+localStorage.setItem('cart', JSON.stringify(cartItems));
+
+// Now, userCartItems contains cart items of the user with email $email
+// cartItems contains the updated cart items array with user's items removed
+
+
+              }else{
+
+              }
                 console.log(result);
         
                 }
