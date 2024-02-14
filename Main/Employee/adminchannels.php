@@ -4,9 +4,14 @@
 session_start(); 
 if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION["lastname"]) && isset($_SESSION["type"])  )
 {
+   if($_SESSION["type"]=="a"){
     $email = $_SESSION["email"];
     $firstname=$_SESSION["firstname"];
     $lastname=$_SESSION["lastname"];
+   }
+    else{
+        echo ("<script>location.href='emp_login.php'</script>");
+    }
 }else{
     echo ("<script>location.href='emp_login.php'</script>");
 

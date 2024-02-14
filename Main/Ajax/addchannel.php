@@ -1,7 +1,7 @@
 <?php
 include("../../config/connect.php");
 if(
-    !empty($_POST[""]) && !empty($_POST[""]) && !empty($_POST[""]) && !empty($_POST[""]) && !empty($_POST["price"]) && !empty($_POST["img"]) 
+    !empty($_POST["name"]) && !empty($_POST["chan_language"]) && !empty($_POST["category"]) && !empty($_POST["chan_quality"]) && !empty($_POST["price"]) && !empty($_POST["img"]) 
 )
 {
     $name=$_POST["name"];

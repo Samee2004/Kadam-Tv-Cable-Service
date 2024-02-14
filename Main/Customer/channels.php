@@ -60,18 +60,18 @@ $currentDate = date("Y-m-d");
 <div class="flex mt-4 space-y-4 md:space-y-0 md:space-x-4 md:flex-row flex-col items-center  justify-center	 ">
 
 <form class="w-full">   
-    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white ">Search</label>
     <div class="relative">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
             </svg>
         </div>
-        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Channel name" required>
-        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-black-500 focus:border-black-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-black-500 dark:focus:border-black-500" placeholder="Search Channel name" required>
+        <button id="search_button" type="button" class="text-white absolute end-2.5 bottom-2.5 bg-purple-700 hover:bg-purple-800  font-medium rounded-lg text-sm px-4 py-2 dark:bg-black-600 dark:hover:bg-black-700 dark:focus:ring-black-800">Search</button>
     </div>
 </form>
-<button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white max-w-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+<button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white max-w-lg bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
   Filter 
   <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -82,49 +82,65 @@ $currentDate = date("Y-m-d");
 
 <!-- Dropdown menu -->
 <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow max-w-4xl dark:bg-gray-700">
-    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 mr-6" aria-labelledby="dropdownDefaultButton">
+    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 mr-6 " aria-labelledby="dropdownDefaultButton">
       <li>
         <div id="accordion-nested-parent" data-accordion="collapse">
           <div class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-3 md:px-6">
             <ul aria-labelledby="mega-menu-full-dropdown-button">
                 <li>
-                  <div  class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                  <div  class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 h-80 overflow-y-scroll">
                   <div class="font-semibold">
                     Language
                   </div>
-                  <div class="flex items-center mb-4">
-                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                        Default checkbox
+                    <?php
+                      $getlanguagequery="SELECT * FROM `language`";
+                      $result=mysqli_query($con,$getlanguagequery);
+                      if(mysqli_num_rows($result)>0)
+                      {
+                        while($row=mysqli_fetch_assoc($result)){
+                    ?>
+                    <div class="flex itdems-center mb-4">
+                      <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="default-checkbox" class="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                      <?php
+                          echo($row["lang_name"]);
+                        ?>
                       </label>
-                  </div>
-                  <div class="flex items-center">
-                    <input id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Checked state
-                  </label>
-                  </div>
+                        
+                    </div>
+                      <?php
+                        }
+                       }
+                    ?>       
                 </div>
               </li>
             </ul>
-            <ul aria-labelledby="mega-menu-full-dropdown-button">
+            <ul aria-labelledby="mega-menu-full-dropdown-button" class="ml-4">
                 <li>
-                  <div  class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                <div  class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 h-80 overflow-y-scroll">
                   <div class="font-semibold">
-                    Language
+                    Genre
                   </div>
-                  <div class="flex items-center mb-4">
-                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                        Default checkbox
-                      </label>
-                  </div>
-                  <div class="flex items-center">
-                    <input  id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Checked state
-                  </label>
-                  </div>
+                  <?php
+                    $getgenrequery="SELECT * FROM `genre`";
+                      $result=mysqli_query($con,$getgenrequery);
+                        if(mysqli_num_rows($result)>0)
+                          {
+                            while($row=mysqli_fetch_assoc($result)){
+                  ?>
+                  <div class="flex itdems-center mb-4">
+                      <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="default-checkbox" class="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                        <?php
+                        echo($row["gen_name"]);
+                        ?>
+                     </label>
+                    
+                  </div>                   
+                    <?php
+                        }
+                      }
+                    ?>     
                 </div>
               </li>
             </ul>
@@ -133,18 +149,18 @@ $currentDate = date("Y-m-d");
                 <li>
                   <div  class="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
                   <div class="font-semibold">
-                    Language
+                    Quality
                   </div>
                   <div class="flex items-center mb-4">
                     <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                        Default checkbox
+                      <label for="default-checkbox" class="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                        SD
                       </label>
                   </div>
                   <div class="flex items-center">
                     <input id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                  <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Checked state
+                  <label for="checked-checkbox" class="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                    HD
                   </label>
                   </div>
                 </div>
@@ -171,10 +187,10 @@ $currentDate = date("Y-m-d");
                                 {
 
                                 ?>
-                                    <div class="p-4 sm:w-1/2 lg:w-1/3 w-full hover:scale-105 duration-500">
+                                    <div class="p-4 sm:w-1/2 lg:w-1/3 w-full hover:scale-105 duration-500 channel_name">
                                         <div class=" flex items-center  justify-between p-4  rounded-lg bg-white shadow-indigo-50 shadow-md">
                                         <div>
-                                            <h2 class="text-yellow-500 text-xl font-bold text-left">
+                                            <h2 class="text-yellow-500 text-xl font-bold text-left ">
                                             <?php echo($row_of_channels["Chan_name"]); 
                                             ?>
                                             </h2>
@@ -262,7 +278,8 @@ $currentDate = date("Y-m-d");
                             
                         <?php
                                 }
-                            }                            
+                            } 
+                            include("./botchat.php")                           
                         ?>
             </div>
 
@@ -270,7 +287,8 @@ $currentDate = date("Y-m-d");
         </main>
       </div>
     </div>
-    <!-- <script src="../../js/channels.js"></script> -->
+    
+    <script src="../../js/filterchan.js"></script>
   </body>
 </html>
 
