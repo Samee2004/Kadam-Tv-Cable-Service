@@ -80,7 +80,7 @@ $currentDate = date("Y-m-d");
 </div>
 
 
-<!-- Dropdown menu -->
+<!-- Filter Dropdown menu -->
 <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow max-w-4xl dark:bg-gray-700">
     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 mr-6 " aria-labelledby="dropdownDefaultButton">
       <li>
@@ -100,7 +100,9 @@ $currentDate = date("Y-m-d");
                         while($row=mysqli_fetch_assoc($result)){
                     ?>
                     <div class="flex itdems-center mb-4">
-                      <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <input id="default-checkbox" type="checkbox" value="<?php
+                          echo($row["lang_name"]);
+                        ?>" class="filterlanguage w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="default-checkbox" class="ms-2 text-sm text-gray-900 dark:text-gray-300">
                       <?php
                           echo($row["lang_name"]);
@@ -129,7 +131,7 @@ $currentDate = date("Y-m-d");
                             while($row=mysqli_fetch_assoc($result)){
                   ?>
                   <div class="flex itdems-center mb-4">
-                      <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <input id="default-checkbox" type="checkbox" value="<?php echo($row["gen_name"]); ?>" class="filter_genre w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="default-checkbox" class="ms-2 text-sm text-gray-900 dark:text-gray-300">
                         <?php
                         echo($row["gen_name"]);
@@ -152,13 +154,13 @@ $currentDate = date("Y-m-d");
                     Quality
                   </div>
                   <div class="flex items-center mb-4">
-                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="default-checkbox" type="checkbox" value="SD" class="filter_quality w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="default-checkbox" class="ms-2 text-sm text-gray-900 dark:text-gray-300">
                         SD
                       </label>
                   </div>
                   <div class="flex items-center">
-                    <input id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="checked-checkbox" type="checkbox" value="HD" class="filter_quality w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                   <label for="checked-checkbox" class="ms-2 text-sm text-gray-900 dark:text-gray-300">
                     HD
                   </label>
@@ -198,8 +200,9 @@ $currentDate = date("Y-m-d");
                                             <?php echo($row_of_channels["chan_price"]);
                                             ?>
                                             </h3>
-                                            <p class="text-sm font-semibold text-gray-400 text-left">Genre:
-                                                <?php 
+                                            <p class="text-sm font-semibold text-gray-400 text-left">Genre : 
+                                              <span class="channelgenre">
+                                              <?php 
                                                         $genre=$row_of_channels["chan_genre"];
                                                         $getgenre="SELECT * FROM `genre` WHERE `gen_id` =$genre";
                                                         $exutegenre=mysqli_query($con,$getgenre);
@@ -213,9 +216,12 @@ $currentDate = date("Y-m-d");
                                                     }
                                                 }
                                                         ?>
+                                              </span>
+                                                
                                             </p>
-                                            <p class="text-sm font-semibold text-gray-400 text-left">Language:
-                                                <?php 
+                                            <p class="text-sm font-semibold text-gray-400 text-left">Language :
+                                              <span class="languagename">
+                                              <?php 
                                                     $chan_language=$row_of_channels["chan_language"];
                                                     $getlanguage="SELECT * FROM `language` WHERE `lang_id` =$chan_language";
                                                     $exutelanguage=mysqli_query($con,$getlanguage);
@@ -229,10 +235,15 @@ $currentDate = date("Y-m-d");
                                                 }
                                             }
                                                 ?>
+                                              </span> 
+                                               
                                             </p>
-                                            <p class="text-sm font-semibold text-gray-400 text-left">Quality:
-                                                <?php echo($row_of_channels["chan_quality"]); 
+                                            <p class="text-sm font-semibold text-gray-400 text-left">Quality : 
+                                              <span class="channelquality">
+                                              <?php echo($row_of_channels["chan_quality"]); 
                                                 ?>
+                                              </span>
+                                                
                                             </p>
                                             <?php
                                             $chan_id=$row_of_channels['chan_id'];
