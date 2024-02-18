@@ -71,7 +71,7 @@ $(document).ready(function() {
                         background: "linear-gradient(to right, #00b09b, #96c93d)",
                       }, // Callback after click
                     }).showToast();
-          
+                    window.location.reload();
                    
                   } else {
                     Toastify({

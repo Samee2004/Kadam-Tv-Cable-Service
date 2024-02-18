@@ -103,7 +103,23 @@ include("../../config/connect.php");
                 <td class="px-6 py-4">
                     <p><b><?php echo $row["complaint_status"] ?></b></p>
                     
-                    <p>Hrushikesh Shinde</p>
+                    <p>
+                        <?php
+                        $employee_id = $row["complaint_emp"];
+                        $get_employe_name = "SELECT * FROM `employee` WHERE emp_email = '$employee_id' ";
+                        $excecute_get_emp_query=mysqli_query($con,$get_employe_name);
+                        if(
+                            mysqli_num_rows($excecute_get_emp_query)>0 
+                        ){
+                            while(
+                                $row_of_get_emp=mysqli_fetch_assoc($excecute_get_emp_query)
+                            ){
+                                ?>
+                                <?php echo $row_of_get_emp["emp_fname"] ?> <?php echo $row_of_get_emp["emp_lname"] ?> 
+                            <?php                           }
+                        }
+                        ?>
+                        </p>
                 </td>
                 <td class="px-6 py-4">
                     
@@ -118,10 +134,6 @@ include("../../config/connect.php");
         }
     }
     ?>
-            
-
-
-
         </tbody>
     </table>
     <div id="editUserModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">

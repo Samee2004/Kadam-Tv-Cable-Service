@@ -27,15 +27,15 @@ if(
         if(
             $row["emp_role"]=="a"
         ){
-            echo("1");
+            echo(1);
         }
         elseif(
             $row["emp_role"]=="m"
         ){
-            echo("2");
+            echo(2);
         }
         else {
-                echo("3");
+                echo(3);
             
         }
     }

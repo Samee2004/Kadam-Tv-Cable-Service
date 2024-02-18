@@ -51,7 +51,7 @@ $(document).ready(function(){
             window.location.href="adminchannels.php"
           } 
           else if(
-            response==2
+            response == 2
           ){
             Toastify({
               text: "Login Successfully",
@@ -72,7 +72,7 @@ $(document).ready(function(){
             window.location.href="complaint.php"
           }
           else if(
-            response==3
+            response == 3
           ){
             Toastify({
               text: "Login Successfully",
