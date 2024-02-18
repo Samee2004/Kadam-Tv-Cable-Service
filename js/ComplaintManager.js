@@ -1,39 +1,57 @@
+function OpenModal(complaint_id) {
+    console.log(complaint_id);
+    $("#complaint_id").val("");
+    $("#complaint_id").val(complaint_id);    
+}
+
 $(document).ready(function() {
     // Function to validate the form
     function validateForm() {
-        // Get the value of the textarea
-        var description = $("#description").val().trim();
-
-        // Check if the textarea is empty
-        if (description === "") {
+        // Get the values of the input fields
+        var complaintId = $("#complaint_id").val().trim();
+        var technicanId = $("#technican_id").val();
+        
+        // Check if the complaint ID is empty
+        if (complaintId === "") {
             // If it's empty, show an error message and return false to prevent form submission
-            $("#error-message").text("Please write your complaint/issues.").show();
+            $("#complaint-id-error").text("Please enter a complaint ID.").show();
             return false;
         } else {
-            // If it's not empty, hide the error message and return true to allow form submission
-            $("#error-message").hide();
-            return true;
+            // If it's not empty, hide the error message
+            $("#complaint-id-error").hide();
         }
+
+        // Check if a technician is selected
+        if (technicanId === null || technicanId === "Choose a Technican" ) {
+            // If no technician is selected, show an error message and return false
+            $("#technican-id-error").text("Please choose a technician.").show();
+            return false;
+        } else {
+            // If a technician is selected, hide the error message
+            $("#technican-id-error").hide();
+        }
+
+        // If both fields are valid, return true to allow form submission
+        return true;
     }
 
-
-       
     // Event listener for form submission
-    $("#complaint").click(function(event) {
+    $("#assignbutt").click(function(event) {
         // Prevent the default form submission behavior
         event.preventDefault();
         
         // Validate the form
         if (validateForm()) {
             // If the form is valid, submit the form
-            var description = $("#description").val().trim();
-            var userid= $('#user_email').val();
+
+            var complaintId = $("#complaint_id").val().trim();
+            var technicanId = $("#technican_id").val();
             $.ajax({
                 url: "../Ajax/complaintajax.php", // Replace with the actual URL of your server-side script
                 type: "POST",
                 data: {
-                    description: description,
-                    userid: userid,
+                    complaintId:complaintId,
+                    technicanId:technicanId
                   // Add more data as needed
                 },
                 success: function (response) {
@@ -41,7 +59,7 @@ $(document).ready(function() {
                   console.log(response);
                   if (response == 1) {
                     Toastify({
-                      text: "Complaint added Successfully",
+                      text: "Successfully assigned",
                       duration: 3000,
                       destination: "https://github.com/apvarun/toastify-js",
                       newWindow: true,
@@ -53,12 +71,11 @@ $(document).ready(function() {
                         background: "linear-gradient(to right, #00b09b, #96c93d)",
                       }, // Callback after click
                     }).showToast();
-        
-                    $("#description").val("");
-                    window.location.reload();
+          
+                   
                   } else {
                     Toastify({
-                      text: "Complaint Failed to make",
+                      text: "Failed to assign",
                       duration: 3000,
                       destination: "https://github.com/apvarun/toastify-js",
                       newWindow: true,

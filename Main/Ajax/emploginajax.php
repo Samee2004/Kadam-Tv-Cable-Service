@@ -24,13 +24,25 @@ if(
         $_SESSION["type"] = $row["emp_role"];
         $_SESSION["firstname"] = $row["emp_fname"];
         $_SESSION["lastname"] = $row["emp_lname"];
-        echo("1");
-
+        if(
+            $row["emp_role"]=="a"
+        ){
+            echo("1");
+        }
+        elseif(
+            $row["emp_role"]=="m"
+        ){
+            echo("2");
+        }
+        else {
+                echo("3");
+            
+        }
     }
 
    }
    else{
-    echo("2");
+    echo("4");
    }
 }
 
