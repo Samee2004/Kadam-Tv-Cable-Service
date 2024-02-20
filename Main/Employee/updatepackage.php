@@ -92,18 +92,21 @@ $pack_id = $_GET["id"];
                                               <div id="packagepriceError" class="text-red-500 text-sm error-message"></div>
                                           </div>
                                           <div>
-                                              
+                                                
+
+
                                               <label for="channels" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Channels</label>
                                               <div class="w-full">
                                                   <select multiple x-data="multiselect" name="channels[]" id="channels">
                                                   <?php
                                                     // Fetch package channels
-                                                    $get_package_channels = "SELECT phc_channel_id FROM `package_has_channel` WHERE phc_package_id = 1";
+                                                    $get_package_channels = "SELECT phc_channel_id FROM `package_has_channel` WHERE phc_package_id = '$pack_id' ";
                                                     $execute_get_package_channels = mysqli_query($con, $get_package_channels);
                                                     $package_channels = array();
                                                     if (mysqli_num_rows($execute_get_package_channels) > 0) {
                                                         while ($row_of_package_channels = mysqli_fetch_assoc($execute_get_package_channels)) {
                                                             $package_channels[] = $row_of_package_channels["phc_channel_id"];
+                                                            echo $row_of_package_channels["phc_channel_id"];
                                                         }
                                                     }
 
@@ -113,7 +116,7 @@ $pack_id = $_GET["id"];
                                                     if (mysqli_num_rows($execute_get_channel_details) > 0) {
                                                         while ($row_of_channels = mysqli_fetch_assoc($execute_get_channel_details)) {
                                                             ?>
-                                                            <option value="<?php echo $row_of_channels["chan_id"]; ?>" <?php echo (in_array($row_of_channels["chan_id"], $package_channels)) ? 'selected' : ''; ?>><?php echo $row_of_channels["Chan_name"]; ?> <?php echo $row_of_channels["lang_name"]; ?> <?php echo $row_of_channels["gen_name"]; ?> <?php echo $row_of_channels["chan_quality"]; ?></option>
+                                                            <option value="<?php echo $row_of_channels["chan_id"]; ?>" <?php echo (in_array($row_of_channels["chan_id"], $package_channels)) ? 'selected' : 'heheh'; ?>><?php echo $row_of_channels["Chan_name"]; ?> <?php echo $row_of_channels["lang_name"]; ?> <?php echo $row_of_channels["gen_name"]; ?> <?php echo $row_of_channels["chan_quality"]; ?></option>
                                                             <?php
                                                         }
                                                     }
@@ -205,7 +208,7 @@ $pack_id = $_GET["id"];
       const search = document.createElement("input");
       search.className = style.search;
       search.setAttribute("x-bind", "search");
-      search.setAttribute("placeholder", "filter");
+      search.setAttribute("placeholder", "Search");
 
       const clearSearchBtn = document.createElement("button");
       clearSearchBtn.className = style.clearSearchBtn;

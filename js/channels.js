@@ -1,9 +1,9 @@
 $email = $('#user_email').val();
-
+console.log($email);
 function addtocart(chan_id, type) {
     console.log(chan_id);  // 16
     console.log(type);      // "someType"
-
+    console.log($email);
     var a = [];
 
     // Parse the serialized data back into an array of objects
@@ -26,10 +26,8 @@ function addtocart(chan_id, type) {
 
 function deletefromcart(chan_id, type) {
     var a = [];
-
     // Parse the serialized data back into an array of objects
     a = JSON.parse(localStorage.getItem('cart')) || [];
-
     // Find the index of the item with matching chan_id, type, and user_email
     var index = a.findIndex(item => item.chan_id === chan_id && item.type === type && item.user_email === $email);
 
@@ -47,12 +45,21 @@ function deletefromcart(chan_id, type) {
 }
 
 function getcartbadge() {
-    var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    // Filter items based on user email
-    var userCartItems = cartItems.filter(item => item.user_email === $email);
-    // Update the cart badge with the count of user's items
-    $("#cartnum").text(userCartItems.length);
+  var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  // Log all cart items
+  cartItems.forEach(item => {
+      console.log(item);
+  });
+
+  // Filter items based on user email
+  var userCartItems = cartItems.filter(item => item.user_email == $email);
+  console.log(userCartItems);
+  
+  // Update the cart badge with the count of user's items
+  $("#cartnum").text(userCartItems.length);
 }
+
+
 
 getcartbadge();
 

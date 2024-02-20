@@ -1,7 +1,3 @@
-
-
-
-
 <?php 
 session_start(); 
 include("../../config/connect.php");
@@ -20,7 +16,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blank - Windmill Dashboard</title>
+    <title>Packages</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -371,7 +367,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
       const search = document.createElement("input");
       search.className = style.search;
       search.setAttribute("x-bind", "search");
-      search.setAttribute("placeholder", "filter");
+      search.setAttribute("placeholder", "Search");
 
       const clearSearchBtn = document.createElement("button");
       clearSearchBtn.className = style.clearSearchBtn;

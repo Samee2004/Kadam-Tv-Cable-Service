@@ -20,7 +20,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blank - Windmill Dashboard</title>
+    <title>Packages</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -49,14 +49,14 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
       <div class="flex flex-col flex-1">
       <!-- header -->
       <?php include("./layout/emp_header.php"); ?>
-
-
-
         <main class="h-full pb-16 overflow-y-auto">
           <!-- Remove everything INSIDE this div to a really blank page -->
           <div class="container px-0 mx-auto grid">
           <!-- add your code below -->
+          
                    
+
+
           </div>
         </main>
       </div>

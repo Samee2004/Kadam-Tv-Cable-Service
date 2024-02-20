@@ -273,8 +273,10 @@ $currentDate = date("Y-m-d");
                                               }else{
                                               ?>
                                               
-                                                  <button type="button" onclick="addtocart(<?php echo $row_of_channels['chan_id']; ?>,'c')" class="text-sm mt-6 px-4 py-2 bg-black text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">Add to cart</button>
-
+                                                <button type="button" onclick="addtocart(<?php echo $row_of_channels['chan_id']; ?>,'c')" class="text-sm mt-6 px-4 py-2 bg-black text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">
+                                                  
+                                                Add to cart
+                                                </button>
                                               <?php
                                             }
                                             ?>

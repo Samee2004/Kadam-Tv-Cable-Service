@@ -50,8 +50,6 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
       <!-- header -->
       <?php include("./layout/emp_header.php"); ?>
 
-
-
         <main class="h-full pb-16 overflow-y-auto">
           <!-- Remove everything INSIDE this div to a really blank page -->
           <div class="container px-0 mx-auto grid">

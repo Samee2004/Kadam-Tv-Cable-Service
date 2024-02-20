@@ -61,8 +61,11 @@ if (!empty($_POST["Updatedpackagename"]) && !empty($_POST["Updatedpackageprice"]
 if (!empty($_POST["delete_package_id"])) {
     $package_id = $_POST["delete_package_id"];
     $delete_package = "DELETE FROM `packages`  WHERE `pack_id` = '$package_id' ";
+    $delete_package_has_channel = "DELETE FROM `package_has_channel` WHERE `phc_package_id` = '$package_id' ";
+    $execute_delete_package_has_channel = mysqli_query($con,$delete_package_has_channel);
+
     $execute_delete_package = mysqli_query($con,$delete_package);
-    if($execute_delete_package){
+    if($execute_delete_package && $execute_delete_package_has_channel){
             echo(1);
     }else{
         echo(2);
