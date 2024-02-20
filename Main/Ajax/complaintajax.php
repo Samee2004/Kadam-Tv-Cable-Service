@@ -19,7 +19,19 @@ if (!empty($_POST["description"]) && !empty($_POST["userid"])) {
 if (!empty($_POST["complaintId"]) && !empty($_POST["technicanId"])) {
     $complaintId = $_POST["complaintId"];
     $technicanId= $_POST["technicanId"];
-    $update_assign = "UPDATE `complaint` SET `complaint_status` = 'Assigned',`complaint_emp`='$technicanId' WHERE `complaint`.`complaint_id` = 5";
+    $update_assign = "UPDATE `complaint` SET `complaint_status` = 'Assigned',`complaint_emp`='$technicanId' WHERE `complaint`.`complaint_id` = ' $complaintId'";
+    $exutequery_update_assign = mysqli_query($con,$update_assign);
+    if($exutequery_update_assign){
+        echo(1);
+    }else{
+        echo(2);
+    }
+}
+
+if (!empty($_POST["ComplaintID"]) && !empty($_POST["Complaint_Status"])) {
+    $complaintId = $_POST["ComplaintID"];
+    $Complaint_Status= $_POST["Complaint_Status"];
+    $update_assign = "UPDATE `complaint` SET `complaint_status` = '$Complaint_Status' WHERE `complaint`.`complaint_id` = ' $complaintId'";
     $exutequery_update_assign = mysqli_query($con,$update_assign);
     if($exutequery_update_assign){
         echo(1);
