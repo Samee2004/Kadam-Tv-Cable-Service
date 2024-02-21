@@ -103,6 +103,7 @@ include("../../config/connect.php");
                         <?php
                        }
                      }
+                     include("./botchat.php")
                      ?>
                     
                 

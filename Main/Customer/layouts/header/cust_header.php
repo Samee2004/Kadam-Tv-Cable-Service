@@ -37,7 +37,8 @@
               <!-- Add this classes to an active anchor (a tag) -->
               <!-- text-gray-800 dark:text-gray-100 -->
               <a
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                class="inline-flex items-center w-full text-sm font-semibold 
+                 duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                 href="../index.html"
               >
                 <svg
@@ -283,7 +284,7 @@
         <!-- header -->
         <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
           <div
-            class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300"
+            class="container flex items-center justify-between h-full px-6 mx-auto text-yellow-600 dark:text-purple-300"
           >
             <!-- Mobile hamburger -->
             <button
