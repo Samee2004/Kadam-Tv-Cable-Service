@@ -62,7 +62,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="../forms.html"
+                href="channels.php"
               >
                 <svg
                   class="w-5 h-5"
@@ -84,7 +84,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="../cards.html"
+                href="custpackage.php"
               >
                 <svg
                   class="w-5 h-5"
@@ -123,7 +123,7 @@
                   ></path>
                   <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
                 </svg>
-                <span class="ml-4">Offers</span>
+                <span class="ml-4">Recharge</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
@@ -151,7 +151,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="../modals.html"
+                href="customer_complaint.php"
               >
                 <svg
                   class="w-5 h-5"
@@ -318,7 +318,7 @@
                 <li class="relative px-6 py-3">
                   <a
                     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="../forms.html"
+                    href="channels.php"
                   >
                     <svg
                       class="w-5 h-5"
@@ -340,7 +340,7 @@
                 <li class="relative px-6 py-3">
                   <a
                     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="../cards.html"
+                    href="custpackage.php"
                   >
                     <svg
                       class="w-5 h-5"
@@ -362,7 +362,7 @@
                 <li class="relative px-6 py-3">
                   <a
                     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="../charts.html"
+                    href="./"
                   >
                     <svg
                       class="w-5 h-5"
@@ -381,7 +381,7 @@
                         d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"
                       ></path>
                     </svg>
-                    <span class="ml-4">Offers</span>
+                    <span class="ml-4">Recharge</span>
                   </a>
                 </li>
                 <li class="relative px-6 py-3">
@@ -409,7 +409,7 @@
                 <li class="relative px-6 py-3">
                   <a
                     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="../modals.html"
+                    href="customer_complaint.php"
                   >
                     <svg
                       class="w-5 h-5"
@@ -431,7 +431,7 @@
                 <li class="relative px-6 py-3">
                   <a
                     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="../tables.html"
+                    href="custsubscribed.php"
                   >
                     <svg
                       class="w-5 h-5"
@@ -445,7 +445,7 @@
                     >
                       <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                     </svg>
-                    <span class="ml-4">Service</span>
+                    <span class="ml-4">Subscriptions</span>
                   </a>
                 </li>
               </ul>

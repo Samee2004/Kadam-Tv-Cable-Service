@@ -61,6 +61,7 @@ function getcartbadge() {
 
 
 
+
 getcartbadge();
 
 // Example of how to use the deletefromcart function

@@ -255,7 +255,7 @@ $currentDate = date("Y-m-d");
                                             $chan_id=$row_of_channels['chan_id'];
                                             
                                             $currentDate = date("Y-m-d", strtotime($currentDate));
-                                            $subscribed= "SELECT * FROM `subscribechannel`,`subscribeforchannel` WHERE sub_cust_id='$email' AND `subscribeforchannel`.`subchan_id`=`subscribechannel`.`sub_chan_id` AND `subscribeforchannel`.`channel_id`= '$chan_id' AND `subscribechannel`.`sub_end_date`> '$currentDate' ";
+                                            $subscribed= "SELECT * FROM `subscription`,`subscribeforchannel` WHERE sub_cust_id='$email' AND `subscribeforchannel`.`subchan_id`=`subscription`.`sub_id` AND `subscribeforchannel`.`channel_id`= '$chan_id' AND `subscription`.`sub_end_date`> '$currentDate' ";
                                             $exutequerysubcribed= mysqli_query($con,$subscribed);
                                             
                                             if(

@@ -7,10 +7,10 @@ if(
     date_default_timezone_set('Asia/Kolkata');
     $data = $_POST["data"];
     $decodedData = json_decode($data, true);
-    $pay_amount=$_POST["pay_amount"];
+    $pay_amount=$_POST["pay_amount"]; 
+    $currentDate = date("Y-m-d");
     $pay_id=$_POST["pay_id"];
     $cus_id = $_POST["cust_id"];
-    $currentDate = date("Y-m-d"); // Output: Current date in the format YYYY-MM-DD
     $currentDateTime = date("H:i:s"); // Output: Current time in the format HH:MM:SS
     $nextMonthDate = date("Y-m-d", strtotime("+1 month", strtotime($currentDate))); // Next month date
     $setpayment = "INSERT INTO `payment` (`transaction_id`, `pay_mode`, `pay_amount`, `pay_date`, `pay_time`, `pay_status`) VALUES ('$pay_id', 'online', '$pay_amount', '$currentDate', '$currentDateTime', 'success')";

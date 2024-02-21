@@ -87,7 +87,8 @@ include("../../config/connect.php");
                             // printing numbeer of channels using mysqli_num_rows which show number of rows in package_has_channels
                             echo(mysqli_num_rows(mysqli_query($con,$get_number_of_channels))); ?> channels</p>
             <button type="button" onclick="addtocart(<?php echo $pack_id; ?>,'p')" class="text-sm mt-6 px-4 py-2 bg-yellow-400 text-white rounded-lg  tracking-wider hover:bg-yellow-300 outline-none">Add to cart</button>
-            <button class="text-sm mt-6 px-4 py-2 bg-yellow-400 text-white rounded-lg  tracking-wider hover:bg-yellow-300 outline-none">Add to cart</button>
+            <button class="text-sm mt-6 px-4 py-2 bg-black-100
+             text-white rounded-lg  tracking-wider hover:bg-yellow-300 outline-none">Add to cart</button>
 
           </div>
         </div>
