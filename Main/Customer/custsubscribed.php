@@ -10,6 +10,8 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
 
 }
 include("../../config/connect.php");
+date_default_timezone_set('Asia/Kolkata');
+
 ?>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
@@ -21,6 +23,7 @@ include("../../config/connect.php");
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
 
     <script
@@ -60,6 +63,7 @@ include("../../config/connect.php");
                 </p>
                 <div class="mt-[20px] grid grid-cols-3 gap-[20px]">
                     <?php
+                    $count = 1;
                      $getsubscription="SELECT * FROM `subscription` , `payment` , `paidforsubscription` WHERE `subscription`.`sub_id`= `paidforsubscription`.`paid_sub_id`AND `paidforsubscription`.`paid_trans_id`=`payment`.`transaction_id` AND `subscription`.`sub_cust_id`='$email'";
                      $executegetsubscription= mysqli_query($con,$getsubscription);
                      if (mysqli_num_rows($executegetsubscription)> 0 ) {
@@ -70,9 +74,9 @@ include("../../config/connect.php");
                         <div class="pt-[15px] px-[25px] pb-[25px]">
                         <div> 
                             <p class="text-[#00153B] text-[19px] leading-[24px] font-bold">
-                                Subcription 1
+                                Subcription <?php echo $count; ?>
                             </p>
-                            <p class="text-[#00153B] text-[50px] leading-[63px] font-bold">
+                            <p class="text-yellow-500 text-[50px] leading-[63px] font-bold">
                                 ₹<?php echo($row["pay_amount"])?>
                             </p>
                         </div>
@@ -91,16 +95,37 @@ include("../../config/connect.php");
                              <?php echo($row["sub_start_date"]);?> to <?php echo($row["sub_end_date"]); ?>
                             </p>
                             
-                            <div class="mt-[25px]">
-                            <button class="bg-[#006EF5] rounded-[5px] py-[15px] px-[25px] text-[#fff] text-[14px] leading-[17px] font-semibold">
-                                View Subscription
-                            </button>
+                            <div class="mt-[25px] w-full flex flex-row">
+                              
+                            <a href="viewsubcription.php?id=<?php echo($subscription_id);?>" class="text-center w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                View Subscription 
+                            </a>
+                            <?php
+                                $start_date = $row["sub_start_date"];
+                                $end_date = $row["sub_end_date"];
+                                $current_date = date("Y-m-d");
+
+                                if ($start_date <= $current_date && $end_date >= $current_date)  {
+                                ?>
+                                    <!-- User is in subscription period -->
+                                    <!-- Your code for whatever you want to display if the user is in subscription -->
+                                <?php
+                                } else {
+                                    // User is not in subscription period, display recharge button
+                                ?>
+                                    <button type="button" onclick="PayRecharge(<?php echo $subscription_id; ?>,<?php echo($row['pay_amount'])?>)" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Recharge</button>
+                                <?php
+                                }
+                            ?>
+
+
                         </div>
                         </div>
                         </div>
                         
                     </div>
                         <?php
+                        $count=$count+1;
                        }
                      }
                      include("./botchat.php")
@@ -117,6 +142,7 @@ include("../../config/connect.php");
         </main>
       </div>
     </div>
+    <script src="../../js/subscribe.js"></script>
   </body>
 </html>
 

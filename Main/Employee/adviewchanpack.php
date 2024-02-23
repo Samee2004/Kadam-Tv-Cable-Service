@@ -66,8 +66,8 @@ $pack_id = $_GET["id"];
                 {
                   ?>
                       <div class="my-5 p-4 flex flex-col space-y-5">
-                        <h2 class="text-yellow-600 text-lg font-bold"> Packname : <?php echo $row["pack_name"] ?></h2>
-                        <h2 class="text-yellow-600 text-lg font-bold"> Pack price : <?php echo $row["pack_price"] ?></h2>
+                        <h2 class="text-black-600 text-xl font-bold text-center"> Package Name : <?php echo $row["pack_name"] ?></h2>
+                        <h2 class="text-black-600 text-lg font-bold text-center"> Package Price : <?php echo $row["pack_price"] ?></h2>
                         <h2 class="text-black text-lg font-bold"> Channels</h2>
 
                         <div class="flex flex-wrap m-4 text-center">

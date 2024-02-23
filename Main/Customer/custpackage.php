@@ -80,19 +80,19 @@ include("../../config/connect.php");
                             // query to get number of channels using package id
                             ?>
                                 <div class="p-4 sm:w-1/2 lg:w-1/3 w-full hover:scale-105 duration-500">
-        <div class=" flex items-center  justify-center p-4  rounded-lg bg-white shadow-indigo-50 shadow-md">
-          <div>
-            <h2 class="text-yellow-600 text-lg font-bold"><?php echo $row["pack_name"] ?></h2>
-            <h3 class="mt-2 text-xl font-bold text-gray-900 text-center"> ₹ <?php echo $row["pack_price"] ?> / Month</h3>
-            <p class="text-sm font-semibold text-gray-400">Upto <?php $get_number_of_channels = "SELECT * FROM `package_has_channel` WHERE `phc_package_id` = '$pack_id' ";
-                            // printing numbeer of channels using mysqli_num_rows which show number of rows in package_has_channels
-                            echo(mysqli_num_rows(mysqli_query($con,$get_number_of_channels))); ?> channels</p>
-            <button type="button" onclick="addtocart(<?php echo $pack_id; ?>,'p')" class="text-sm mt-6 px-4 py-2 bg-gray-900 text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">Add to cart</button>
-            <a href="viewpackchan.php?id=<?php echo $pack_id; ?>&name=<?php echo $row["pack_name"] ?>&price=<?php echo $row["pack_price"] ?>" class="text-sm mt-6 px-4 py-2 bg-gray-900 text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">View Channels</a>
+                                  <div class=" flex items-center  justify-center p-4  rounded-lg bg-white shadow-indigo-50 shadow-md">
+                                    <div>
+                                      <h2 class="text-yellow-600 text-lg font-bold"><?php echo $row["pack_name"] ?></h2>
+                                      <h3 class="mt-2 text-xl font-bold text-gray-900 text-center"> ₹ <?php echo $row["pack_price"] ?> / Month</h3>
+                                      <p class="text-sm font-semibold text-gray-400">Upto <?php $get_number_of_channels = "SELECT * FROM `package_has_channel` WHERE `phc_package_id` = '$pack_id' ";
+                                                      // printing numbeer of channels using mysqli_num_rows which show number of rows in package_has_channels
+                                                      echo(mysqli_num_rows(mysqli_query($con,$get_number_of_channels))); ?> channels</p>
+                                      <button type="button" onclick="addtocart(<?php echo $pack_id; ?>,'p')" class="text-sm mt-6 px-4 py-2 bg-gray-900 text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">Add to cart</button>
+                                      <a href="viewpackchan.php?id=<?php echo $pack_id; ?>&name=<?php echo $row["pack_name"] ?>&price=<?php echo $row["pack_price"] ?>" class="text-sm mt-6 px-4 py-2 bg-gray-900 text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">View Channels</a>
 
-          </div>
-        </div>
-      </div>
+                                    </div>
+                                  </div>
+                                </div>
 
                             <?php
                         }
