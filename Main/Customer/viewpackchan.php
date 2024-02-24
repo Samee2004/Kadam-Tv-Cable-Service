@@ -48,6 +48,7 @@ $pack_price = $_GET["price"];
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </head>
   <body>
+  <input type="text" value="<?php echo($email); ?>" class="hidden" id="user_email">
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen}"

@@ -16,28 +16,18 @@ function PayRecharge(sub_id,amount) {
           console.log(response);
             $.ajax({
             type:'POST',
-            url:'../Ajax/paymentajax.php',
+            url:'../Ajax/rechargeajax.php',
             data:{
               pay_id: response.razorpay_payment_id,
-              pay_amount: priceInteger,
-              cust_id: $email,
-              subscribe_id:sub_id
+              pay_amount: amount,
+              //cust_id: $email,
+              sub_id:sub_id
             },
             success:function(result){
               if (result == 1) {
                 setTimeout(function(){
                   window.location.reload();
                }, 1000);
-                var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-// Delete user's cart items from the original array
-cartItems = cartItems.filter(item => item.user_email !== $email);
-// Update localStorage with the filtered array
-localStorage.setItem('cart', JSON.stringify(cartItems));
-
-// Now, userCartItems contains cart items of the user with email $email
-// cartItems contains the updated cart items array with user's items removed
-
-
               }else{
 
               }

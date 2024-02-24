@@ -17,7 +17,7 @@ $sub_id = $_GET["id"];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blank - Windmill Dashboard</title>
+    <title>Subcription</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -37,11 +37,11 @@ $sub_id = $_GET["id"];
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </head>
   <body>
+  <input type="text" value="<?php echo($email); ?>" class="hidden" id="user_email">
     <div
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen}"
     >
-
       <div class="flex flex-col flex-1">
       <!-- header -->
       <?php include("./layouts/header/cust_header.php"); ?>
