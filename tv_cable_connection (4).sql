@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2024 at 04:30 PM
+-- Generation Time: Feb 24, 2024 at 06:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -97,7 +97,7 @@ CREATE TABLE `complaint` (
   `complaint_id` int(11) NOT NULL,
   `complaint_issue` varchar(1000) NOT NULL,
   `complaint_date` date DEFAULT NULL,
-  `complaint_status` varchar(10) DEFAULT NULL,
+  `complaint_status` varchar(15) DEFAULT NULL,
   `complaint_cust` varchar(100) DEFAULT NULL,
   `complaint_emp` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -107,9 +107,10 @@ CREATE TABLE `complaint` (
 --
 
 INSERT INTO `complaint` (`complaint_id`, `complaint_issue`, `complaint_date`, `complaint_status`, `complaint_cust`, `complaint_emp`) VALUES
-(2, 'gie;audfjnlvm,', '2024-02-07', 'Pending', NULL, NULL),
-(3, 'isueee isueeeee,', '2024-02-07', 'Pending', 'hrushiop9988@gmail.com', NULL),
-(4, 'hehehhehhehehe,', '2024-02-07', 'Pending', 'hrushiop9988@gmail.com', NULL);
+(2, 'gie;audfjnlvm,', '2024-02-07', 'Unresolvable', NULL, NULL),
+(3, 'isueee isueeeee,', '2024-02-07', 'Solved', 'hrushiop9988@gmail.com', 'tech@gmail.com'),
+(4, 'hehehhehhehehe,', '2024-02-07', 'Pending', 'hrushiop9988@gmail.com', NULL),
+(5, 'dasb hfcuxi asivuk,', '2024-02-21', 'Pending', 'sam@gmail.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -135,11 +136,11 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cust_email`, `cust_password`, `cust_fname`, `cust_mname`, `cust_lname`, `cust_flat`, `cust_building`, `cust_street`, `cust_pincode`, `cust_phone`) VALUES
-('', '0987654321', 'uhfdud', 'hfud', 'cdd', 'gsfsdg', 'rsf', 'ipgknsfsFfngvcteadv', 'Choose your pincode', '1234567890'),
 ('hrushiop9988@gmail.com', '123456789', 'Hrushi', 'khfgu', 'dhsvkj', '32', 'fkjdhgu', 'ghlrh', 'Choose your pincode', '1234567678'),
+('hrushiop@gmail.com', '0987654321', 'uhfdud', 'hfud', 'cdd', 'gsfsdg', 'rsf', 'ipgknsfsFfngvcteadv', 'Choose your pincode', '1234567890'),
 ('jdjznl@gmail.com', '123456789', 'Sam', 'Deep', 'Dam', '561', 'vvjsknc', 'jsdvlkx', '400042', '6789367829'),
 ('jef@gmail.com', 'qazxswedc', 'Ruchi', 'ahfou', 'jekhiu', 'b-21', 'hgut', 'kgut', '400042', '7539514560'),
-('sam@gmail.com', 'qazxswedc', 'Samee', 'Deep', 'Damn', '21', 'mfvuhh', 'ad,khv', '400042', '7412589630'),
+('sam@gmail.com', '123456789', 'Samee', 'Deep', 'Damn', '21', 'mfvuhh', 'ad,khv', '400042', '7412589630'),
 ('samkk@gmail.con', 'qweasdzxc', 'Samee', 'kvy', 'fkhv', '098', 'ekfkg', 'wkufgi h', '400042', '9632587418');
 
 -- --------------------------------------------------------
@@ -167,7 +168,9 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`emp_email`, `emp_password`, `emp_fname`, `emp_mname`, `emp_lname`, `emp_flat`, `emp_building`, `emp_street`, `emp_city`, `emp_phone`, `emp_role`) VALUES
-('abc@gmail.com', '12345678', 'admin', 'xyz', 'abc', 'jegfuf', 'jhi', 'kluyi', 'ngd', '1234567890', 'a');
+('admin@gmail.com', '123456789', 'admin', 'xyz', 'abc', 'jegfuf', 'jhi', 'kluyi', 'ngd', '1234567890', 'a'),
+('manager@gmail.com', '123456789', 'gefwhld', 'fvdc ', 'efdcs', 'vdsxz', 'dscxz', 'dscxz', 'dcsxz', '1234567890', 'm'),
+('tech@gmail.com', '123456789', 'tech', 'tech2', 'tech3', '111', 'dwc', 'ecwsaz', 'wdcax', '1234567890', 't');
 
 -- --------------------------------------------------------
 
@@ -270,42 +273,62 @@ CREATE TABLE `offer` (
 
 CREATE TABLE `packages` (
   `pack_id` int(11) NOT NULL,
-  `pack_validity_period` int(15) NOT NULL,
+  `pack_name` varchar(200) NOT NULL,
   `pack_price` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `paidforchannel`
+-- Dumping data for table `packages`
 --
 
-CREATE TABLE `paidforchannel` (
-  `paid_subchan_id` int(11) DEFAULT NULL,
-  `paid_trans_id` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `paidforpackage`
---
-
-CREATE TABLE `paidforpackage` (
-  `paid_subpack_id` int(11) DEFAULT NULL,
-  `paid_trans_id` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `packages` (`pack_id`, `pack_name`, `pack_price`) VALUES
+(1, 'Sony he', 25),
+(3, 'iPad Air Gen 5th Wi-Fi', 399),
+(4, 'Sony HD', 200),
+(5, 'Sony HD', 200);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paidforrechargepackage`
+-- Table structure for table `package_has_channel`
 --
 
-CREATE TABLE `paidforrechargepackage` (
-  `paid_resubpack_id` int(11) DEFAULT NULL,
+CREATE TABLE `package_has_channel` (
+  `phc_package_id` int(11) NOT NULL,
+  `phc_channel_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `package_has_channel`
+--
+
+INSERT INTO `package_has_channel` (`phc_package_id`, `phc_channel_id`) VALUES
+(3, 19),
+(3, 20),
+(5, 19),
+(5, 20),
+(4, 19),
+(1, 19),
+(1, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paidforrecharge`
+--
+
+CREATE TABLE `paidforrecharge` (
+  `paid_recharge_id` int(11) DEFAULT NULL,
   `paid_trans_id` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `paidforrecharge`
+--
+
+INSERT INTO `paidforrecharge` (`paid_recharge_id`, `paid_trans_id`) VALUES
+(1, 'pay_NdG658LtrZV8Go'),
+(2, 'pay_NehrksMhtJW74K');
 
 -- --------------------------------------------------------
 
@@ -317,6 +340,26 @@ CREATE TABLE `paidforsettopbox` (
   `Paid_stb_number` varchar(25) DEFAULT NULL,
   `paid_trans_id` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paidforsubscription`
+--
+
+CREATE TABLE `paidforsubscription` (
+  `paid_sub_id` int(11) DEFAULT NULL,
+  `paid_trans_id` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `paidforsubscription`
+--
+
+INSERT INTO `paidforsubscription` (`paid_sub_id`, `paid_trans_id`) VALUES
+(1, 'pay_NZ6nHU06ktmXgD'),
+(3, 'pay_NdG780wbBP2YSk'),
+(7, 'pay_NdUpiCFA9EifxP');
 
 -- --------------------------------------------------------
 
@@ -338,6 +381,13 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`transaction_id`, `pay_mode`, `pay_amount`, `pay_date`, `pay_time`, `pay_status`) VALUES
+('', 'online', 424, '0000-00-00', '15:49:20', 'success'),
+('pay_NdG658LtrZV8Go', 'online', 405, '2024-02-21', '01:32:37', 'success'),
+('pay_NdG780wbBP2YSk', 'online', 405, '2024-02-21', '01:33:38', 'success'),
+('pay_NdUoirop1yezxn', 'online', 424, '2024-02-21', '15:56:32', 'success'),
+('pay_NdUpiCFA9EifxP', 'online', 424, '2024-02-21', '15:57:29', 'success'),
+('pay_NehpM71F0TPijG', 'online', 424, '2024-02-24', '17:19:09', 'success'),
+('pay_NehrksMhtJW74K', 'online', 424, '2024-02-24', '17:21:25', 'success'),
 ('pay_NZ6nHU06ktmXgD', 'online', 20, '2024-02-10', '13:50:32', 'success'),
 ('pay_NZ6zBBRiL3lZIe', 'online', 20, '2024-02-10', '14:01:48', 'success'),
 ('pay_NZ70t1IYoxjHGN', 'online', 20, '2024-02-10', '14:03:24', 'success'),
@@ -373,24 +423,21 @@ CREATE TABLE `purchaseoffer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rechargeforchannel`
+-- Table structure for table `rechargeforsubscription`
 --
 
-CREATE TABLE `rechargeforchannel` (
-  `recharge_chan_id` int(11) NOT NULL,
-  `recharge_sub_chan_id` int(11) DEFAULT NULL
+CREATE TABLE `rechargeforsubscription` (
+  `recharge_id` int(11) NOT NULL,
+  `recharge_sub_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `rechargeforpackage`
+-- Dumping data for table `rechargeforsubscription`
 --
 
-CREATE TABLE `rechargeforpackage` (
-  `recharge_pack_id` int(11) NOT NULL,
-  `recharge_sub_pack_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `rechargeforsubscription` (`recharge_id`, `recharge_sub_id`) VALUES
+(1, 1),
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -404,18 +451,13 @@ CREATE TABLE `settopbox` (
   `stb_status` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `subscribechannel`
+-- Dumping data for table `settopbox`
 --
 
-CREATE TABLE `subscribechannel` (
-  `sub_chan_id` int(11) NOT NULL,
-  `sub_start_date` date DEFAULT NULL,
-  `sub_end_date` date DEFAULT NULL,
-  `sub_cust_id` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `settopbox` (`stb_number`, `stb_price`, `stb_status`) VALUES
+('jguv', 76556, 'Damaged'),
+('STB1234-5678-9012', 900, 'Available');
 
 -- --------------------------------------------------------
 
@@ -428,6 +470,15 @@ CREATE TABLE `subscribeforchannel` (
   `channel_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `subscribeforchannel`
+--
+
+INSERT INTO `subscribeforchannel` (`subchan_id`, `channel_id`) VALUES
+(1, 19),
+(3, 19),
+(3, 20);
+
 -- --------------------------------------------------------
 
 --
@@ -439,18 +490,40 @@ CREATE TABLE `subscribeforpackage` (
   `package_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `subscribeforpackage`
+--
+
+INSERT INTO `subscribeforpackage` (`subpack_id`, `package_id`) VALUES
+(1, 3),
+(3, 4),
+(3, 5),
+(7, 1),
+(7, 3);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subscribepackage`
+-- Table structure for table `subscription`
 --
 
-CREATE TABLE `subscribepackage` (
-  `sub_pack_id` int(11) NOT NULL,
+CREATE TABLE `subscription` (
+  `sub_id` int(11) NOT NULL,
   `sub_start_date` date DEFAULT NULL,
   `sub_end_date` date DEFAULT NULL,
   `sub_cust_id` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subscription`
+--
+
+INSERT INTO `subscription` (`sub_id`, `sub_start_date`, `sub_end_date`, `sub_cust_id`) VALUES
+(1, '2024-02-06', '2024-02-01', 'hrushiop9988@gmail.com'),
+(2, '2024-02-21', '2024-03-21', 'hrushiop@gmail.com'),
+(3, '2024-02-21', '2024-03-21', 'hrushiop@gmail.com'),
+(4, '2024-02-21', '2024-03-21', 'sam@gmail.com'),
+(7, '2024-02-24', '2024-03-24', 'sam@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -531,24 +604,17 @@ ALTER TABLE `packages`
   ADD PRIMARY KEY (`pack_id`);
 
 --
--- Indexes for table `paidforchannel`
+-- Indexes for table `package_has_channel`
 --
-ALTER TABLE `paidforchannel`
-  ADD KEY `paid_subchan_id` (`paid_subchan_id`),
-  ADD KEY `paid_trans_id` (`paid_trans_id`);
+ALTER TABLE `package_has_channel`
+  ADD KEY `phc_package_id` (`phc_package_id`),
+  ADD KEY `phc_channel_id` (`phc_channel_id`);
 
 --
--- Indexes for table `paidforpackage`
+-- Indexes for table `paidforrecharge`
 --
-ALTER TABLE `paidforpackage`
-  ADD KEY `paid_subpack_id` (`paid_subpack_id`),
-  ADD KEY `paid_trans_id` (`paid_trans_id`);
-
---
--- Indexes for table `paidforrechargepackage`
---
-ALTER TABLE `paidforrechargepackage`
-  ADD KEY `paid_resubpack_id` (`paid_resubpack_id`),
+ALTER TABLE `paidforrecharge`
+  ADD KEY `paid_recharge_id` (`paid_recharge_id`),
   ADD KEY `paid_trans_id` (`paid_trans_id`);
 
 --
@@ -556,6 +622,13 @@ ALTER TABLE `paidforrechargepackage`
 --
 ALTER TABLE `paidforsettopbox`
   ADD KEY `Paid_stb_number` (`Paid_stb_number`),
+  ADD KEY `paid_trans_id` (`paid_trans_id`);
+
+--
+-- Indexes for table `paidforsubscription`
+--
+ALTER TABLE `paidforsubscription`
+  ADD KEY `paid_sub_id` (`paid_sub_id`),
   ADD KEY `paid_trans_id` (`paid_trans_id`);
 
 --
@@ -579,31 +652,17 @@ ALTER TABLE `purchaseoffer`
   ADD KEY `off_offer_id` (`off_offer_id`);
 
 --
--- Indexes for table `rechargeforchannel`
+-- Indexes for table `rechargeforsubscription`
 --
-ALTER TABLE `rechargeforchannel`
-  ADD PRIMARY KEY (`recharge_chan_id`),
-  ADD KEY `recharge_sub_chan_id` (`recharge_sub_chan_id`);
-
---
--- Indexes for table `rechargeforpackage`
---
-ALTER TABLE `rechargeforpackage`
-  ADD PRIMARY KEY (`recharge_pack_id`),
-  ADD KEY `recharge_sub_pack_id` (`recharge_sub_pack_id`);
+ALTER TABLE `rechargeforsubscription`
+  ADD PRIMARY KEY (`recharge_id`),
+  ADD KEY `recharge_sub_id` (`recharge_sub_id`);
 
 --
 -- Indexes for table `settopbox`
 --
 ALTER TABLE `settopbox`
   ADD PRIMARY KEY (`stb_number`);
-
---
--- Indexes for table `subscribechannel`
---
-ALTER TABLE `subscribechannel`
-  ADD PRIMARY KEY (`sub_chan_id`),
-  ADD KEY `sub_cust_id` (`sub_cust_id`);
 
 --
 -- Indexes for table `subscribeforchannel`
@@ -620,10 +679,10 @@ ALTER TABLE `subscribeforpackage`
   ADD KEY `package_id` (`package_id`);
 
 --
--- Indexes for table `subscribepackage`
+-- Indexes for table `subscription`
 --
-ALTER TABLE `subscribepackage`
-  ADD PRIMARY KEY (`sub_pack_id`),
+ALTER TABLE `subscription`
+  ADD PRIMARY KEY (`sub_id`),
   ADD KEY `sub_cust_id` (`sub_cust_id`);
 
 --
@@ -652,7 +711,7 @@ ALTER TABLE `chatbot_button`
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `genre`
@@ -667,10 +726,22 @@ ALTER TABLE `language`
   MODIFY `lang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `subscribechannel`
+-- AUTO_INCREMENT for table `packages`
 --
-ALTER TABLE `subscribechannel`
-  MODIFY `sub_chan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `packages`
+  MODIFY `pack_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `rechargeforsubscription`
+--
+ALTER TABLE `rechargeforsubscription`
+  MODIFY `recharge_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `subscription`
+--
+ALTER TABLE `subscription`
+  MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -705,25 +776,18 @@ ALTER TABLE `installs`
   ADD CONSTRAINT `installs_ibfk_3` FOREIGN KEY (`cust_email`) REFERENCES `customer` (`cust_email`);
 
 --
--- Constraints for table `paidforchannel`
+-- Constraints for table `package_has_channel`
 --
-ALTER TABLE `paidforchannel`
-  ADD CONSTRAINT `paidforchannel_ibfk_1` FOREIGN KEY (`paid_subchan_id`) REFERENCES `subscribechannel` (`sub_chan_id`),
-  ADD CONSTRAINT `paidforchannel_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
+ALTER TABLE `package_has_channel`
+  ADD CONSTRAINT `package_has_channel_ibfk_1` FOREIGN KEY (`phc_package_id`) REFERENCES `packages` (`pack_id`),
+  ADD CONSTRAINT `package_has_channel_ibfk_2` FOREIGN KEY (`phc_channel_id`) REFERENCES `channels` (`chan_id`);
 
 --
--- Constraints for table `paidforpackage`
+-- Constraints for table `paidforrecharge`
 --
-ALTER TABLE `paidforpackage`
-  ADD CONSTRAINT `paidforpackage_ibfk_1` FOREIGN KEY (`paid_subpack_id`) REFERENCES `subscribepackage` (`sub_pack_id`),
-  ADD CONSTRAINT `paidforpackage_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
-
---
--- Constraints for table `paidforrechargepackage`
---
-ALTER TABLE `paidforrechargepackage`
-  ADD CONSTRAINT `paidforrechargepackage_ibfk_1` FOREIGN KEY (`paid_resubpack_id`) REFERENCES `rechargeforpackage` (`recharge_pack_id`),
-  ADD CONSTRAINT `paidforrechargepackage_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
+ALTER TABLE `paidforrecharge`
+  ADD CONSTRAINT `paidforrecharge_ibfk_1` FOREIGN KEY (`paid_recharge_id`) REFERENCES `rechargeforsubscription` (`recharge_id`),
+  ADD CONSTRAINT `paidforrecharge_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
 
 --
 -- Constraints for table `paidforsettopbox`
@@ -731,6 +795,13 @@ ALTER TABLE `paidforrechargepackage`
 ALTER TABLE `paidforsettopbox`
   ADD CONSTRAINT `paidforsettopbox_ibfk_1` FOREIGN KEY (`Paid_stb_number`) REFERENCES `settopbox` (`stb_number`),
   ADD CONSTRAINT `paidforsettopbox_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
+
+--
+-- Constraints for table `paidforsubscription`
+--
+ALTER TABLE `paidforsubscription`
+  ADD CONSTRAINT `paidforsubscription_ibfk_1` FOREIGN KEY (`paid_sub_id`) REFERENCES `subscription` (`sub_id`),
+  ADD CONSTRAINT `paidforsubscription_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
 
 --
 -- Constraints for table `purchase`
@@ -746,42 +817,16 @@ ALTER TABLE `purchaseoffer`
   ADD CONSTRAINT `purchaseoffer_ibfk_2` FOREIGN KEY (`off_offer_id`) REFERENCES `offer` (`offer_id`);
 
 --
--- Constraints for table `rechargeforchannel`
+-- Constraints for table `rechargeforsubscription`
 --
-ALTER TABLE `rechargeforchannel`
-  ADD CONSTRAINT `rechargeforchannel_ibfk_1` FOREIGN KEY (`recharge_sub_chan_id`) REFERENCES `subscribechannel` (`sub_chan_id`);
+ALTER TABLE `rechargeforsubscription`
+  ADD CONSTRAINT `rechargeforsubscription_ibfk_1` FOREIGN KEY (`recharge_sub_id`) REFERENCES `subscription` (`sub_id`);
 
 --
--- Constraints for table `rechargeforpackage`
+-- Constraints for table `subscription`
 --
-ALTER TABLE `rechargeforpackage`
-  ADD CONSTRAINT `rechargeforpackage_ibfk_1` FOREIGN KEY (`recharge_sub_pack_id`) REFERENCES `subscribepackage` (`sub_pack_id`);
-
---
--- Constraints for table `subscribechannel`
---
-ALTER TABLE `subscribechannel`
-  ADD CONSTRAINT `subscribechannel_ibfk_1` FOREIGN KEY (`sub_cust_id`) REFERENCES `customer` (`cust_email`);
-
---
--- Constraints for table `subscribeforchannel`
---
-ALTER TABLE `subscribeforchannel`
-  ADD CONSTRAINT `subscribeforchannel_ibfk_1` FOREIGN KEY (`subchan_id`) REFERENCES `subscribechannel` (`sub_chan_id`),
-  ADD CONSTRAINT `subscribeforchannel_ibfk_2` FOREIGN KEY (`channel_id`) REFERENCES `channels` (`chan_id`);
-
---
--- Constraints for table `subscribeforpackage`
---
-ALTER TABLE `subscribeforpackage`
-  ADD CONSTRAINT `subscribeforpackage_ibfk_1` FOREIGN KEY (`subpack_id`) REFERENCES `subscribepackage` (`sub_pack_id`),
-  ADD CONSTRAINT `subscribeforpackage_ibfk_2` FOREIGN KEY (`package_id`) REFERENCES `packages` (`pack_id`);
-
---
--- Constraints for table `subscribepackage`
---
-ALTER TABLE `subscribepackage`
-  ADD CONSTRAINT `subscribepackage_ibfk_1` FOREIGN KEY (`sub_cust_id`) REFERENCES `customer` (`cust_email`);
+ALTER TABLE `subscription`
+  ADD CONSTRAINT `fk_customer` FOREIGN KEY (`sub_cust_id`) REFERENCES `customer` (`cust_email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
