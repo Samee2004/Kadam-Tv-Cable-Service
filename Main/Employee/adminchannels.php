@@ -23,7 +23,7 @@ include("../../config/connect.php");
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blank - Windmill Dashboard</title>
+    <title>Admin- Channels</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -165,8 +165,8 @@ include("../../config/connect.php");
                                     <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                                     </svg>
-                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span></p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG (MAX. 800x400px)</p>
                                 </div>
                                 <input id="dropzone-file" type="file" class="hidden" />
                             </label>
@@ -311,11 +311,11 @@ include("../../config/connect.php");
     <div class="flex h-full flex-col justify-center">
         <!-- Table -->
         <div class="mx-auto w-full max-w-full rounded-sm border border-gray-200 bg-white shadow-lg">
-            <header class="border-b border-gray-100 px-5 py-4 flex justify-between items-center">
+            <header class="border-b border-gray-100 px-5 py-4 flex space-y-3 flex-col md:flex-row justify-between items-center">
                 <div class="font-semibold text-gray-800">Manage Channels</div>
-                <div class="flex">
+                <div class="flex space-y-4 flex-col md:flex-row md:space-y-0 md:space-x-4 space-x-0">
                     <div>
-                    <input type="text" class="w-full backdrop-blur-sm bg-white/20 py-2 pl-10 pr-4 rounded-lg focus:outline-none border-2 border-gray-300 focus:border-violet-300 transition-colors duration-300" placeholder="Search...">
+                    <input type="text" id="searchchannel" class="w-full backdrop-blur-sm bg-white/20 py-2 pl-10 pr-4 rounded-lg focus:outline-none border-2 border-gray-300 focus:border-violet-300 transition-colors duration-300" placeholder="Search...">
 
                     </div>
                      <div>
@@ -332,7 +332,7 @@ include("../../config/connect.php");
             </header>
 
             <div class="overflow-x-auto p-3">
-                <table class="w-full table-auto">
+                <table class="w-full table-auto " id="channelTable">
                     <thead class="bg-gray-50 text-xs font-semibold uppercase text-gray-400">
                         <tr>
                             <th></th>
@@ -373,7 +373,7 @@ include("../../config/connect.php");
                                 <img src="<?php  echo($row_of_channels["chan_img"]); ?>" alt="" class="h-8 mx-auto">
                             </td>
                             <td class="p-2">
-                                <div class="text-center font-medium text-gray-800"><?php echo($row_of_channels["Chan_name"]); ?></div>
+                                <div class="text-center font-medium text-gray-800 channel-name"><?php echo($row_of_channels["Chan_name"]); ?></div>
                             </td>
                             <td class="p-2">
                                 <div class="text-center font-medium text-gray-800">

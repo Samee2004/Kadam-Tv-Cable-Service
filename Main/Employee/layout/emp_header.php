@@ -23,7 +23,7 @@
               </svg>
             </button>
             <!-- Search input -->
-            <div class="flex justify-center flex-1 lg:mr-32">
+            <!-- <div class="flex justify-center flex-1 lg:mr-32">
               <div
                 class="relative w-full max-w-xl mr-6 focus-within:text-purple-500"
               >
@@ -48,8 +48,8 @@
                   aria-label="Search"
                 />
               </div>
-            </div>
-            <ul class="flex items-center flex-shrink-0 space-x-6">
+            </div> -->
+            <ul class="flex items-center flex-shrink-0 space-x-6 ml-auto">
               <!-- Theme toggler -->
               <!-- <li class="flex">
                 <button

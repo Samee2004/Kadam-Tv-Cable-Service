@@ -348,5 +348,31 @@ fetch(file)
         // Handle errors
         console.error(error);
       },
+
     });
   });
+
+
+  $(document).ready(function() {
+    // Add event listener to the search input field
+    $("#searchchannel").on("input", function() {
+        // Get the value of the search input field
+        var searchValue = $(this).val().toLowerCase().trim();
+
+        // Iterate through each table row containing channel names
+        $("#channelTable tbody tr").each(function() {
+            // Get the channel name from the row
+            var channelName = $(this).find(".channel-name").text().toLowerCase().trim();
+
+            // Show the row if the channel name matches the search query, otherwise hide it
+            if (channelName.includes(searchValue)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+});
+
+
+

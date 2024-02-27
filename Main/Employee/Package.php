@@ -36,6 +36,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
         <script src="https://unpkg.com/alpinejs" defer></script>
+        <script src="../../js/addpackages.js"></script>
 
   </head>
   <body>
@@ -56,19 +57,26 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
                 <div class="flex flex-col justify-center h-full">
                     <!-- Table -->
                     <div class="w-full  mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
-                        <header class="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
-                            <h2 class="font-semibold text-gray-800">Packages</h2>
-                            <a href="addpackage.php" rel="noopener noreferrer" >
-                                
-                            </a>
-                            <button id="addbutton" data-modal-target="AddPackageModal" data-modal-toggle="AddPackageModal" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                    <header class="border-b border-gray-100 px-5 py-4 flex space-y-3 flex-col md:flex-row justify-between items-center">
+                <div class="font-semibold text-gray-800">Manage Packages</div>
+                <div class="flex space-y-4 flex-col md:flex-row md:space-y-0 md:space-x-4 space-x-0">
+                    <div>
+                    <input type="text" id="searchpackage" class="w-full backdrop-blur-sm bg-white/20 py-2 pl-10 pr-4 rounded-lg focus:outline-none border-2 border-gray-300 focus:border-violet-300 transition-colors duration-300" placeholder="Search...">
+
+                    </div>
+                     <div>
+                     <button id="addbutton" data-modal-target="AddPackageModal" data-modal-toggle="AddPackageModal" class="text-white inline-flex w-full items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                                 <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
                                 Add new package
                             </button>
-                        </header>
+                     </div>
+                </div>
+                
+            </header>
+                        
                         <div class="p-3">
                             <div class="overflow-x-auto">
-                                <table class="table-auto w-full">
+                                <table class="table-auto w-full" id="packageTable">
                                     <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                                         <tr>
                                             <th class="p-2 whitespace-nowrap">
@@ -85,7 +93,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody class="text-sm divide-y divide-gray-100">
+                                    <tbody class="text-sm divide-y divide-gray-100" id="packageTable">
                                         <?php
                                             $get_packages = "SELECT * FROM `packages`";
                                             $execute_get_packages = mysqli_query($con,$get_packages);
@@ -96,7 +104,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
                                                         <td class="p-2 whitespace-nowrap">
                                                             <div class="">
                                                                 <!-- package name -->
-                                                                <div class="text-base font-semibold"><?php echo $row["pack_name"] ?></div>
+                                                                <div class="text-base font-semibold package-name"><?php echo $row["pack_name"] ?></div>
                                                             </div>
                                                         </td>
                                                         <td class="p-2 whitespace-nowrap">
