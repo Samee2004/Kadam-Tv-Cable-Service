@@ -28,6 +28,7 @@ include("../../config/connect.php");
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
@@ -155,23 +156,28 @@ include("../../config/connect.php");
                 <div class="p-6 space-y-6">
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-12 sm:col-span-12">
-                            <input type="text" readonly  id="complaint_id">
-                        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
-                            <select id="complaint_status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <input type="text" readonly  id="install_id">
+                        <label for="install_status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                            <select id="install_status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected hidden >Choose a Status</option>
-                                <option value="Solved">Completed</option>
-                                <option value="Unresolvable">Failed</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Failed">Failed</option>
                             </select>
-                            <p id="complaint_status-error" class="text-red-500"></p>
+                            <p id="install_status-error" class="text-red-500"></p>
                         </div>
                         <div class="col-span-12 sm:col-span-12">
                             <label for="payment_status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select payment option</label>
                             <select id="payment_status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected hidden >Choose a option</option>
-                                <option value="Solved">Online</option>
-                                <option value="Unresolvable">Offline</option>
+                                <option selected hidden >Choose a status</option>
+                                <option value="Online">Online</option>
+                                <option value="Offline">Offline</option>
                             </select>
                             <p id="payment_status-error" class="text-red-500"></p>
+                        </div>
+                        <div class="col-span-12 sm:col-span-12 price_card">
+                            <label for="stb_price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select payment option</label>
+                            <input type="number" id="stb_price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                            <p id="stb_price-error" class="text-red-500"></p>
                         </div>
                         
                     </div>
@@ -189,7 +195,7 @@ include("../../config/connect.php");
         </main>
       </div>
     </div>
-    <script src="../../js/assigntechforstb.js"></script>
+    <script src="../../js/techstb.js"></script>
   </body>
 </html>
 
