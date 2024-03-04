@@ -64,19 +64,10 @@ $currentDate = date("Y-m-d");
 
           <div class="container px-0 mx-auto grid">
           <!-- add your code below -->
-          <?php
-            $custcheckstb ="SELECT * FROM `installs` WHERE `cust_email`= '$email'";
-            $execute_custcheckstb= mysqli_query($con,$custcheckstb);
-            if(mysqli_num_rows($execute_custcheckstb)==1)
-            {
-
-            }
-                 ?>
+          
 
                  
-<button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-Toggle modal
-</button>
+<!-- modal no stb warning-->
 
 <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
@@ -92,10 +83,10 @@ Toggle modal
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                 </svg>
                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">You do not have a Set-Top-Box connection, so you cannot access channels or packages.</h3>
-<h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Please obtain a Set-Top-Box connection to enjoy our channel offerings and packages.</h3>
-                <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Please obtain a Set-Top-Box connection to enjoy our channel offerings and packages.</h3>
+                <a href="setupbox.php" data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                     Ok, get STB
-                </button>
+                  </a>
                 <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                   No, cancel
                 </button>
@@ -315,14 +306,23 @@ Toggle modal
                                 }else{
                                 ?>
                                 
-                                  <button type="button"
-                                  
-                                  
-                                  
-                                  onclick="addtocart(<?php echo $row_of_channels['chan_id']; ?>,'c')"
-                                  
-                                  
-                                  
+                                  <button type="button" 
+                                  <?php
+                                          $custcheckstb ="SELECT * FROM `installs` WHERE `cust_email`= '$email'";
+                                          $execute_custcheckstb= mysqli_query($con,$custcheckstb);
+                                          if(mysqli_num_rows($execute_custcheckstb)==1)
+                                          {
+                                            ?>
+                                            onclick="addtocart(<?php echo $row_of_channels['chan_id']; ?>,'c')"
+                                            <?php
+                                          }
+                                          else {
+                                            ?>
+                                            data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                            <?php
+                                            
+                                          }
+                                              ?>
                                   class="text-sm mt-6 px-4 py-2 bg-black text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">
                                     
                                   Add to cart

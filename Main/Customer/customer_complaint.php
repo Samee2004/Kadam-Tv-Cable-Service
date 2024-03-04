@@ -109,14 +109,19 @@ include("../../config/connect.php");
 <div class="max-w-full rounded-xl shadow-md text-black border">
   <div class="p-4 bg-white">
     <div>
-      <h2 class="mb-4 text-xl font-bold text-black">
+      <h2 class="text-xl font-bold text-black">
       <?php echo($row["complaint_status"]); ?>
       </h2>
-      <p>
-
-      </p>
-      <p class="text-black">
-        <?php echo($row["complaint_issue"]); ?>
+      <p><b>
+      <?php 
+        if ($row["complaint_notsolve"]) {
+          echo("Reason: ".$row["complaint_notsolve"]);
+        }
+        ?>
+      
+      </b></p>
+      <p class="text-black mt-4">
+      <?php echo($row["complaint_issue"]); ?>
       </p>
     </div>
   </div>

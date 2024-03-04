@@ -104,21 +104,7 @@ include("../../config/connect.php");
                                                 <td class="p-2 whitespace-nowrap">
                                                     <div class="text-left font-medium "><b><?php echo $row["complaint_status"] ?></b> </div>
                                                     <div class="text-left ">
-                                                        <?php
-                                                            $employee_id = $row["complaint_emp"];
-                                                            $get_employe_name = "SELECT * FROM `employee` WHERE emp_email = '$employee_id' ";
-                                                            $excecute_get_emp_query=mysqli_query($con,$get_employe_name);
-                                                            if(
-                                                                mysqli_num_rows($excecute_get_emp_query)>0 
-                                                            ){
-                                                                while(
-                                                                    $row_of_get_emp=mysqli_fetch_assoc($excecute_get_emp_query)
-                                                                ){
-                                                                    ?>
-                                                                    <?php echo $row_of_get_emp["emp_fname"] ?> <?php echo $row_of_get_emp["emp_lname"] ?> 
-                                                                <?php                           }
-                                                            }
-                                                            ?>
+                                                    <?php echo $row["complaint_notsolve"] ?>
                                                     </div>
                                                 </td>
                                                 <td class="p-2 whitespace-nowrap">
@@ -160,18 +146,21 @@ include("../../config/connect.php");
                 <div class="p-6 space-y-6">
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-12 sm:col-span-12">
-                            <input type="text" readonly  id="complaint_id">
+                            <input type="text" readonly  id="complaint_id" class="hidden">
                         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
                             <select id="complaint_status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected hidden >Choose a Status</option>
                                 <option value="Solved">Solved</option>
                                 <option value="Unresolvable">Unresolvable</option>
-
-                                
                             </select>
                             <p id="complaint_status-error" class="text-red-500"></p>
                         </div>
-                        
+                        <div id="notsolveddiv" class="col-span-12 sm:col-span-12 hidden">
+
+                            <label for="reason" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tell why complaint not solve</label>
+                            <textarea id="notsolved" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="why?"></textarea>
+                            <p id="complaint_notsolved-error" class="text-red-500"></p>
+                        </div>
                     </div>
                 </div>
                 <!-- Modal footer -->

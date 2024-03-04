@@ -40,4 +40,17 @@ if (!empty($_POST["ComplaintID"]) && !empty($_POST["Complaint_Status"])) {
     }
 }
 
+if (!empty($_POST["Complaint_ID"]) && !empty($_POST["Complaint_status"]) && !empty($_POST["Complaint_notsolved"])) {
+    $Complaint_Id = $_POST["Complaint_ID"];
+    $Complaint_status= $_POST["Complaint_status"];
+    $Complaint_notsolved= $_POST["Complaint_notsolved"];
+    $update_assign = "UPDATE `complaint` SET `complaint_status` = '$Complaint_status', `complaint_notsolve` = '$Complaint_notsolved' WHERE `complaint`.`complaint_id` = ' $Complaint_Id'";
+    $exutequery_update_assign = mysqli_query($con,$update_assign);
+    if($exutequery_update_assign){
+        echo(1);
+    }else{
+        echo(2);
+    }
+}
+
 ?>
