@@ -90,7 +90,7 @@ $(document).ready(function(){
 
             $("#email").val("");
             $("#password").val("");
-            window.location.href="adminchannels.php"
+            window.location.href="assignedcomplaints.php"
           }
           else {
             Toastify({

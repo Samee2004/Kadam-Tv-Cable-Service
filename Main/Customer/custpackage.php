@@ -123,7 +123,7 @@ include("../../config/connect.php");
                                           if(mysqli_num_rows($execute_custcheckstb)==1)
                                           {
                                             ?>
-                                            onclick="addtocart(<?php echo $row_of_channels['chan_id']; ?>,'c')"
+                                            onclick="addtocart(<?php echo $pack_id; ?>,'p')"
                                             <?php
                                           }
                                           else {
