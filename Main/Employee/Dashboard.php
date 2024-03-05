@@ -22,6 +22,8 @@ include("../../config/connect.php");
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Packages</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -133,8 +135,15 @@ include("../../config/connect.php");
                     <a href="" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
                 </div>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+            
+                    <div>
+                        <div class="min-w-screen mx-auto bg-white-800 text-gray-500 rounded shadow-xl py-5 px-5 w-full mb-5 " x-data="{chartData:chartData()}" x-init="chartData.fetch()">
+                            <!-- <div class="flex flex-wrap items-end">
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-semibold leading-tight">Income</h3>
+                                </div> -->
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class=" border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                     <div class="flex justify-between mb-4 items-start">
                         <div class="font-medium">Statistics of a Month</div>
                          
@@ -159,11 +168,11 @@ include("../../config/connect.php");
                         <div class="rounded-md border border-dashed border-gray-200 p-4">
                             <div class="flex items-center mb-0.5">
                                 <div class="text-xl font-semibold"><?php
-                                $get_totalsubpack="SELECT DISTINCT s.sub_cust_id FROM subscription s JOIN subscribeforpackage sc ON s.sub_id = sc.subpack_id WHERE s.sub_start_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)";
-                                $result_get_totalcomplaint = mysqli_query($con,$get_totalcomplaint);
-                                if (mysqli_num_rows($result_get_totalcomplaint)>0) {
-                                    while ($row_of_get_totalcomplaint=mysqli_fetch_assoc($result_get_totalcomplaint)) {
-                                        echo $row_of_get_totalcomplaint["complaint_count"];
+                                $get_totalsubpack="SELECT COUNT(DISTINCT s.sub_cust_id) AS customer_count FROM subscription s JOIN subscribeforpackage sc ON s.sub_id = sc.subpack_id WHERE s.sub_start_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)";
+                                $result_get_totalsubpack = mysqli_query($con,$get_totalsubpack);
+                                if (mysqli_num_rows($result_get_totalsubpack)>0) {
+                                    while ($row_of_get_totalsubpack=mysqli_fetch_assoc($result_get_totalsubpack)) {
+                                        echo $row_of_get_totalsubpack["customer_count"];
                                     }
                                 }
                                 ?></div>
@@ -172,14 +181,44 @@ include("../../config/connect.php");
                         </div>
                         <div class="rounded-md border border-dashed border-gray-200 p-4">
                             <div class="flex items-center mb-0.5">
-                                <div class="text-xl font-semibold">4</div>
-                                <span class="p-1 rounded text-[12px] font-semibold bg-rose-500/10 text-rose-500 leading-none ml-1">-$130</span>
+                                <div class="text-xl font-semibold"><?php
+                                $get_totalsubrechar="SELECT COUNT(DISTINCT sub_cust_id) AS customer_count FROM subscription, rechargeforsubscription WHERE subscription.sub_id=rechargeforsubscription.recharge_sub_id AND sub_start_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH);";
+                                $result_get_totalsubrechar = mysqli_query($con,$get_totalsubrechar);
+                                if (mysqli_num_rows($result_get_totalsubrechar)>0) {
+                                    while ($row_of_get_totalsubrechar=mysqli_fetch_assoc($result_get_totalsubrechar)) {
+                                        echo $row_of_get_totalsubrechar["customer_count"];
+                                    }
+                                }
+                                ?></div>
                             </div>
                             <span class="text-gray-400 text-sm">Recharge</span>
                         </div>
                     </div>
-                    <div>
-                        <canvas id="order-chart"></canvas>
+                                <!-- <div class="relative" @click.away="chartData.showDropdown=false">
+                                    <button class="text-xs hover:text-gray-300 h-6 focus:outline-none" @click="chartData.showDropdown=!chartData.showDropdown">
+                                        <span x-text="chartData.options[chartData.selectedOption].label"></span><i class="ml-1 mdi mdi-chevron-down"></i>
+                                    </button>
+                                    <div class="bg-gray-700 shadow-lg rounded text-sm absolute top-auto right-0 min-w-full w-32 z-30 mt-1 -mr-3" x-show="chartData.showDropdown" style="display: none;" x-transition:enter="transition ease duration-300 transform" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease duration-300 transform" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-4">
+                                        <span class="absolute top-0 right-0 w-3 h-3 bg-gray-700 transform rotate-45 -mt-1 mr-3"></span>
+                                        <div class="bg-gray-700 rounded w-full relative z-10 py-1">
+                                            <ul class="list-reset text-xs">
+                                                <template x-for="(item,index) in chartData.options">
+                                                    <li class="px-4 py-2 hover:bg-gray-600 hover:text-white transition-colors duration-100 cursor-pointer" :class="{'text-white':index==chartData.selectedOption}" @click="chartData.selectOption(index);chartData.showDropdown=false">
+                                                        <span x-text="item.label"></span>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <!-- <div class="flex flex-wrap items-end mb-5">
+                                <h4 class="text-2xl lg:text-3xl text-white font-semibold leading-tight inline-block mr-2" x-text="'$'+(chartData.data?chartData.data[chartData.date].total.comma_formatter():0)">0</h4>
+                                <span class="inline-block" :class="chartData.data&&chartData.data[chartData.date].upDown<0?'text-red-500':'text-green-500'"><span x-text="chartData.data&&chartData.data[chartData.date].upDown<0?'▼':'▲'">0</span> <span x-text="chartData.data?chartData.data[chartData.date].upDown:0">0</span>%</span>
+                            </div> -->
+                            <div id="line-chart" class="max-w-screen mx-auto"></div>
+
+                        </div>
                     </div>
                 </div>
 
@@ -478,9 +517,94 @@ include("../../config/connect.php");
         </main>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
+   
 
+<script>
+    
+const options = {
+  chart: {
+    height: "100%",
+    maxWidth: "100%",
+    type: "line",
+    fontFamily: "Inter, sans-serif",
+    dropShadow: {
+      enabled: false,
+    },
+    toolbar: {
+      show: false,
+    },
+  },
+  tooltip: {
+    enabled: true,
+    x: {
+      show: false,
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    width: 6,
+  },
+  grid: {
+    show: true,
+    strokeDashArray: 6,
+    padding: {
+      left: 2,
+      right: 2,
+      top: 26
+    },
+  },
+  series: [
+    {
+      name: "Channels",
+      data: [6500, 6418, 6456, 6526, 6356, 6456, 6500, 6418, 6456, 6526, 6356, 6456, 6500, 6418, 6456, 6526, 6356, 6456, 6500, 6418, 6456, 6526, 6356, 6456],
+      color: "#1A56DB",
+    },
+    {
+      name: "Packages",
+      data: [6456, 6356, 6526, 6332, 6418, 6500],
+      color: "#7E3AF2",
+    },
+    {
+      name: "Recharge",
+      data: [4562, 6362, 2526, 6322, 6418, 100],
+      color: "#8E3AF8",
+    },
+  ],
+  legend: {
+    show: false
+  },
+  stroke: {
+    curve: 'smooth'
+  },
+  xaxis: {
+    categories: ["2024-02-05","2024-02-06","2024-02-07","2024-02-08","2024-02-09","2024-02-10","2024-02-11","2024-02-12","2024-02-13","2024-02-14","2024-02-15","2024-02-16","2024-02-17","2024-02-18","2024-02-19","2024-02-20","2024-02-21","2024-02-22","2024-02-23","2024-02-24","2024-02-25","2024-02-26","2024-02-27","2024-02-28","2024-02-29","2024-03-01","2024-03-02","2024-03-03","2024-03-04","2024-03-05"],
+    labels: {
+      show: true,
+      style: {
+        fontFamily: "Inter, sans-serif",
+        cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+      }
+    },
+    axisBorder: {
+      show: false,
+    },
+    axisTicks: {
+      show: false,
+    },
+  },
+  yaxis: {
+    show: false,
+  },
+}
+
+if (document.getElementById("line-chart") && typeof ApexCharts !== 'undefined') {
+  const chart = new ApexCharts(document.getElementById("line-chart"), options);
+  chart.render();
+}
+
+</script>
   </body>
 </html>
 
