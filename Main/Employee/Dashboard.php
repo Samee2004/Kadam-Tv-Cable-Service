@@ -84,14 +84,23 @@ include("../../config/connect.php");
                     <div class="flex justify-between mb-4">
                         <div>
                             <div class="flex items-center mb-1">
-                                <div class="text-2xl font-semibold">Rs. <?php
+                                <div class="text-2xl font-semibold"><?php
                                 $get_totalpayment="SELECT SUM(`pay_amount`) AS total_payment FROM `payment` WHERE DATE(`pay_date`) = CURDATE()";
                                 $result_get_totalpayment = mysqli_query($con,$get_totalpayment);
                                 if (mysqli_num_rows($result_get_totalpayment)>0) {
                                     while ($row_of_get_subsribers=mysqli_fetch_assoc($result_get_totalpayment)) {
-                                        echo $row_of_get_subsribers["total_payment"];
+                                        $total_payment = $row_of_get_subsribers["total_payment"];
+                                        if ($total_payment==NULL ) {
+                                            echo(0);
+                                        }else{
+                                            echo($total_payment);
+                                        }
                                     }
                                 }
+                                else {
+                                    echo(0);
+                                }
+
                                 ?>
                                 </div>
                                 <!-- <div class="p-1 rounded bg-emerald-500/10 text-emerald-500 text-[12px] font-semibold leading-none ml-2">+30%</div> -->
