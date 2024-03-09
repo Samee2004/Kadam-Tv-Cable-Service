@@ -50,5 +50,4 @@ function PayRecharge(sub_id,amount) {
       };
       var rzp1 = new Razorpay(options);
       rzp1.open();
-    e.preventDefault();
 }

@@ -134,8 +134,9 @@ $sub_id = $_GET["id"];
                         <div class="flex flex-wrap m-4 text-center">
 
                             <?php
-                            $getchannel = "SELECT * FROM `packages`,`subscription`,`subscribeforpackage` WHERE `subscription`.`sub_id`=`subscribeforpackage`.`subpack_id` AND `subscribeforpackage`.`package_id`=`packages`.`pack_id` AND `subscription`.`sub_id`=1";
-                            $exutequery_package = mysqli_query($con, $getchannel);
+                            $getpack = "SELECT * FROM `packages`,`subscription`,`subscribeforpackage` WHERE `subscription`.`sub_id`=`subscribeforpackage`.`subpack_id` AND `subscribeforpackage`.`package_id`=`packages`.`pack_id` AND `subscription`.`sub_id`= '$sub_id' ";
+
+                            $exutequery_package = mysqli_query($con, $getpack);
                             if (mysqli_num_rows($exutequery_package) > 0) {
                                 while ($row_of_packages = mysqli_fetch_assoc($exutequery_package)) {
                                     ?>

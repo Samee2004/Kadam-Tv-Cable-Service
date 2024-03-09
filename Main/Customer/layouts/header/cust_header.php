@@ -104,7 +104,7 @@
                 <span class="ml-4">Packages</span>
               </a>
             </li>
-            <li class="relative px-6 py-3">
+            <!-- <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                 href="../charts.html"
@@ -126,7 +126,7 @@
                 </svg>
                 <span class="ml-4">Recharge</span>
               </a>
-            </li>
+            </li> -->
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -360,7 +360,7 @@
                     <span class="ml-4">Packages</span>
                   </a>
                 </li>
-                <li class="relative px-6 py-3">
+                <!-- <li class="relative px-6 py-3">
                   <a
                     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="rechargecust.php"
@@ -384,7 +384,7 @@
                     </svg>
                     <span class="ml-4">Recharge</span>
                   </a>
-                </li>
+                </li> -->
                 <li class="relative px-6 py-3">
                   <a
                     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"

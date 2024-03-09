@@ -15,7 +15,7 @@ if(
     $exutequery=mysqli_query($con,$setpayment);
    if($exutequery)
    {
-    $recharge_for_subscription = "INSERT INTO `rechargeforsubscription` (`recharge_sub_id`) VALUES ('1')";
+    $recharge_for_subscription = "INSERT INTO `rechargeforsubscription` (`recharge_sub_id`) VALUES ('$sub_id')";
     if (mysqli_query($con,$recharge_for_subscription)) {
         $recharge_id = mysqli_insert_id($con);
         $insert_recharge_transaction = "INSERT INTO `paidforrecharge` (`paid_recharge_id`, `paid_trans_id`) VALUES ('$recharge_id', '$pay_id')";

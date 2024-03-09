@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2024 at 06:14 PM
+-- Generation Time: Feb 28, 2024 at 08:38 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,8 +42,17 @@ CREATE TABLE `channels` (
 --
 
 INSERT INTO `channels` (`chan_id`, `Chan_name`, `chan_price`, `chan_genre`, `chan_img`, `chan_language`, `chan_quality`) VALUES
-(19, '&Pictures', 1, 1, '../assets/3ef7a53a7a62c5abcdf3adc4e9bc526d.webp', 5, 'SD'),
-(20, 'Sony Max HD', 4, 1, '../assets/127bfdb4994b951f71a7a80db81d1c20.webp', 3, 'HD');
+(19, 'STAR JALSHA MOVIES HD ', 15, 1, '../assets/6e74f7fa3f45864a56981c771c34382d.webp', 5, 'HD'),
+(20, 'Sony Max HD', 4, 1, '../assets/127bfdb4994b951f71a7a80db81d1c20.webp', 3, 'HD'),
+(21, '& Flix', 15, 1, '../assets/1a023f63d2cacfd98d2b77a36ab40842.webp', 2, 'SD'),
+(23, 'FILAMCHI_BHOJPURI ', 5, 1, '../assets/67a4f8b5c98b06a60cbdfbc69bb5a77b.webp', 14, 'SD'),
+(24, 'Colors Gujarati Cinema ', 1, 1, '../assets/ed73dc136e21323d78ebadb015b3a9ce.webp', 15, 'SD'),
+(25, 'Zee-Picchar ', 10, 1, '../assets/e48eeab0fcf9cfe8992d6a03b7307e9c.webp', 13, 'SD'),
+(26, 'ASIANET MOVIES', 19, 1, '../assets/bb4c80529a9456daebba18db8624c552.webp', 9, 'SD'),
+(27, 'ZEE TALKIES HD ', 19, 1, '../assets/86f721861e4bbceaeb0a1ee95008e1ef.webp', 8, 'HD'),
+(28, 'ALANKAR TV ', 4, 1, '../assets/77d22a451b092385800aebdd9043c0cf.webp', 7, 'SD'),
+(29, 'J Movie ', 3, 1, '../assets/4c123cd866696268fa5c96fa78270a4e.webp', 6, 'SD'),
+(30, 'Maa Movies HD', 19, 1, '../assets/29e5179deaca7995b200f5c6e9c63c6e.webp', 10, 'HD');
 
 -- --------------------------------------------------------
 
@@ -218,6 +227,13 @@ CREATE TABLE `installs` (
   `cust_email` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `installs`
+--
+
+INSERT INTO `installs` (`installs_id`, `installs_req_date`, `installs_req_time`, `installs_date`, `installs_status`, `stb_number`, `emp_email`, `cust_email`) VALUES
+(2, '2024-02-29', '16:00:00', NULL, 'Assigned', 'STB1234-5678-9012', 'tech@gmail.com', 'sam@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -282,10 +298,9 @@ CREATE TABLE `packages` (
 --
 
 INSERT INTO `packages` (`pack_id`, `pack_name`, `pack_price`) VALUES
-(1, 'Sony he', 25),
-(3, 'iPad Air Gen 5th Wi-Fi', 399),
-(4, 'Sony HD', 200),
-(5, 'Sony HD', 200);
+(6, 'Super Filmy Pack', 230),
+(7, 'Filmy HD Pack', 100),
+(8, 'Fimly SD Pack', 150);
 
 -- --------------------------------------------------------
 
@@ -303,13 +318,28 @@ CREATE TABLE `package_has_channel` (
 --
 
 INSERT INTO `package_has_channel` (`phc_package_id`, `phc_channel_id`) VALUES
-(3, 19),
-(3, 20),
-(5, 19),
-(5, 20),
-(4, 19),
-(1, 19),
-(1, 20);
+(7, 19),
+(7, 20),
+(7, 27),
+(7, 30),
+(6, 19),
+(6, 20),
+(6, 21),
+(6, 23),
+(6, 24),
+(6, 25),
+(6, 26),
+(6, 27),
+(6, 28),
+(6, 29),
+(6, 30),
+(8, 21),
+(8, 23),
+(8, 24),
+(8, 25),
+(8, 26),
+(8, 28),
+(8, 29);
 
 -- --------------------------------------------------------
 
@@ -457,7 +487,8 @@ CREATE TABLE `settopbox` (
 
 INSERT INTO `settopbox` (`stb_number`, `stb_price`, `stb_status`) VALUES
 ('jguv', 76556, 'Damaged'),
-('STB1234-5678-9012', 900, 'Available');
+('STB1234-5678-9012', 900, 'Assigned'),
+('STB1234-5678-9013', 400, 'Assigned');
 
 -- --------------------------------------------------------
 
@@ -693,7 +724,7 @@ ALTER TABLE `subscription`
 -- AUTO_INCREMENT for table `channels`
 --
 ALTER TABLE `channels`
-  MODIFY `chan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `chan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `chatbot`
@@ -720,6 +751,12 @@ ALTER TABLE `genre`
   MODIFY `gen_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `installs`
+--
+ALTER TABLE `installs`
+  MODIFY `installs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `language`
 --
 ALTER TABLE `language`
@@ -729,7 +766,7 @@ ALTER TABLE `language`
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `pack_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `pack_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `rechargeforsubscription`

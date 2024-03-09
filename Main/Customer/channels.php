@@ -96,7 +96,7 @@ $currentDate = date("Y-m-d");
 </div>
 
                   <!-- dropdown -->
-        <div class="flex mt-4 space-y-4 md:space-y-0 md:space-x-4 md:flex-row flex-col items-center  justify-center	 ">
+        <div class="flex p-4 mt-4 space-y-4 md:space-y-0 md:space-x-4 md:flex-row flex-col items-center  justify-center	 ">
 
 <form class="w-full">   
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white ">Search</label>
@@ -120,7 +120,7 @@ $currentDate = date("Y-m-d");
 
 
 <!-- Filter Dropdown menu -->
-<div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow max-w-4xl dark:bg-gray-700">
+<div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow max-w-full dark:bg-gray-700">
 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 mr-6 " aria-labelledby="dropdownDefaultButton">
   <li>
     <div id="accordion-nested-parent" data-accordion="collapse">
