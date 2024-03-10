@@ -94,27 +94,27 @@
           </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="./.php">
+              href="./addemployee.php">
               <svg fill="#000000" class="w-5 h-5" stroke="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 viewBox="0 0 297 297" xml:space="preserve">
-<g>
-	<g>
-		<g>
-			<path d="M284.583,276.914h-30.892c-1.702-19.387-5.386-59.954-7.771-75.858c-2.715-18.113-17.518-33.527-36.835-38.357
-				l-20.107-5.027c-3.25,19.41-20.159,34.253-40.477,34.253s-37.227-14.843-40.477-34.253l-20.107,5.027
-				c-19.317,4.829-34.121,20.244-36.835,38.357c-2.385,15.904-6.069,56.471-7.771,75.858H12.417
-				c-5.546,0-10.043,4.497-10.043,10.043c0,5.546,4.497,10.043,10.043,10.043h272.165c5.546,0,10.043-4.497,10.043-10.043
-				C294.625,281.411,290.13,276.914,284.583,276.914z M227.18,276.914h-14.06v-65.258H83.881v65.258H69.821v-72.288
-				c0-3.883,3.147-7.03,7.03-7.03h143.3c3.883,0,7.03,3.147,7.03,7.03V276.914z"/>
-			<path d="M148.501,114.634c27.103,0,48.125-35.753,48.125-66.509C196.626,18.89,177.735,0,148.501,0s-48.125,18.89-48.125,48.125
-				C100.376,78.882,121.398,114.634,148.501,114.634z"/>
-			<path d="M129.774,124.617c-0.053,7.43-1.516,17.95-8.265,25.567c0,14.883,12.107,27.681,26.991,27.681
-				c14.884,0,26.991-12.798,26.991-27.681c-6.748-7.617-8.212-18.136-8.263-25.567c-5.86,2.617-12.139,4.078-18.727,4.078
-				C141.914,128.695,135.634,127.234,129.774,124.617z"/>
-		</g>
-	</g>
-</g>
-</svg>
+                viewBox="0 0 297 297" xml:space="preserve">
+              <g>
+                <g>
+                  <g>
+                    <path d="M284.583,276.914h-30.892c-1.702-19.387-5.386-59.954-7.771-75.858c-2.715-18.113-17.518-33.527-36.835-38.357
+                      l-20.107-5.027c-3.25,19.41-20.159,34.253-40.477,34.253s-37.227-14.843-40.477-34.253l-20.107,5.027
+                      c-19.317,4.829-34.121,20.244-36.835,38.357c-2.385,15.904-6.069,56.471-7.771,75.858H12.417
+                      c-5.546,0-10.043,4.497-10.043,10.043c0,5.546,4.497,10.043,10.043,10.043h272.165c5.546,0,10.043-4.497,10.043-10.043
+                      C294.625,281.411,290.13,276.914,284.583,276.914z M227.18,276.914h-14.06v-65.258H83.881v65.258H69.821v-72.288
+                      c0-3.883,3.147-7.03,7.03-7.03h143.3c3.883,0,7.03,3.147,7.03,7.03V276.914z"/>
+                    <path d="M148.501,114.634c27.103,0,48.125-35.753,48.125-66.509C196.626,18.89,177.735,0,148.501,0s-48.125,18.89-48.125,48.125
+                      C100.376,78.882,121.398,114.634,148.501,114.634z"/>
+                    <path d="M129.774,124.617c-0.053,7.43-1.516,17.95-8.265,25.567c0,14.883,12.107,27.681,26.991,27.681
+                      c14.884,0,26.991-12.798,26.991-27.681c-6.748-7.617-8.212-18.136-8.263-25.567c-5.86,2.617-12.139,4.078-18.727,4.078
+                      C141.914,128.695,135.634,127.234,129.774,124.617z"/>
+                  </g>
+                </g>
+              </g>
+              </svg>
               
               <span class="ml-4">Employee</span>
             </a>
@@ -153,26 +153,26 @@
               ?>
               <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="./complaint.php">
+              href="./TechComplaint.php">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
                 </path>
               </svg>
-              <span class="ml-4">Assign Complaints</span>
+              <span class="ml-4">Assigned Complaints</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="./assign_stb_box.php">
+              href="./technican_stb.php">
               <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122">
                 </path>
               </svg>
-              <span class="ml-4">Assign Install STB</span>
+              <span class="ml-4">Assigned Install STB</span>
             </a>
           </li>
               <?php
