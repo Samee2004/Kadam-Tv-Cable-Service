@@ -1,23 +1,22 @@
 <?php 
 session_start(); 
-include("../../config/connect.php");
 if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION["lastname"]) && isset($_SESSION["type"])  )
 {
-  $email = $_SESSION["email"];
-  $firstname=$_SESSION["firstname"];
-  $lastname=$_SESSION["lastname"];
-  $type=$_SESSION["type"];
+    $email = $_SESSION["email"];
+    $firstname=$_SESSION["firstname"];
+    $lastname=$_SESSION["lastname"];
 }else{
-    echo ("<script>location.href='emp_login.php'</script>");
+    echo ("<script>location.href='Login.php'</script>");
 
 }
+include("../../config/connect.php");
 ?>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Assigned Complaints</title>
+    <title>Blank - Windmill Dashboard</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -41,17 +40,32 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
       class="flex h-screen bg-gray-50 dark:bg-gray-900"
       :class="{ 'overflow-hidden': isSideMenuOpen}"
     >
-   <!-- navigation -->
-   <?php include("./layout/emp_nav.php"); ?>
+
       <div class="flex flex-col flex-1">
       <!-- header -->
-      <?php include("./layout/emp_header.php"); ?>
+      <?php include("./layouts/header/cust_header.php"); ?>
+
+
 
         <main class="h-full pb-16 overflow-y-auto">
           <!-- Remove everything INSIDE this div to a really blank page -->
           <div class="container px-0 mx-auto grid">
           <!-- add your code below -->
-                   
+          <section class="py-5  font-serif">
+  <div class="flex flex-col md:flex-row items-center max-w-6xl px-6 py-8 mx-auto">
+    <div class="w-full md:w-1/2 py-8">
+      <h1 class="text-purple-900 text-7xl font-semibold leading-none tracking-tighter">
+        Welcome  <br><span class="text-blue-500"><?php echo $firstname; ?> <br> <?php echo $lastname; ?> <br></span> 
+      </h1>
+    </div>
+    <div class="w-full md:w-1/2 py-8">
+      <img src="../assets/undraw_welcome_re_h3d9.svg" class="g-image">
+    </div>
+  </div>
+</section>
+
+        
+
           </div>
         </main>
       </div>

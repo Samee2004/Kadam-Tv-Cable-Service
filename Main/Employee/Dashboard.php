@@ -6,6 +6,7 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
     $email = $_SESSION["email"];
     $firstname=$_SESSION["firstname"];
     $lastname=$_SESSION["lastname"];
+    $type=$_SESSION["type"];
    }
     else{
         echo ("<script>location.href='emp_login.php'</script>");
@@ -225,7 +226,7 @@ include("../../config/connect.php");
                                 <h4 class="text-2xl lg:text-3xl text-white font-semibold leading-tight inline-block mr-2" x-text="'$'+(chartData.data?chartData.data[chartData.date].total.comma_formatter():0)">0</h4>
                                 <span class="inline-block" :class="chartData.data&&chartData.data[chartData.date].upDown<0?'text-red-500':'text-green-500'"><span x-text="chartData.data&&chartData.data[chartData.date].upDown<0?'▼':'▲'">0</span> <span x-text="chartData.data?chartData.data[chartData.date].upDown:0">0</span>%</span>
                             </div> -->
-                            <div id="line-chart" class="max-w-screen mx-auto"></div>
+                            <!-- <div id="line-chart" class="max-w-screen mx-auto"></div> -->
 
                         </div>
                     </div>
@@ -243,14 +244,31 @@ include("../../config/connect.php");
                           <thead>
                             <tr>
                               <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Role</th>
-                              <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Amount</th>
+                              <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Employee</th>
                               <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px"></th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr class="text-gray-700 dark:text-gray-100">
                               <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Admin</th>
-                              <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">1</td>
+                              <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                <?php 
+                                    $sql = "SELECT COUNT(*) AS employee_count FROM employee WHERE emp_role = 'a'";
+                                    $result = mysqli_query($con,$sql);
+                                    
+                                    if ($result->num_rows > 0) {
+                                        // Fetch the result row as an associative array
+                                        $row = $result->fetch_assoc();
+                                        // Get the count of employees
+                                        $employeeCount = $row["employee_count"];
+                                    
+                                        // Output the count
+                                        echo  $employeeCount;
+                                    } else {
+                                        echo "No employees found with role admin";
+                                    }
+                                ?>
+                              </td>
                               <!-- <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                 <div class="flex items-center">
                                   <span class="mr-2">70%</span>
@@ -264,7 +282,22 @@ include("../../config/connect.php");
                             </tr>
                             <tr class="text-gray-700 dark:text-gray-100">
                               <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Manager</th>
-                              <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">1</td>
+                              <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?php 
+                                    $sql = "SELECT COUNT(*) AS employee_count FROM employee WHERE emp_role = 'm'";
+                                    $result = mysqli_query($con,$sql);
+                                    
+                                    if ($result->num_rows > 0) {
+                                        // Fetch the result row as an associative array
+                                        $row = $result->fetch_assoc();
+                                        // Get the count of employees
+                                        $employeeCount = $row["employee_count"];
+                                    
+                                        // Output the count
+                                        echo  $employeeCount;
+                                    } else {
+                                        echo "No employees found with role manager";
+                                    }
+                                ?></td>
                               <!-- <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                 <div class="flex items-center">
                                   <span class="mr-2">40%</span>
@@ -278,7 +311,22 @@ include("../../config/connect.php");
                             </tr>
                             <tr class="text-gray-700 dark:text-gray-100">
                               <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Technician</th>
-                              <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">3</td>
+                              <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?php 
+                                    $sql = "SELECT COUNT(*) AS employee_count FROM employee WHERE emp_role = 't'";
+                                    $result = mysqli_query($con,$sql);
+                                    
+                                    if ($result->num_rows > 0) {
+                                        // Fetch the result row as an associative array
+                                        $row = $result->fetch_assoc();
+                                        // Get the count of employees
+                                        $employeeCount = $row["employee_count"];
+                                    
+                                        // Output the count
+                                        echo  $employeeCount;
+                                    } else {
+                                        echo "No employees found with role technican";
+                                    }
+                                ?></td>
                               <!-- <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                 <div class="flex items-center">
                                   <span class="mr-2">45%</span>
@@ -292,7 +340,24 @@ include("../../config/connect.php");
                             </tr>
                             <tr class="text-gray-700 dark:text-gray-100">
                               <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Customers</th>
-                              <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">400</td>
+                              <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                              <?php 
+                                    $sql = "SELECT COUNT(*) AS customer_count FROM customer ";
+                                    $result = mysqli_query($con,$sql);
+                                    
+                                    if ($result->num_rows > 0) {
+                                        // Fetch the result row as an associative array
+                                        $row = $result->fetch_assoc();
+                                        // Get the count of employees
+                                        $customer_count = $row["customer_count"];
+                                    
+                                        // Output the count
+                                        echo  $customer_count;
+                                    } else {
+                                        echo "No customers found";
+                                    }
+                                ?>
+                              </td>
                               <!-- <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                 <div class="flex items-center">
                                   <span class="mr-2">60%</span>
@@ -311,54 +376,16 @@ include("../../config/connect.php");
                   </div>
                         <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
                             
-                    <div class="flex justify-between mb-4 items-start">
+                    <!-- <div class="flex justify-between mb-4 items-start">
                         
 
 
-                        <!-- <div class="font-medium">Activities in a Month</div>
-                    </div>
-                    <div class="">
-                        <table class="w-full min-w-[50px]">
-                            <tbody>
-                                <tr>
-                                    <td class="py-2  border-b border-b-gray-50">
-                                        <span class="text-[14px] font-medium text-gray-600">Subscribers of Channels</span>
-                                    </td>
-                                    <td class="py-2  border-b border-b-gray-50">
-                                    <a href="" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
-                                    </td>
-                                    <td class="py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">17.45</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2  border-b border-b-gray-50">
-                                        <span class="text-[14px] font-medium text-gray-600">Subscribers of Packages</span>
-                                    </td>
-                                    <td class="py-2  border-b border-b-gray-50">
-                                    <a href="" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
-                                    </td>
-                                    <td class="py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">17.45</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2  border-b border-b-gray-50">
-                                        <span class="text-[14px] font-medium text-gray-600">Recharge</span>
-                                    </td>
-                                    <td class="py-2  border-b border-b-gray-50">
-                                    <a href="" class="text-[#f84525] font-medium text-sm hover:text-red-800">View</a>
-                                    </td>
-                                    <td class="py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">17.45</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div> -->
+                        <div class="font-medium">Activities in a Month</div>
+                    </div> -->
+                    
+                </div>
             </div>
-            <div class="">
+            <!-- <div class="">
                 
 
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
@@ -519,7 +546,7 @@ include("../../config/connect.php");
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
           </div>

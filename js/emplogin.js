@@ -48,7 +48,7 @@ $(document).ready(function(){
 
             $("#email").val("");
             $("#password").val("");
-            window.location.href="adminchannels.php"
+            window.location.href="emp_home.php"
           } 
           else if(
             response == 2
@@ -69,7 +69,7 @@ $(document).ready(function(){
 
             $("#email").val("");
             $("#password").val("");
-            window.location.href="complaint.php"
+            window.location.href="emp_home.php"
           }
           else if(
             response == 3
@@ -90,7 +90,7 @@ $(document).ready(function(){
 
             $("#email").val("");
             $("#password").val("");
-            window.location.href="assignedcomplaints.php"
+            window.location.href="emp_home.php"
           }
           else {
             Toastify({

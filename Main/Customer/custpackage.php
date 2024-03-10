@@ -10,7 +10,8 @@ if(isset($_SESSION["email"]) && isset($_SESSION["firstname"]) && isset($_SESSION
 
 }
 include("../../config/connect.php");
-
+date_default_timezone_set('Asia/Kolkata');
+$currentDate = date("Y-m-d");
 ?>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
@@ -116,7 +117,29 @@ include("../../config/connect.php");
                                       <p class="text-sm font-semibold text-gray-400">Upto <?php $get_number_of_channels = "SELECT * FROM `package_has_channel` WHERE `phc_package_id` = '$pack_id' ";
                                                       // printing numbeer of channels using mysqli_num_rows which show number of rows in package_has_channels
                                                       echo(mysqli_num_rows(mysqli_query($con,$get_number_of_channels))); ?> channels</p>
-                                      <button type="button" 
+                                                      <?php
+                              $currentDate = date("Y-m-d", strtotime($currentDate));
+                              $subscribed= "SELECT * FROM `subscription`,`subscribeforpackage` WHERE sub_cust_id='$email' AND `subscribeforpackage`.`subpack_id`=`subscription`.`sub_id` AND `subscribeforpackage`.`package_id`= '$pack_id' AND `subscription`.`sub_end_date`> '$currentDate' ";
+                              $exutequerysubcribed= mysqli_query($con,$subscribed);
+                              
+                              if(
+                                mysqli_num_rows($exutequerysubcribed)>0
+                                
+                              ){
+                                 ?>
+
+                                 <p class="text-sm mt-6 px-4 py-2 bg-black text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">Already subscribed</p>
+
+                                 <?php
+                               
+
+                                
+                                }else{
+
+                                  
+                                ?>
+                                
+                                <button type="button" 
                                       <?php
                                           $custcheckstb ="SELECT * FROM `installs` WHERE `cust_email`= '$email'";
                                           $execute_custcheckstb= mysqli_query($con,$custcheckstb);
@@ -135,6 +158,10 @@ include("../../config/connect.php");
                                               ?>
                                       onclick="addtocart(<?php echo $pack_id; ?>,'p')" class="text-sm mt-6 px-4 py-2 bg-gray-900 text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">Add to cart</button>
                                       <a href="viewpackchan.php?id=<?php echo $pack_id; ?>&name=<?php echo $row["pack_name"] ?>&price=<?php echo $row["pack_price"] ?>" class="text-sm mt-6 px-4 py-2 bg-gray-900 text-white rounded-lg  tracking-wider hover:bg-yellow-600 outline-none">View Channels</a>
+                                <?php
+                              }
+                              ?>
+                                      
 
                                     </div>
                                   </div>
