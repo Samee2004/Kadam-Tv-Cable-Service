@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2024 at 09:51 PM
+-- Generation Time: Mar 10, 2024 at 05:19 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -79,24 +79,6 @@ INSERT INTO `chatbot` (`id`, `qts`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chatbot_answers`
---
-
-CREATE TABLE `chatbot_answers` (
-  `ans_id` int(11) NOT NULL,
-  `answer` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `chatbot_answers`
---
-
-INSERT INTO `chatbot_answers` (`ans_id`, `answer`) VALUES
-(0, 'It simply means that cable TV will bring a digital signal to your doorstep. With this technology subscribers will get superior picture and sound quality, a large bouquet of channels, choice of channel, games and movies on demand.\r\n\r\n');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `chatbot_button`
 --
 
@@ -115,44 +97,6 @@ INSERT INTO `chatbot_button` (`cb_id`, `cb_name`, `cb_number`, `qt_id`) VALUES
 (6, 'What is meant by Digitalization of Cable TV?', '8', 1),
 (7, 'What are the advantages of digital cable TV? ', '', 1),
 (8, 'I am seeing Error 1 on my TV screen?', '', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chatbot_category`
---
-
-CREATE TABLE `chatbot_category` (
-  `chat_cat_id` int(11) NOT NULL,
-  `cat_nam` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `chatbot_category`
---
-
-INSERT INTO `chatbot_category` (`chat_cat_id`, `cat_nam`) VALUES
-(1, 'General');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chatbot_qts`
---
-
-CREATE TABLE `chatbot_qts` (
-  `qts_id` int(11) NOT NULL,
-  `qts` varchar(500) NOT NULL,
-  `answer_id` int(11) DEFAULT NULL,
-  `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `chatbot_qts`
---
-
-INSERT INTO `chatbot_qts` (`qts_id`, `qts`, `answer_id`, `category_id`) VALUES
-(1, 'What is meant by Digitalization of Cable TV? ', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -176,7 +120,8 @@ CREATE TABLE `complaint` (
 
 INSERT INTO `complaint` (`complaint_id`, `complaint_issue`, `complaint_date`, `complaint_status`, `complaint_cust`, `complaint_emp`, `complaint_notsolve`) VALUES
 (6, 'ezsrxdtcfygv', '2024-02-04', 'waesyf', 'hrushiop@gmail.com', 'tech@gmail.com', ''),
-(7, 'no channels,', '2024-03-04', 'Unresolvable', 'hrushiop@gmail.com', 'tech@gmail.com', 'idk');
+(7, 'no channels,', '2024-03-04', 'Unresolvable', 'hrushiop@gmail.com', 'tech@gmail.com', 'idk'),
+(8, 'Channels not displaying even to I paid,', '2024-03-08', 'Pending', 'sam@gmail.com', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -206,7 +151,7 @@ INSERT INTO `customer` (`cust_email`, `cust_password`, `cust_fname`, `cust_mname
 ('hrushiss@gmail.com', '123456789', 'Hrushi', 'khfgu', 'dhsvkj', '32', 'fkjdhgu', 'ghlrh', 'Choose your pincode', '1234567678'),
 ('jdjznl@gmail.com', '123456789', 'Sam', 'Deep', 'Dam', '561', 'vvjsknc', 'jsdvlkx', '400042', '6789367829'),
 ('jef@gmail.com', 'qazxswedc', 'Ruchi', 'ahfou', 'jekhiu', 'b-21', 'hgut', 'kgut', '400042', '7539514560'),
-('sam@gmail.com', '123456789', 'Samee', 'Deep', 'Damn', '21', 'mfvuhh', 'ad,khv', '400042', '7412589630'),
+('sam@gmail.com', '123456789', 'sammm', 'tdtr', 'kad', '67', 'sv', 'rwywhtegd', 'Choose your pincode', '7412589678'),
 ('samkk@gmail.con', 'qweasdzxc', 'Samee', 'kvy', 'fkhv', '098', 'ekfkg', 'wkufgi h', '400042', '9632587418');
 
 -- --------------------------------------------------------
@@ -289,7 +234,7 @@ CREATE TABLE `installs` (
 --
 
 INSERT INTO `installs` (`installs_id`, `installs_req_date`, `installs_req_time`, `installs_date`, `installs_status`, `stb_number`, `emp_email`, `cust_email`) VALUES
-(4, '2024-03-06', '10:00:00', NULL, 'Pending', NULL, NULL, 'sam@gmail.com');
+(5, '2024-03-12', '15:00:00', NULL, 'Completed', 'STB123-098-450', 'tech@gmail.com', 'sam@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -415,7 +360,9 @@ CREATE TABLE `paidforrecharge` (
 
 INSERT INTO `paidforrecharge` (`paid_recharge_id`, `paid_trans_id`) VALUES
 (1, 'pay_NdG658LtrZV8Go'),
-(2, 'pay_NehrksMhtJW74K');
+(2, 'pay_NehrksMhtJW74K'),
+(3, 'pay_Njlyx9OvkioRXa'),
+(4, 'pay_Njm2ujv6nD0vOC');
 
 -- --------------------------------------------------------
 
@@ -427,6 +374,13 @@ CREATE TABLE `paidforsettopbox` (
   `Paid_stb_number` varchar(25) DEFAULT NULL,
   `paid_trans_id` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `paidforsettopbox`
+--
+
+INSERT INTO `paidforsettopbox` (`Paid_stb_number`, `paid_trans_id`) VALUES
+('STB123-098-450', 'pay_9ILUrwB9j3Wz0');
 
 -- --------------------------------------------------------
 
@@ -444,7 +398,8 @@ CREATE TABLE `paidforsubscription` (
 --
 
 INSERT INTO `paidforsubscription` (`paid_sub_id`, `paid_trans_id`) VALUES
-(8, 'pay_NiHmauD8KM4JaN');
+(8, 'pay_NiHmauD8KM4JaN'),
+(9, 'pay_NjmUt2d8looAaX');
 
 -- --------------------------------------------------------
 
@@ -467,6 +422,7 @@ CREATE TABLE `payment` (
 
 INSERT INTO `payment` (`transaction_id`, `pay_mode`, `pay_amount`, `pay_date`, `pay_time`, `pay_status`) VALUES
 ('', 'online', 424, '0000-00-00', '15:49:20', 'success'),
+('pay_9ILUrwB9j3Wz0', 'offline', 123, '2024-03-08', '19:57:51', 'success'),
 ('pay_NdG658LtrZV8Go', 'online', 405, '2024-02-21', '01:32:37', 'success'),
 ('pay_NdG780wbBP2YSk', 'online', 405, '2024-02-21', '01:33:38', 'success'),
 ('pay_NdUoirop1yezxn', 'online', 424, '2024-02-21', '15:56:32', 'success'),
@@ -474,6 +430,11 @@ INSERT INTO `payment` (`transaction_id`, `pay_mode`, `pay_amount`, `pay_date`, `
 ('pay_NehpM71F0TPijG', 'online', 424, '2024-02-24', '17:19:09', 'success'),
 ('pay_NehrksMhtJW74K', 'online', 424, '2024-02-24', '17:21:25', 'success'),
 ('pay_NiHmauD8KM4JaN', 'online', 269, '2024-03-04', '18:26:31', 'success'),
+('pay_NjlmMIuy2PFa4P', 'online', 269, '2024-03-08', '12:26:06', 'success'),
+('pay_Njlq7kuEOhBw4j', 'online', 269, '2024-03-08', '12:29:42', 'success'),
+('pay_Njlyx9OvkioRXa', 'online', 269, '2024-03-08', '12:38:07', 'success'),
+('pay_Njm2ujv6nD0vOC', 'online', 269, '2024-03-08', '12:41:46', 'success'),
+('pay_NjmUt2d8looAaX', 'online', 175, '2024-03-08', '13:08:16', 'success'),
 ('pay_NZ6nHU06ktmXgD', 'online', 20, '2024-02-10', '13:50:32', 'success'),
 ('pay_NZ6zBBRiL3lZIe', 'online', 20, '2024-02-10', '14:01:48', 'success'),
 ('pay_NZ70t1IYoxjHGN', 'online', 20, '2024-02-10', '14:03:24', 'success'),
@@ -517,6 +478,14 @@ CREATE TABLE `rechargeforsubscription` (
   `recharge_sub_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `rechargeforsubscription`
+--
+
+INSERT INTO `rechargeforsubscription` (`recharge_id`, `recharge_sub_id`) VALUES
+(3, 8),
+(4, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -528,6 +497,14 @@ CREATE TABLE `settopbox` (
   `stb_price` int(5) DEFAULT NULL,
   `stb_status` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `settopbox`
+--
+
+INSERT INTO `settopbox` (`stb_number`, `stb_price`, `stb_status`) VALUES
+('STB123-098-450', 123, 'Available'),
+('STB123-098-456', 1000, 'Assigned');
 
 -- --------------------------------------------------------
 
@@ -546,7 +523,9 @@ CREATE TABLE `subscribeforchannel` (
 
 INSERT INTO `subscribeforchannel` (`subchan_id`, `channel_id`) VALUES
 (8, 19),
-(8, 20);
+(8, 20),
+(9, 19),
+(9, 25);
 
 -- --------------------------------------------------------
 
@@ -564,7 +543,8 @@ CREATE TABLE `subscribeforpackage` (
 --
 
 INSERT INTO `subscribeforpackage` (`subpack_id`, `package_id`) VALUES
-(8, 6);
+(8, 6),
+(9, 8);
 
 -- --------------------------------------------------------
 
@@ -584,7 +564,8 @@ CREATE TABLE `subscription` (
 --
 
 INSERT INTO `subscription` (`sub_id`, `sub_start_date`, `sub_end_date`, `sub_cust_id`) VALUES
-(8, '2024-03-04', '2024-04-04', 'sam@gmail.com');
+(8, '2024-02-05', '2024-03-05', 'sam@gmail.com'),
+(9, '2024-03-08', '2024-04-08', 'sam@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -605,31 +586,11 @@ ALTER TABLE `chatbot`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `chatbot_answers`
---
-ALTER TABLE `chatbot_answers`
-  ADD PRIMARY KEY (`ans_id`);
-
---
 -- Indexes for table `chatbot_button`
 --
 ALTER TABLE `chatbot_button`
   ADD PRIMARY KEY (`cb_id`),
   ADD KEY `qt_id` (`qt_id`);
-
---
--- Indexes for table `chatbot_category`
---
-ALTER TABLE `chatbot_category`
-  ADD PRIMARY KEY (`chat_cat_id`);
-
---
--- Indexes for table `chatbot_qts`
---
-ALTER TABLE `chatbot_qts`
-  ADD PRIMARY KEY (`qts_id`),
-  ADD KEY `FK_CATEGORY` (`category_id`),
-  ADD KEY `FK_ANSWERS` (`answer_id`);
 
 --
 -- Indexes for table `complaint`
@@ -774,7 +735,7 @@ ALTER TABLE `subscription`
 -- AUTO_INCREMENT for table `channels`
 --
 ALTER TABLE `channels`
-  MODIFY `chan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `chan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `chatbot`
@@ -789,22 +750,10 @@ ALTER TABLE `chatbot_button`
   MODIFY `cb_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `chatbot_category`
---
-ALTER TABLE `chatbot_category`
-  MODIFY `chat_cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `chatbot_qts`
---
-ALTER TABLE `chatbot_qts`
-  MODIFY `qts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `genre`
@@ -816,7 +765,7 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT for table `installs`
 --
 ALTER TABLE `installs`
-  MODIFY `installs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `installs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `language`
@@ -834,13 +783,13 @@ ALTER TABLE `packages`
 -- AUTO_INCREMENT for table `rechargeforsubscription`
 --
 ALTER TABLE `rechargeforsubscription`
-  MODIFY `recharge_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `recharge_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `subscription`
 --
 ALTER TABLE `subscription`
-  MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -858,13 +807,6 @@ ALTER TABLE `channels`
 --
 ALTER TABLE `chatbot_button`
   ADD CONSTRAINT `chatbot_button_ibfk_1` FOREIGN KEY (`qt_id`) REFERENCES `chatbot` (`id`);
-
---
--- Constraints for table `chatbot_qts`
---
-ALTER TABLE `chatbot_qts`
-  ADD CONSTRAINT `FK_ANSWERS` FOREIGN KEY (`answer_id`) REFERENCES `chatbot_answers` (`ans_id`),
-  ADD CONSTRAINT `FK_CATEGORY` FOREIGN KEY (`category_id`) REFERENCES `chatbot_category` (`chat_cat_id`);
 
 --
 -- Constraints for table `complaint`

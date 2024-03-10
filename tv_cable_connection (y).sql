@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 19, 2024 at 07:06 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.29
+-- Host: 127.0.0.1
+-- Generation Time: Mar 06, 2024 at 09:51 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,15 +35,24 @@ CREATE TABLE `channels` (
   `chan_img` varchar(5000) DEFAULT NULL,
   `chan_language` int(11) DEFAULT NULL,
   `chan_quality` varchar(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `channels`
 --
 
 INSERT INTO `channels` (`chan_id`, `Chan_name`, `chan_price`, `chan_genre`, `chan_img`, `chan_language`, `chan_quality`) VALUES
-(19, '&Pictures', 1, 1, '../assets/3ef7a53a7a62c5abcdf3adc4e9bc526d.webp', 5, 'SD'),
-(20, 'Sony Max HD', 4, 1, '../assets/127bfdb4994b951f71a7a80db81d1c20.webp', 3, 'HD');
+(19, 'STAR JALSHA MOVIES HD ', 15, 1, '../assets/6e74f7fa3f45864a56981c771c34382d.webp', 5, 'HD'),
+(20, 'Sony Max HD', 4, 1, '../assets/127bfdb4994b951f71a7a80db81d1c20.webp', 3, 'HD'),
+(21, '& Flix', 15, 1, '../assets/1a023f63d2cacfd98d2b77a36ab40842.webp', 2, 'SD'),
+(23, 'FILAMCHI_BHOJPURI ', 5, 1, '../assets/67a4f8b5c98b06a60cbdfbc69bb5a77b.webp', 14, 'SD'),
+(24, 'Colors Gujarati Cinema ', 1, 1, '../assets/ed73dc136e21323d78ebadb015b3a9ce.webp', 15, 'SD'),
+(25, 'Zee-Picchar ', 10, 1, '../assets/e48eeab0fcf9cfe8992d6a03b7307e9c.webp', 13, 'SD'),
+(26, 'ASIANET MOVIES', 19, 1, '../assets/bb4c80529a9456daebba18db8624c552.webp', 9, 'SD'),
+(27, 'ZEE TALKIES HD ', 19, 1, '../assets/86f721861e4bbceaeb0a1ee95008e1ef.webp', 8, 'HD'),
+(28, 'ALANKAR TV ', 4, 1, '../assets/77d22a451b092385800aebdd9043c0cf.webp', 7, 'SD'),
+(29, 'J Movie ', 3, 1, '../assets/4c123cd866696268fa5c96fa78270a4e.webp', 6, 'SD'),
+(30, 'Maa Movies HD', 19, 1, '../assets/29e5179deaca7995b200f5c6e9c63c6e.webp', 10, 'HD');
 
 -- --------------------------------------------------------
 
@@ -54,17 +63,36 @@ INSERT INTO `channels` (`chan_id`, `Chan_name`, `chan_price`, `chan_genre`, `cha
 CREATE TABLE `chatbot` (
   `id` int(255) NOT NULL,
   `qts` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chatbot`
 --
 
 INSERT INTO `chatbot` (`id`, `qts`) VALUES
-(1, 'What would like to talk about ?'),
-(2, 'bye '),
-(3, 'As both free-to-air and pay channels shall have to be carried in the digital domain in an encrypted format, both shall be receivable with the same Set Top Box. '),
-(4, 'A subscriber can get a Set Top Box as mentioned below:\r\n•A subscriber has to buy on the outright basis the set top box from the Multi system operator.\r\n•A subscriber can also get a Set Top Box against a security amount paid to Multi System Operator or Cable Operator.\r\n\r\n                                                         ');
+(1, 'Following are the general information'),
+(2, 'Following are the Technical'),
+(3, 'Following are the Payment & Subscription'),
+(4, 'Following are the Others'),
+(8, 'It simply means that cable TV will bring a digital signal to your doorstep. With this technology subscribers will get superior picture and sound quality, a large bouquet of channels, choice of channel, games and movies on demand.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chatbot_answers`
+--
+
+CREATE TABLE `chatbot_answers` (
+  `ans_id` int(11) NOT NULL,
+  `answer` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chatbot_answers`
+--
+
+INSERT INTO `chatbot_answers` (`ans_id`, `answer`) VALUES
+(0, 'It simply means that cable TV will bring a digital signal to your doorstep. With this technology subscribers will get superior picture and sound quality, a large bouquet of channels, choice of channel, games and movies on demand.\r\n\r\n');
 
 -- --------------------------------------------------------
 
@@ -77,15 +105,54 @@ CREATE TABLE `chatbot_button` (
   `cb_name` varchar(100) NOT NULL,
   `cb_number` varchar(100) NOT NULL,
   `qt_id` int(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chatbot_button`
 --
 
 INSERT INTO `chatbot_button` (`cb_id`, `cb_name`, `cb_number`, `qt_id`) VALUES
-(3, '                                                            Where and from whom can I get a Set Top', '3', 1),
-(4, 'Will the Set Top Box also make available free to air channels along with pay?channels? ', '4', 1);
+(6, 'What is meant by Digitalization of Cable TV?', '8', 1),
+(7, 'What are the advantages of digital cable TV? ', '', 1),
+(8, 'I am seeing Error 1 on my TV screen?', '', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chatbot_category`
+--
+
+CREATE TABLE `chatbot_category` (
+  `chat_cat_id` int(11) NOT NULL,
+  `cat_nam` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chatbot_category`
+--
+
+INSERT INTO `chatbot_category` (`chat_cat_id`, `cat_nam`) VALUES
+(1, 'General');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chatbot_qts`
+--
+
+CREATE TABLE `chatbot_qts` (
+  `qts_id` int(11) NOT NULL,
+  `qts` varchar(500) NOT NULL,
+  `answer_id` int(11) DEFAULT NULL,
+  `category_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chatbot_qts`
+--
+
+INSERT INTO `chatbot_qts` (`qts_id`, `qts`, `answer_id`, `category_id`) VALUES
+(1, 'What is meant by Digitalization of Cable TV? ', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -99,17 +166,17 @@ CREATE TABLE `complaint` (
   `complaint_date` date DEFAULT NULL,
   `complaint_status` varchar(15) DEFAULT NULL,
   `complaint_cust` varchar(100) DEFAULT NULL,
-  `complaint_emp` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `complaint_emp` varchar(100) DEFAULT NULL,
+  `complaint_notsolve` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `complaint`
 --
 
-INSERT INTO `complaint` (`complaint_id`, `complaint_issue`, `complaint_date`, `complaint_status`, `complaint_cust`, `complaint_emp`) VALUES
-(2, 'gie;audfjnlvm,', '2024-02-07', 'Unresolvable', NULL, NULL),
-(3, 'isueee isueeeee,', '2024-02-07', 'Solved', 'hrushiop9988@gmail.com', 'tech@gmail.com'),
-(4, 'hehehhehhehehe,', '2024-02-07', 'Pending', 'hrushiop9988@gmail.com', NULL);
+INSERT INTO `complaint` (`complaint_id`, `complaint_issue`, `complaint_date`, `complaint_status`, `complaint_cust`, `complaint_emp`, `complaint_notsolve`) VALUES
+(6, 'ezsrxdtcfygv', '2024-02-04', 'waesyf', 'hrushiop@gmail.com', 'tech@gmail.com', ''),
+(7, 'no channels,', '2024-03-04', 'Unresolvable', 'hrushiop@gmail.com', 'tech@gmail.com', 'idk');
 
 -- --------------------------------------------------------
 
@@ -128,18 +195,18 @@ CREATE TABLE `customer` (
   `cust_street` varchar(50) NOT NULL,
   `cust_pincode` varchar(50) NOT NULL,
   `cust_phone` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customer`
 --
 
 INSERT INTO `customer` (`cust_email`, `cust_password`, `cust_fname`, `cust_mname`, `cust_lname`, `cust_flat`, `cust_building`, `cust_street`, `cust_pincode`, `cust_phone`) VALUES
-('', '0987654321', 'uhfdud', 'hfud', 'cdd', 'gsfsdg', 'rsf', 'ipgknsfsFfngvcteadv', 'Choose your pincode', '1234567890'),
-('hrushiop9988@gmail.com', '123456789', 'Hrushi', 'khfgu', 'dhsvkj', '32', 'fkjdhgu', 'ghlrh', 'Choose your pincode', '1234567678'),
+('hrushiop@gmail.com', '123456789', 'uhfdud', 'hfud', 'cdd', 'gsfsdg', 'rsf', 'ipgknsfsFfngvcteadv', 'Choose your pincode', '1234567890'),
+('hrushiss@gmail.com', '123456789', 'Hrushi', 'khfgu', 'dhsvkj', '32', 'fkjdhgu', 'ghlrh', 'Choose your pincode', '1234567678'),
 ('jdjznl@gmail.com', '123456789', 'Sam', 'Deep', 'Dam', '561', 'vvjsknc', 'jsdvlkx', '400042', '6789367829'),
 ('jef@gmail.com', 'qazxswedc', 'Ruchi', 'ahfou', 'jekhiu', 'b-21', 'hgut', 'kgut', '400042', '7539514560'),
-('sam@gmail.com', 'qazxswedc', 'Samee', 'Deep', 'Damn', '21', 'mfvuhh', 'ad,khv', '400042', '7412589630'),
+('sam@gmail.com', '123456789', 'Samee', 'Deep', 'Damn', '21', 'mfvuhh', 'ad,khv', '400042', '7412589630'),
 ('samkk@gmail.con', 'qweasdzxc', 'Samee', 'kvy', 'fkhv', '098', 'ekfkg', 'wkufgi h', '400042', '9632587418');
 
 -- --------------------------------------------------------
@@ -160,14 +227,14 @@ CREATE TABLE `employee` (
   `emp_city` varchar(50) NOT NULL,
   `emp_phone` varchar(10) NOT NULL,
   `emp_role` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `employee`
 --
 
 INSERT INTO `employee` (`emp_email`, `emp_password`, `emp_fname`, `emp_mname`, `emp_lname`, `emp_flat`, `emp_building`, `emp_street`, `emp_city`, `emp_phone`, `emp_role`) VALUES
-('abc@gmail.com', '12345678', 'admin', 'xyz', 'abc', 'jegfuf', 'jhi', 'kluyi', 'ngd', '1234567890', 'a'),
+('admin@gmail.com', '123456789', 'admin', 'xyz', 'abc', 'jegfuf', 'jhi', 'kluyi', 'ngd', '1234567890', 'a'),
 ('manager@gmail.com', '123456789', 'gefwhld', 'fvdc ', 'efdcs', 'vdsxz', 'dscxz', 'dscxz', 'dcsxz', '1234567890', 'm'),
 ('tech@gmail.com', '123456789', 'tech', 'tech2', 'tech3', '111', 'dwc', 'ecwsaz', 'wdcax', '1234567890', 't');
 
@@ -180,7 +247,7 @@ INSERT INTO `employee` (`emp_email`, `emp_password`, `emp_fname`, `emp_mname`, `
 CREATE TABLE `genre` (
   `gen_id` int(11) NOT NULL,
   `gen_name` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `genre`
@@ -215,7 +282,14 @@ CREATE TABLE `installs` (
   `stb_number` varchar(25) DEFAULT NULL,
   `emp_email` varchar(100) DEFAULT NULL,
   `cust_email` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `installs`
+--
+
+INSERT INTO `installs` (`installs_id`, `installs_req_date`, `installs_req_time`, `installs_date`, `installs_status`, `stb_number`, `emp_email`, `cust_email`) VALUES
+(4, '2024-03-06', '10:00:00', NULL, 'Pending', NULL, NULL, 'sam@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -226,7 +300,7 @@ CREATE TABLE `installs` (
 CREATE TABLE `language` (
   `lang_id` int(11) NOT NULL,
   `lang_name` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `language`
@@ -262,7 +336,7 @@ CREATE TABLE `offer` (
   `offer_end_date` date NOT NULL,
   `offer_name` varchar(50) NOT NULL,
   `offer_price` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -274,17 +348,16 @@ CREATE TABLE `packages` (
   `pack_id` int(11) NOT NULL,
   `pack_name` varchar(200) NOT NULL,
   `pack_price` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `packages`
 --
 
 INSERT INTO `packages` (`pack_id`, `pack_name`, `pack_price`) VALUES
-(1, 'Sony he', 25),
-(3, 'iPad Air Gen 5th Wi-Fi', 399),
-(4, 'Sony HD', 200),
-(5, 'Sony HD', 200);
+(6, 'Super Filmy Pack', 250),
+(7, 'Filmy HD Pack', 100),
+(8, 'Fimly SD Pack', 150);
 
 -- --------------------------------------------------------
 
@@ -295,53 +368,54 @@ INSERT INTO `packages` (`pack_id`, `pack_name`, `pack_price`) VALUES
 CREATE TABLE `package_has_channel` (
   `phc_package_id` int(11) NOT NULL,
   `phc_channel_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `package_has_channel`
 --
 
 INSERT INTO `package_has_channel` (`phc_package_id`, `phc_channel_id`) VALUES
-(3, 19),
-(3, 20),
-(5, 19),
-(5, 20),
-(4, 19),
-(1, 19),
-(1, 20);
+(7, 19),
+(7, 20),
+(7, 27),
+(7, 30),
+(8, 21),
+(8, 23),
+(8, 24),
+(8, 25),
+(8, 26),
+(8, 28),
+(8, 29),
+(6, 19),
+(6, 20),
+(6, 21),
+(6, 23),
+(6, 24),
+(6, 25),
+(6, 26),
+(6, 27),
+(6, 28),
+(6, 29),
+(6, 30);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paidforchannel`
+-- Table structure for table `paidforrecharge`
 --
 
-CREATE TABLE `paidforchannel` (
-  `paid_subchan_id` int(11) DEFAULT NULL,
+CREATE TABLE `paidforrecharge` (
+  `paid_recharge_id` int(11) DEFAULT NULL,
   `paid_trans_id` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Table structure for table `paidforpackage`
+-- Dumping data for table `paidforrecharge`
 --
 
-CREATE TABLE `paidforpackage` (
-  `paid_subpack_id` int(11) DEFAULT NULL,
-  `paid_trans_id` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `paidforrechargepackage`
---
-
-CREATE TABLE `paidforrechargepackage` (
-  `paid_resubpack_id` int(11) DEFAULT NULL,
-  `paid_trans_id` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `paidforrecharge` (`paid_recharge_id`, `paid_trans_id`) VALUES
+(1, 'pay_NdG658LtrZV8Go'),
+(2, 'pay_NehrksMhtJW74K');
 
 -- --------------------------------------------------------
 
@@ -352,7 +426,25 @@ CREATE TABLE `paidforrechargepackage` (
 CREATE TABLE `paidforsettopbox` (
   `Paid_stb_number` varchar(25) DEFAULT NULL,
   `paid_trans_id` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paidforsubscription`
+--
+
+CREATE TABLE `paidforsubscription` (
+  `paid_sub_id` int(11) DEFAULT NULL,
+  `paid_trans_id` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `paidforsubscription`
+--
+
+INSERT INTO `paidforsubscription` (`paid_sub_id`, `paid_trans_id`) VALUES
+(8, 'pay_NiHmauD8KM4JaN');
 
 -- --------------------------------------------------------
 
@@ -367,13 +459,21 @@ CREATE TABLE `payment` (
   `pay_date` date DEFAULT NULL,
   `pay_time` time DEFAULT NULL,
   `pay_status` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payment`
 --
 
 INSERT INTO `payment` (`transaction_id`, `pay_mode`, `pay_amount`, `pay_date`, `pay_time`, `pay_status`) VALUES
+('', 'online', 424, '0000-00-00', '15:49:20', 'success'),
+('pay_NdG658LtrZV8Go', 'online', 405, '2024-02-21', '01:32:37', 'success'),
+('pay_NdG780wbBP2YSk', 'online', 405, '2024-02-21', '01:33:38', 'success'),
+('pay_NdUoirop1yezxn', 'online', 424, '2024-02-21', '15:56:32', 'success'),
+('pay_NdUpiCFA9EifxP', 'online', 424, '2024-02-21', '15:57:29', 'success'),
+('pay_NehpM71F0TPijG', 'online', 424, '2024-02-24', '17:19:09', 'success'),
+('pay_NehrksMhtJW74K', 'online', 424, '2024-02-24', '17:21:25', 'success'),
+('pay_NiHmauD8KM4JaN', 'online', 269, '2024-03-04', '18:26:31', 'success'),
 ('pay_NZ6nHU06ktmXgD', 'online', 20, '2024-02-10', '13:50:32', 'success'),
 ('pay_NZ6zBBRiL3lZIe', 'online', 20, '2024-02-10', '14:01:48', 'success'),
 ('pay_NZ70t1IYoxjHGN', 'online', 20, '2024-02-10', '14:03:24', 'success'),
@@ -393,7 +493,7 @@ INSERT INTO `payment` (`transaction_id`, `pay_mode`, `pay_amount`, `pay_date`, `
 CREATE TABLE `purchase` (
   `purchase_id` int(11) NOT NULL,
   `pur_cust_id` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -404,29 +504,18 @@ CREATE TABLE `purchase` (
 CREATE TABLE `purchaseoffer` (
   `pur_id` int(11) DEFAULT NULL,
   `off_offer_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rechargeforchannel`
+-- Table structure for table `rechargeforsubscription`
 --
 
-CREATE TABLE `rechargeforchannel` (
-  `recharge_chan_id` int(11) NOT NULL,
-  `recharge_sub_chan_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rechargeforpackage`
---
-
-CREATE TABLE `rechargeforpackage` (
-  `recharge_pack_id` int(11) NOT NULL,
-  `recharge_sub_pack_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `rechargeforsubscription` (
+  `recharge_id` int(11) NOT NULL,
+  `recharge_sub_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -438,20 +527,7 @@ CREATE TABLE `settopbox` (
   `stb_number` varchar(25) NOT NULL,
   `stb_price` int(5) DEFAULT NULL,
   `stb_status` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `subscribechannel`
---
-
-CREATE TABLE `subscribechannel` (
-  `sub_chan_id` int(11) NOT NULL,
-  `sub_start_date` date DEFAULT NULL,
-  `sub_end_date` date DEFAULT NULL,
-  `sub_cust_id` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -462,7 +538,15 @@ CREATE TABLE `subscribechannel` (
 CREATE TABLE `subscribeforchannel` (
   `subchan_id` int(11) DEFAULT NULL,
   `channel_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subscribeforchannel`
+--
+
+INSERT INTO `subscribeforchannel` (`subchan_id`, `channel_id`) VALUES
+(8, 19),
+(8, 20);
 
 -- --------------------------------------------------------
 
@@ -473,20 +557,34 @@ CREATE TABLE `subscribeforchannel` (
 CREATE TABLE `subscribeforpackage` (
   `subpack_id` int(11) DEFAULT NULL,
   `package_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subscribeforpackage`
+--
+
+INSERT INTO `subscribeforpackage` (`subpack_id`, `package_id`) VALUES
+(8, 6);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subscribepackage`
+-- Table structure for table `subscription`
 --
 
-CREATE TABLE `subscribepackage` (
-  `sub_pack_id` int(11) NOT NULL,
+CREATE TABLE `subscription` (
+  `sub_id` int(11) NOT NULL,
   `sub_start_date` date DEFAULT NULL,
   `sub_end_date` date DEFAULT NULL,
   `sub_cust_id` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subscription`
+--
+
+INSERT INTO `subscription` (`sub_id`, `sub_start_date`, `sub_end_date`, `sub_cust_id`) VALUES
+(8, '2024-03-04', '2024-04-04', 'sam@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -507,11 +605,31 @@ ALTER TABLE `chatbot`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `chatbot_answers`
+--
+ALTER TABLE `chatbot_answers`
+  ADD PRIMARY KEY (`ans_id`);
+
+--
 -- Indexes for table `chatbot_button`
 --
 ALTER TABLE `chatbot_button`
   ADD PRIMARY KEY (`cb_id`),
   ADD KEY `qt_id` (`qt_id`);
+
+--
+-- Indexes for table `chatbot_category`
+--
+ALTER TABLE `chatbot_category`
+  ADD PRIMARY KEY (`chat_cat_id`);
+
+--
+-- Indexes for table `chatbot_qts`
+--
+ALTER TABLE `chatbot_qts`
+  ADD PRIMARY KEY (`qts_id`),
+  ADD KEY `FK_CATEGORY` (`category_id`),
+  ADD KEY `FK_ANSWERS` (`answer_id`);
 
 --
 -- Indexes for table `complaint`
@@ -574,24 +692,10 @@ ALTER TABLE `package_has_channel`
   ADD KEY `phc_channel_id` (`phc_channel_id`);
 
 --
--- Indexes for table `paidforchannel`
+-- Indexes for table `paidforrecharge`
 --
-ALTER TABLE `paidforchannel`
-  ADD KEY `paid_subchan_id` (`paid_subchan_id`),
-  ADD KEY `paid_trans_id` (`paid_trans_id`);
-
---
--- Indexes for table `paidforpackage`
---
-ALTER TABLE `paidforpackage`
-  ADD KEY `paid_subpack_id` (`paid_subpack_id`),
-  ADD KEY `paid_trans_id` (`paid_trans_id`);
-
---
--- Indexes for table `paidforrechargepackage`
---
-ALTER TABLE `paidforrechargepackage`
-  ADD KEY `paid_resubpack_id` (`paid_resubpack_id`),
+ALTER TABLE `paidforrecharge`
+  ADD KEY `paid_recharge_id` (`paid_recharge_id`),
   ADD KEY `paid_trans_id` (`paid_trans_id`);
 
 --
@@ -599,6 +703,13 @@ ALTER TABLE `paidforrechargepackage`
 --
 ALTER TABLE `paidforsettopbox`
   ADD KEY `Paid_stb_number` (`Paid_stb_number`),
+  ADD KEY `paid_trans_id` (`paid_trans_id`);
+
+--
+-- Indexes for table `paidforsubscription`
+--
+ALTER TABLE `paidforsubscription`
+  ADD KEY `paid_sub_id` (`paid_sub_id`),
   ADD KEY `paid_trans_id` (`paid_trans_id`);
 
 --
@@ -622,31 +733,17 @@ ALTER TABLE `purchaseoffer`
   ADD KEY `off_offer_id` (`off_offer_id`);
 
 --
--- Indexes for table `rechargeforchannel`
+-- Indexes for table `rechargeforsubscription`
 --
-ALTER TABLE `rechargeforchannel`
-  ADD PRIMARY KEY (`recharge_chan_id`),
-  ADD KEY `recharge_sub_chan_id` (`recharge_sub_chan_id`);
-
---
--- Indexes for table `rechargeforpackage`
---
-ALTER TABLE `rechargeforpackage`
-  ADD PRIMARY KEY (`recharge_pack_id`),
-  ADD KEY `recharge_sub_pack_id` (`recharge_sub_pack_id`);
+ALTER TABLE `rechargeforsubscription`
+  ADD PRIMARY KEY (`recharge_id`),
+  ADD KEY `recharge_sub_id` (`recharge_sub_id`);
 
 --
 -- Indexes for table `settopbox`
 --
 ALTER TABLE `settopbox`
   ADD PRIMARY KEY (`stb_number`);
-
---
--- Indexes for table `subscribechannel`
---
-ALTER TABLE `subscribechannel`
-  ADD PRIMARY KEY (`sub_chan_id`),
-  ADD KEY `sub_cust_id` (`sub_cust_id`);
 
 --
 -- Indexes for table `subscribeforchannel`
@@ -663,10 +760,10 @@ ALTER TABLE `subscribeforpackage`
   ADD KEY `package_id` (`package_id`);
 
 --
--- Indexes for table `subscribepackage`
+-- Indexes for table `subscription`
 --
-ALTER TABLE `subscribepackage`
-  ADD PRIMARY KEY (`sub_pack_id`),
+ALTER TABLE `subscription`
+  ADD PRIMARY KEY (`sub_id`),
   ADD KEY `sub_cust_id` (`sub_cust_id`);
 
 --
@@ -677,31 +774,49 @@ ALTER TABLE `subscribepackage`
 -- AUTO_INCREMENT for table `channels`
 --
 ALTER TABLE `channels`
-  MODIFY `chan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `chan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `chatbot`
 --
 ALTER TABLE `chatbot`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `chatbot_button`
 --
 ALTER TABLE `chatbot_button`
-  MODIFY `cb_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cb_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `chatbot_category`
+--
+ALTER TABLE `chatbot_category`
+  MODIFY `chat_cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `chatbot_qts`
+--
+ALTER TABLE `chatbot_qts`
+  MODIFY `qts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
   MODIFY `gen_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `installs`
+--
+ALTER TABLE `installs`
+  MODIFY `installs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `language`
@@ -713,13 +828,19 @@ ALTER TABLE `language`
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `pack_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `pack_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `subscribechannel`
+-- AUTO_INCREMENT for table `rechargeforsubscription`
 --
-ALTER TABLE `subscribechannel`
-  MODIFY `sub_chan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `rechargeforsubscription`
+  MODIFY `recharge_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `subscription`
+--
+ALTER TABLE `subscription`
+  MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -737,6 +858,13 @@ ALTER TABLE `channels`
 --
 ALTER TABLE `chatbot_button`
   ADD CONSTRAINT `chatbot_button_ibfk_1` FOREIGN KEY (`qt_id`) REFERENCES `chatbot` (`id`);
+
+--
+-- Constraints for table `chatbot_qts`
+--
+ALTER TABLE `chatbot_qts`
+  ADD CONSTRAINT `FK_ANSWERS` FOREIGN KEY (`answer_id`) REFERENCES `chatbot_answers` (`ans_id`),
+  ADD CONSTRAINT `FK_CATEGORY` FOREIGN KEY (`category_id`) REFERENCES `chatbot_category` (`chat_cat_id`);
 
 --
 -- Constraints for table `complaint`
@@ -757,29 +885,15 @@ ALTER TABLE `installs`
 -- Constraints for table `package_has_channel`
 --
 ALTER TABLE `package_has_channel`
-  ADD CONSTRAINT `package_has_channel_ibfk_1` FOREIGN KEY (`phc_package_id`) REFERENCES `Packages` (`pack_id`),
-  ADD CONSTRAINT `package_has_channel_ibfk_2` FOREIGN KEY (`phc_channel_id`) REFERENCES `Channels` (`chan_id`);
+  ADD CONSTRAINT `package_has_channel_ibfk_1` FOREIGN KEY (`phc_package_id`) REFERENCES `packages` (`pack_id`),
+  ADD CONSTRAINT `package_has_channel_ibfk_2` FOREIGN KEY (`phc_channel_id`) REFERENCES `channels` (`chan_id`);
 
 --
--- Constraints for table `paidforchannel`
+-- Constraints for table `paidforrecharge`
 --
-ALTER TABLE `paidforchannel`
-  ADD CONSTRAINT `paidforchannel_ibfk_1` FOREIGN KEY (`paid_subchan_id`) REFERENCES `subscribechannel` (`sub_chan_id`),
-  ADD CONSTRAINT `paidforchannel_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
-
---
--- Constraints for table `paidforpackage`
---
-ALTER TABLE `paidforpackage`
-  ADD CONSTRAINT `paidforpackage_ibfk_1` FOREIGN KEY (`paid_subpack_id`) REFERENCES `subscribepackage` (`sub_pack_id`),
-  ADD CONSTRAINT `paidforpackage_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
-
---
--- Constraints for table `paidforrechargepackage`
---
-ALTER TABLE `paidforrechargepackage`
-  ADD CONSTRAINT `paidforrechargepackage_ibfk_1` FOREIGN KEY (`paid_resubpack_id`) REFERENCES `rechargeforpackage` (`recharge_pack_id`),
-  ADD CONSTRAINT `paidforrechargepackage_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
+ALTER TABLE `paidforrecharge`
+  ADD CONSTRAINT `paidforrecharge_ibfk_1` FOREIGN KEY (`paid_recharge_id`) REFERENCES `rechargeforsubscription` (`recharge_id`),
+  ADD CONSTRAINT `paidforrecharge_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
 
 --
 -- Constraints for table `paidforsettopbox`
@@ -787,6 +901,13 @@ ALTER TABLE `paidforrechargepackage`
 ALTER TABLE `paidforsettopbox`
   ADD CONSTRAINT `paidforsettopbox_ibfk_1` FOREIGN KEY (`Paid_stb_number`) REFERENCES `settopbox` (`stb_number`),
   ADD CONSTRAINT `paidforsettopbox_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
+
+--
+-- Constraints for table `paidforsubscription`
+--
+ALTER TABLE `paidforsubscription`
+  ADD CONSTRAINT `paidforsubscription_ibfk_1` FOREIGN KEY (`paid_sub_id`) REFERENCES `subscription` (`sub_id`),
+  ADD CONSTRAINT `paidforsubscription_ibfk_2` FOREIGN KEY (`paid_trans_id`) REFERENCES `payment` (`transaction_id`);
 
 --
 -- Constraints for table `purchase`
@@ -802,42 +923,16 @@ ALTER TABLE `purchaseoffer`
   ADD CONSTRAINT `purchaseoffer_ibfk_2` FOREIGN KEY (`off_offer_id`) REFERENCES `offer` (`offer_id`);
 
 --
--- Constraints for table `rechargeforchannel`
+-- Constraints for table `rechargeforsubscription`
 --
-ALTER TABLE `rechargeforchannel`
-  ADD CONSTRAINT `rechargeforchannel_ibfk_1` FOREIGN KEY (`recharge_sub_chan_id`) REFERENCES `subscribechannel` (`sub_chan_id`);
+ALTER TABLE `rechargeforsubscription`
+  ADD CONSTRAINT `rechargeforsubscription_ibfk_1` FOREIGN KEY (`recharge_sub_id`) REFERENCES `subscription` (`sub_id`);
 
 --
--- Constraints for table `rechargeforpackage`
+-- Constraints for table `subscription`
 --
-ALTER TABLE `rechargeforpackage`
-  ADD CONSTRAINT `rechargeforpackage_ibfk_1` FOREIGN KEY (`recharge_sub_pack_id`) REFERENCES `subscribepackage` (`sub_pack_id`);
-
---
--- Constraints for table `subscribechannel`
---
-ALTER TABLE `subscribechannel`
-  ADD CONSTRAINT `subscribechannel_ibfk_1` FOREIGN KEY (`sub_cust_id`) REFERENCES `customer` (`cust_email`);
-
---
--- Constraints for table `subscribeforchannel`
---
-ALTER TABLE `subscribeforchannel`
-  ADD CONSTRAINT `subscribeforchannel_ibfk_1` FOREIGN KEY (`subchan_id`) REFERENCES `subscribechannel` (`sub_chan_id`),
-  ADD CONSTRAINT `subscribeforchannel_ibfk_2` FOREIGN KEY (`channel_id`) REFERENCES `channels` (`chan_id`);
-
---
--- Constraints for table `subscribeforpackage`
---
-ALTER TABLE `subscribeforpackage`
-  ADD CONSTRAINT `subscribeforpackage_ibfk_1` FOREIGN KEY (`subpack_id`) REFERENCES `subscribepackage` (`sub_pack_id`),
-  ADD CONSTRAINT `subscribeforpackage_ibfk_2` FOREIGN KEY (`package_id`) REFERENCES `Packages` (`pack_id`);
-
---
--- Constraints for table `subscribepackage`
---
-ALTER TABLE `subscribepackage`
-  ADD CONSTRAINT `subscribepackage_ibfk_1` FOREIGN KEY (`sub_cust_id`) REFERENCES `customer` (`cust_email`);
+ALTER TABLE `subscription`
+  ADD CONSTRAINT `fk_customer` FOREIGN KEY (`sub_cust_id`) REFERENCES `customer` (`cust_email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
